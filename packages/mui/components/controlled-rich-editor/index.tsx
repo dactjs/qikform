@@ -1,0 +1,117 @@
+"use client";
+
+import { FormControl, FormLabel, FormHelperText } from "@mui/material";
+import {
+  RichTextEditor,
+  MenuControlsContainer,
+  MenuSelectHeading,
+  MenuButtonBold,
+  MenuButtonItalic,
+  MenuButtonStrikethrough,
+  MenuButtonCode,
+  MenuButtonOrderedList,
+  MenuButtonBulletedList,
+  MenuButtonAlignLeft,
+  MenuButtonAlignCenter,
+  MenuButtonAlignJustify,
+  MenuButtonAlignRight,
+  MenuDivider,
+} from "mui-tiptap";
+import { StarterKit } from "@tiptap/starter-kit";
+import { TextAlign } from "@tiptap/extension-text-align";
+import { Placeholder } from "@tiptap/extension-placeholder";
+import type { UseControllerProps } from "react-hook-form";
+import { useController } from "react-hook-form";
+
+export interface ControlledRichEditorProps
+  extends UseControllerProps<Record<string, unknown>> {
+  label?: string | null;
+  placeholder?: string | null;
+  helperText?: string | null;
+}
+
+export function ControlledRichEditor({
+  name,
+  control,
+  disabled,
+  defaultValue,
+  rules,
+  shouldUnregister,
+  label,
+  placeholder,
+  helperText,
+}: ControlledRichEditorProps): React.ReactElement {
+  const {
+    field: { value, onChange },
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+    disabled,
+    defaultValue,
+    rules,
+    shouldUnregister,
+  });
+
+  const extensions = [
+    StarterKit,
+    TextAlign.configure({ types: ["heading", "paragraph"] }),
+    Placeholder.configure({ placeholder: placeholder || "Write something..." }),
+  ];
+
+  const controls = (
+    <MenuControlsContainer>
+      {Boolean(label) && (
+        <>
+          <FormLabel>{label}</FormLabel>
+          <MenuDivider />
+        </>
+      )}
+
+      <MenuSelectHeading />
+
+      <MenuDivider />
+
+      <MenuButtonBold />
+      <MenuButtonItalic />
+      <MenuButtonStrikethrough />
+      <MenuButtonCode />
+
+      <MenuDivider />
+
+      <MenuButtonOrderedList />
+      <MenuButtonBulletedList />
+
+      <MenuDivider />
+
+      <MenuButtonAlignLeft />
+      <MenuButtonAlignCenter />
+      <MenuButtonAlignJustify />
+      <MenuButtonAlignRight />
+    </MenuControlsContainer>
+  );
+
+  return (
+    <FormControl
+      fullWidth
+      required={Boolean(rules?.required)}
+      error={Boolean(error)}
+    >
+      <RichTextEditor
+        editorDependencies={[placeholder]}
+        extensions={extensions}
+        renderControls={() => controls}
+        content={typeof value === "string" ? value : defaultValue || null}
+        onUpdate={(content) => {
+          const isEmpty = content.editor.isEmpty;
+          const html = content.editor.getHTML();
+          onChange(isEmpty ? null : html);
+        }}
+      />
+
+      {(Boolean(error) || Boolean(helperText)) && (
+        <FormHelperText>{error?.message || helperText}</FormHelperText>
+      )}
+    </FormControl>
+  );
+}

@@ -11,12 +11,12 @@
     "build": "turbo run build"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.7.2",
-    "@commitlint/config-conventional": "17.7.0",
+    "@commitlint/cli": "18.2.0",
+    "@commitlint/config-conventional": "18.1.0",
     "@qikform/tsconfig": "workspace:*",
-    "eslint": "8.48.0",
+    "eslint": "8.52.0",
     "husky": "8.0.3",
     "prettier": "3.0.3",
-    "turbo": "1.10.14"
+    "turbo": "1.10.16"
   }
 }

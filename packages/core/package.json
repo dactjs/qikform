@@ -8,13 +8,13 @@
   "scripts": {
     "lint": "eslint ."
   },
-  "dependencies": {
-    "zod": "3.22.4"
+  "peerDependencies": {
+    "zod": "^3.22.4 || ^4.0.0"
   },
   "devDependencies": {
     "@qikform/eslint-config-custom": "workspace:*",
     "@qikform/tsconfig": "workspace:*",
-    "@types/node": "20.5.2",
-    "typescript": "4.5.2"
+    "@types/node": "20.8.9",
+    "typescript": "5.2.2"
   }
 }

@@ -1,9 +1,19 @@
 import { z as zod } from "zod";
-import { BaseBlockConfigurationSchema } from "../base";
+
+import { BlockElementType } from "../../../constants";
+import { DeepPartial } from "../../../types";
+
+import { BaseBlockSchema, BaseBlockConfigurationSchema } from "../base";
 
 ///////////
 // Types //
 ///////////
+
+export type CreateImageBlock = DeepPartial<ImageBlock> & {
+  type: typeof BlockElementType.IMAGE;
+  name: string;
+  url: string;
+};
 
 export type ImageBlock = zod.infer<typeof ImageBlockSchema>;
 
@@ -20,7 +30,8 @@ export const ImageBlockConfigurationSchema =
     // no additional configuration
   });
 
-export const ImageBlockSchema = zod.object({
+export const ImageBlockSchema = BaseBlockSchema.extend({
+  type: zod.literal(BlockElementType.IMAGE),
   url: zod.string().url(),
-  configuration: ImageBlockConfigurationSchema,
+  configuration: ImageBlockConfigurationSchema.default({}),
 });

@@ -1,0 +1,8 @@
+export type FieldElementType =
+  (typeof FieldElementType)[keyof typeof FieldElementType];
+
+export const FieldElementType = {
+  PLAIN_TEXT: "PLAIN_TEXT",
+  RICH_TEXT: "RICH_TEXT",
+  NUMBER: "NUMBER",
+} as const;

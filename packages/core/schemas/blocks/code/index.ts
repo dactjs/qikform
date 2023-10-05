@@ -1,9 +1,19 @@
 import { z as zod } from "zod";
-import { BaseBlockConfigurationSchema } from "../base";
+
+import { BlockElementType } from "../../../constants";
+import { DeepPartial } from "../../../types";
+
+import { BaseBlockSchema, BaseBlockConfigurationSchema } from "../base";
 
 ///////////
 // Types //
 ///////////
+
+export type CreateCodeBlock = DeepPartial<CodeBlock> & {
+  type: typeof BlockElementType.CODE;
+  name: string;
+  content: string;
+};
 
 export type CodeBlock = zod.infer<typeof CodeBlockSchema>;
 
@@ -21,7 +31,8 @@ export const CodeBlockConfigurationSchema = BaseBlockConfigurationSchema.extend(
   }
 );
 
-export const CodeBlockSchema = zod.object({
+export const CodeBlockSchema = BaseBlockSchema.extend({
+  type: zod.literal(BlockElementType.CODE),
   content: zod.string().min(1),
-  configuration: CodeBlockConfigurationSchema,
+  configuration: CodeBlockConfigurationSchema.default({}),
 });

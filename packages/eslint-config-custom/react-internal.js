@@ -32,5 +32,11 @@ module.exports = {
   ].map(require.resolve),
 
   // add specific rules configurations here
-  rules: {},
+  rules: {
+    "import/no-extraneous-dependencies": "off",
+    "import/order": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "react/jsx-sort-props": "off",
+  },
 };
