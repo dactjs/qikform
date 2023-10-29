@@ -6,7 +6,7 @@ import { useController } from "react-hook-form";
 
 import type { PlainTextField } from "@qikform/core";
 
-import { FormRendererValues } from "../../../types";
+import type { FormRendererValues } from "../../../types";
 
 export function PlainTextFieldRenderer({
   field,
