@@ -1,6 +1,6 @@
 import { z as zod } from "zod";
 
-import { DeepPartial } from "../../types";
+import type { DeepPartial } from "../../types";
 
 import { type CreateBlockElement } from "../blocks";
 import { BlockElementSchema } from "../blocks";
@@ -14,7 +14,7 @@ import { FieldElementSchema } from "../fields";
 
 export type CreateForm = DeepPartial<Form> & {
   title: string;
-  elements: Array<CreateBlockElement | CreateFieldElement>;
+  elements: (CreateBlockElement | CreateFieldElement)[];
 };
 
 export type Form = zod.infer<typeof FormSchema>;

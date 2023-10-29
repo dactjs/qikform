@@ -1,7 +1,7 @@
 import { z as zod } from "zod";
 
 import { FieldElementType } from "../../../constants";
-import { DeepPartial } from "../../../types";
+import type { DeepPartial } from "../../../types";
 
 import {
   BaseFieldSchema,

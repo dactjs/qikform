@@ -1,7 +1,8 @@
 {
   "name": "@qikform/web",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "lint": "next lint",
     "dev": "next dev --port 3000",

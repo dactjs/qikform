@@ -1,7 +1,7 @@
 import { z as zod } from "zod";
 
 import { BlockElementType } from "../../../constants";
-import { DeepPartial } from "../../../types";
+import type { DeepPartial } from "../../../types";
 
 import { BaseBlockSchema, BaseBlockConfigurationSchema } from "../base";
 

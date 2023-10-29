@@ -8,9 +8,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "dev": "turbo run dev",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "2.26.2",
     "@commitlint/cli": "18.2.0",
     "@commitlint/config-conventional": "18.1.0",
     "@qikform/tsconfig": "workspace:*",
