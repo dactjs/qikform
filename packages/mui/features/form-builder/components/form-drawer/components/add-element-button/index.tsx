@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Unstable_Grid2 as Grid,
   Stack,
-  Divider,
   Typography,
   Button,
   Tooltip,
@@ -16,6 +15,9 @@ import {
   ShortText as PlainTextIcon,
   WrapText as RichTextIcon,
   Numbers as NumberIcon,
+  AccessTime as TimeIcon,
+  CalendarMonth as DateIcon,
+  Event as DateTimeIcon,
 } from "@mui/icons-material";
 import { useFieldArray } from "react-hook-form";
 
@@ -55,31 +57,6 @@ export function AddElementButton(): React.ReactElement {
 
   const options: Options[] = [
     {
-      title: "Field Elements",
-      elements: [
-        {
-          icon: <PlainTextIcon />,
-          type: FormElementType.PLAIN_TEXT,
-          label: "Plain Text",
-          description: "A simple text field for entering plain text content.",
-        },
-        {
-          icon: <RichTextIcon />,
-          type: FormElementType.RICH_TEXT,
-          label: "Rich Text",
-          description:
-            "A rich text field that allows you to format and style your text content.",
-        },
-        {
-          icon: <NumberIcon />,
-          type: FormElementType.NUMBER,
-          label: "Number",
-          description:
-            "A field for entering numerical values like integers or decimals.",
-        },
-      ],
-    },
-    {
       title: "Block Elements",
       elements: [
         {
@@ -109,6 +86,49 @@ export function AddElementButton(): React.ReactElement {
           label: "Divider",
           description:
             "A horizontal line or divider used to separate content sections.",
+        },
+      ],
+    },
+    {
+      title: "Field Elements",
+      elements: [
+        {
+          icon: <PlainTextIcon />,
+          type: FormElementType.PLAIN_TEXT,
+          label: "Plain Text",
+          description: "A simple text field for entering plain text content.",
+        },
+        {
+          icon: <RichTextIcon />,
+          type: FormElementType.RICH_TEXT,
+          label: "Rich Text",
+          description:
+            "A rich text field that allows you to format and style your text content.",
+        },
+        {
+          icon: <NumberIcon />,
+          type: FormElementType.NUMBER,
+          label: "Number",
+          description:
+            "A field for entering numerical values like integers or decimals.",
+        },
+        {
+          icon: <TimeIcon />,
+          type: FormElementType.TIME,
+          label: "Time",
+          description: "A field for entering time values.",
+        },
+        {
+          icon: <DateIcon />,
+          type: FormElementType.DATE,
+          label: "Date",
+          description: "A field for entering date values.",
+        },
+        {
+          icon: <DateTimeIcon />,
+          type: FormElementType.DATE_TIME,
+          label: "Date & Time",
+          description: "A field for entering date and time values.",
         },
       ],
     },
@@ -156,6 +176,21 @@ export function AddElementButton(): React.ReactElement {
         name: `element${elements.length + 1}`,
         label: "New Number Element",
       },
+      [FormElementType.TIME]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Time Element",
+      },
+      [FormElementType.DATE]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Date Element",
+      },
+      [FormElementType.DATE_TIME]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Date Time Element",
+      },
     };
 
     const element = FormElementSchema.parse(schemas[type]);
@@ -175,8 +210,12 @@ export function AddElementButton(): React.ReactElement {
       >
         <Stack
           spacing={2}
-          divider={<Divider flexItem />}
-          sx={{ width: 300, height: 500, padding: (theme) => theme.spacing(3) }}
+          sx={{
+            width: 300,
+            height: 500,
+            padding: (theme) => theme.spacing(2, 3, 3),
+            overflowY: "auto",
+          }}
         >
           {options.map((option) => (
             <Stack key={option.title} spacing={1}>
@@ -195,6 +234,7 @@ export function AddElementButton(): React.ReactElement {
                       xs={6}
                       justifyContent="center"
                       alignItems="center"
+                      onClick={handleAdd(element.type)}
                       sx={{
                         display: "flex",
                         flexDirection: "column",
@@ -208,7 +248,6 @@ export function AddElementButton(): React.ReactElement {
                             theme.palette.action.hover,
                         },
                       }}
-                      onClick={handleAdd(element.type)}
                     >
                       <Typography>{element.label}</Typography>
                       {element.icon}

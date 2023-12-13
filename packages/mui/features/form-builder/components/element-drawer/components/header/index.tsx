@@ -62,7 +62,7 @@ export function Header(): React.ReactElement {
         position: "sticky",
         top: 0,
         padding: 1,
-        zIndex: (theme) => theme.zIndex.tooltip,
+        zIndex: (theme) => theme.zIndex.appBar,
       }}
     >
       <Stack direction="row" alignItems="center" spacing={1}>

@@ -9,6 +9,15 @@ import { RichTextFieldSchema } from "./rich-text";
 import type { CreateNumberField } from "./number";
 import { NumberFieldSchema } from "./number";
 
+import type { CreateTimeField } from "./time";
+import { TimeFieldSchema } from "./time";
+
+import type { CreateDateField } from "./date";
+import { DateFieldSchema } from "./date";
+
+import type { CreateDateTimeField } from "./date-time";
+import { DateTimeFieldSchema } from "./date-time";
+
 ///////////
 // Types //
 ///////////
@@ -16,7 +25,10 @@ import { NumberFieldSchema } from "./number";
 export type CreateFieldElement =
   | CreatePlainTextField
   | CreateRichTextField
-  | CreateNumberField;
+  | CreateNumberField
+  | CreateTimeField
+  | CreateDateField
+  | CreateDateTimeField;
 
 export type FieldElement = zod.infer<typeof FieldElementSchema>;
 
@@ -28,6 +40,9 @@ export const FieldElementSchema = zod.union([
   PlainTextFieldSchema,
   RichTextFieldSchema,
   NumberFieldSchema,
+  TimeFieldSchema,
+  DateFieldSchema,
+  DateTimeFieldSchema,
 ]);
 
 ////////////////
@@ -38,3 +53,6 @@ export * from "./base";
 export * from "./plain-text";
 export * from "./rich-text";
 export * from "./number";
+export * from "./time";
+export * from "./date";
+export * from "./date-time";

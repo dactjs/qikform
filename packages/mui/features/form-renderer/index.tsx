@@ -20,6 +20,9 @@ import {
   PlainTextFieldRenderer,
   RichTextFieldRenderer,
   NumberFieldRenderer,
+  TimeFieldRenderer,
+  DateFieldRenderer,
+  DateTimeFieldRenderer,
 } from "./components/fields";
 import { SubmissionText } from "./components/submission-text";
 import type { FormRendererValues } from "./types";
@@ -130,6 +133,18 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
 
               {element.type === FormElementType.NUMBER && (
                 <NumberFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.TIME && (
+                <TimeFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.DATE && (
+                <DateFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.DATE_TIME && (
+                <DateTimeFieldRenderer field={element} />
               )}
             </Fragment>
           ))}

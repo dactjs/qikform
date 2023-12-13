@@ -75,6 +75,7 @@ export function PlainTextFieldRenderer({
       {(Boolean(error) || Boolean(field.helperText)) && (
         <Box
           sx={{
+            marginLeft: 2,
             color: ({ palette }) =>
               error ? palette.error.main : palette.text.secondary,
           }}

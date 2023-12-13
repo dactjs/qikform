@@ -5,4 +5,7 @@ export const FieldElementType = {
   PLAIN_TEXT: "PLAIN_TEXT",
   RICH_TEXT: "RICH_TEXT",
   NUMBER: "NUMBER",
+  TIME: "TIME",
+  DATE: "DATE",
+  DATE_TIME: "DATE_TIME",
 } as const;

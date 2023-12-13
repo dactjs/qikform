@@ -8,8 +8,6 @@ import {
   MenuButtonItalic,
   MenuButtonStrikethrough,
   MenuButtonCode,
-  MenuButtonOrderedList,
-  MenuButtonBulletedList,
   MenuButtonAlignLeft,
   MenuButtonAlignCenter,
   MenuButtonAlignJustify,
@@ -46,7 +44,10 @@ export function RichTextFieldRenderer({
   });
 
   const extensions = [
-    StarterKit,
+    StarterKit.configure({
+      bulletList: false,
+      orderedList: false,
+    }),
     TextAlign.configure({
       types: ["heading", "paragraph"],
     }),
@@ -75,11 +76,6 @@ export function RichTextFieldRenderer({
       <MenuButtonItalic />
       <MenuButtonStrikethrough />
       <MenuButtonCode />
-
-      <MenuDivider />
-
-      <MenuButtonOrderedList />
-      <MenuButtonBulletedList />
 
       <MenuDivider />
 
@@ -112,6 +108,7 @@ export function RichTextFieldRenderer({
       {(Boolean(error) || Boolean(field.helperText)) && (
         <Box
           sx={{
+            marginLeft: 2,
             color: ({ palette }) =>
               error ? palette.error.main : palette.text.secondary,
           }}

@@ -9,8 +9,6 @@ import {
   MenuButtonItalic,
   MenuButtonStrikethrough,
   MenuButtonCode,
-  MenuButtonOrderedList,
-  MenuButtonBulletedList,
   MenuButtonAlignLeft,
   MenuButtonAlignCenter,
   MenuButtonAlignJustify,
@@ -54,7 +52,10 @@ export function ControlledRichEditor({
   });
 
   const extensions = [
-    StarterKit,
+    StarterKit.configure({
+      bulletList: false,
+      orderedList: false,
+    }),
     TextAlign.configure({ types: ["heading", "paragraph"] }),
     Placeholder.configure({ placeholder: placeholder || "Write something..." }),
   ];
@@ -76,11 +77,6 @@ export function ControlledRichEditor({
       <MenuButtonItalic />
       <MenuButtonStrikethrough />
       <MenuButtonCode />
-
-      <MenuDivider />
-
-      <MenuButtonOrderedList />
-      <MenuButtonBulletedList />
 
       <MenuDivider />
 

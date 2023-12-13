@@ -15,6 +15,9 @@ import {
   PlainTextFieldSettings,
   RichTextFieldSettings,
   NumberFieldSettings,
+  TimeFieldSettings,
+  DateFieldSettings,
+  DateTimeFieldSettings,
 } from "./components";
 
 export function ElementDrawer(): React.ReactElement {
@@ -58,6 +61,18 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.NUMBER && (
         <NumberFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.TIME && (
+        <TimeFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.DATE && (
+        <DateFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.DATE_TIME && (
+        <DateTimeFieldSettings field={selectedElement} />
       )}
     </Stack>
   );

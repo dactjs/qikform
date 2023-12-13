@@ -62,5 +62,20 @@ export const schema = {
       name: "number",
       label: "Number Field",
     },
+    {
+      type: FormElementType.TIME,
+      name: "time",
+      label: "Time Field",
+    },
+    {
+      type: FormElementType.DATE,
+      name: "date",
+      label: "Date Field",
+    },
+    {
+      type: FormElementType.DATE_TIME,
+      name: "dateTime",
+      label: "Date Time Field",
+    },
   ],
 } satisfies CreateForm;

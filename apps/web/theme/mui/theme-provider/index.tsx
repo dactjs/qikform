@@ -3,6 +3,8 @@
 import { ThemeProvider as MuiThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import { ColorModeProvider, useColorMode } from "../color-mode-provider";
 
@@ -41,7 +43,9 @@ function ThemeProvider({ children }: ThemeProviderProps): React.ReactElement {
         }}
       />
 
-      {children}
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        {children}
+      </LocalizationProvider>
     </MuiThemeProvider>
   );
 }
