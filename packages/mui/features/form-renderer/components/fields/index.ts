@@ -1,7 +1,7 @@
-export * from "./plain-text-field";
-export * from "./rich-text-field";
-export * from "./number-field";
+export * from "./plain-text";
+export * from "./rich-text";
+export * from "./number";
 
-export * from "./time-field";
-export * from "./date-field";
-export * from "./date-time-field";
+export * from "./time";
+export * from "./date";
+export * from "./date-time";
