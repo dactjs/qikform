@@ -59,6 +59,7 @@ export function CheckboxFieldRenderer({
       {(Boolean(error) || Boolean(field.helperText)) && (
         <Box
           sx={{
+            marginTop: -0.5,
             marginLeft: 2,
             color: ({ palette }) =>
               error ? palette.error.main : palette.text.secondary,

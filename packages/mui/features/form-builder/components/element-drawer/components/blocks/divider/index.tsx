@@ -5,16 +5,14 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  FormControlLabel,
-  FormHelperText,
   FormGroup,
-  Checkbox,
 } from "@mui/material";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import type { Form, DividerBlock } from "@qikform/core";
 
 import {
+  ControlledCheckbox,
   ControlledTextField,
   ControlledRichEditor,
 } from "../../../../../../../components";
@@ -38,22 +36,9 @@ export function DividerBlockSettings({
         <FormLabel component="legend">Configuration</FormLabel>
 
         <FormGroup>
-          <Controller
+          <ControlledCheckbox
             name={`elements.${index}.configuration.hidden`}
-            render={({ field, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Hidden"
-                  control={
-                    <Checkbox {...field} checked={Boolean(field.value)} />
-                  }
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
+            label="Hidden"
           />
         </FormGroup>
       </FormControl>
