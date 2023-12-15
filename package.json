@@ -2,7 +2,11 @@
   "name": "@qikform/monorepo",
   "private": false,
   "license": "MIT",
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.8.0",
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0",
+    "pnpm": "^8.8.0 || ^9.0.0"
+  },
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

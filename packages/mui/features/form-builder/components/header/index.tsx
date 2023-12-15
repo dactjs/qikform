@@ -1,3 +1,5 @@
+"use client";
+
 import { AppBar, Toolbar, IconButton, Tooltip } from "@mui/material";
 import { Save as SaveIcon } from "@mui/icons-material";
 import { useFormContext } from "react-hook-form";

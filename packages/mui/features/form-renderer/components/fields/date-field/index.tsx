@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, FormControl } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import { RichTextReadOnly } from "mui-tiptap";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, Divider } from "@mui/material";
 
 import { FormElementType } from "@qikform/core";

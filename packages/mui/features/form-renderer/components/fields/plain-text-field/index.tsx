@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, FormControl, InputLabel, OutlinedInput } from "@mui/material";
 import { RichTextReadOnly } from "mui-tiptap";
 import { StarterKit } from "@tiptap/starter-kit";

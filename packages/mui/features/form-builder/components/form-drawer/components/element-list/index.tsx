@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo } from "react";
 import { Stack, Divider, List, TextField } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";

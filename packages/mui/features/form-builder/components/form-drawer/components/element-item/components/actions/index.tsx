@@ -1,3 +1,5 @@
+"use client";
+
 import { Stack, IconButton } from "@mui/material";
 import {
   BlurOn as RequiredIcon,
