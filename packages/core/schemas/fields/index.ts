@@ -9,6 +9,9 @@ import { RichTextFieldSchema } from "./rich-text";
 import type { CreateNumberField } from "./number";
 import { NumberFieldSchema } from "./number";
 
+import type { CreateCheckboxField } from "./checkbox";
+import { CheckboxFieldSchema } from "./checkbox";
+
 import type { CreateTimeField } from "./time";
 import { TimeFieldSchema } from "./time";
 
@@ -26,6 +29,7 @@ export type CreateFieldElement =
   | CreatePlainTextField
   | CreateRichTextField
   | CreateNumberField
+  | CreateCheckboxField
   | CreateTimeField
   | CreateDateField
   | CreateDateTimeField;
@@ -40,6 +44,7 @@ export const FieldElementSchema = zod.union([
   PlainTextFieldSchema,
   RichTextFieldSchema,
   NumberFieldSchema,
+  CheckboxFieldSchema,
   TimeFieldSchema,
   DateFieldSchema,
   DateTimeFieldSchema,
@@ -50,9 +55,13 @@ export const FieldElementSchema = zod.union([
 ////////////////
 
 export * from "./base";
+
 export * from "./plain-text";
 export * from "./rich-text";
 export * from "./number";
+
+export * from "./checkbox";
+
 export * from "./time";
 export * from "./date";
 export * from "./date-time";

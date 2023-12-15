@@ -17,6 +17,7 @@ import {
   ShortText as PlainTextIcon,
   WrapText as RichTextIcon,
   Numbers as NumberIcon,
+  CheckBox as CheckboxIcon,
   AccessTime as TimeIcon,
   CalendarMonth as DateIcon,
   Event as DateTimeIcon,
@@ -115,6 +116,12 @@ export function AddElementButton(): React.ReactElement {
             "A field for entering numerical values like integers or decimals.",
         },
         {
+          icon: <CheckboxIcon />,
+          type: FormElementType.CHECKBOX,
+          label: "Checkbox",
+          description: "A field for checking or unchecking a single value.",
+        },
+        {
           icon: <TimeIcon />,
           type: FormElementType.TIME,
           label: "Time",
@@ -177,6 +184,11 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Number Element",
+      },
+      [FormElementType.CHECKBOX]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Checkbox Element",
       },
       [FormElementType.TIME]: {
         type,

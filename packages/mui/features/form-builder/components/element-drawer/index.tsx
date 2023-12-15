@@ -17,6 +17,7 @@ import {
   PlainTextFieldSettings,
   RichTextFieldSettings,
   NumberFieldSettings,
+  CheckboxFieldSettings,
   TimeFieldSettings,
   DateFieldSettings,
   DateTimeFieldSettings,
@@ -63,6 +64,10 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.NUMBER && (
         <NumberFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.CHECKBOX && (
+        <CheckboxFieldSettings field={selectedElement} />
       )}
 
       {selectedElement.type === FormElementType.TIME && (

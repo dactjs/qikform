@@ -20,6 +20,7 @@ import {
   PlainTextFieldRenderer,
   RichTextFieldRenderer,
   NumberFieldRenderer,
+  CheckboxFieldRenderer,
   TimeFieldRenderer,
   DateFieldRenderer,
   DateTimeFieldRenderer,
@@ -133,6 +134,10 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
 
               {element.type === FormElementType.NUMBER && (
                 <NumberFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.CHECKBOX && (
+                <CheckboxFieldRenderer field={element} />
               )}
 
               {element.type === FormElementType.TIME && (
