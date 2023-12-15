@@ -45,4 +45,4 @@ export const DateTimeFieldSchema = BaseFieldSchema.extend({
   defaultValue: zod.string().nullable().default(null),
   configuration: DateTimeFieldConfigurationSchema.default({}),
   rules: DateTimeFieldRulesSchema.default({}),
-});
+}).omit({ placeholder: true });

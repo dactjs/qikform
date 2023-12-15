@@ -46,4 +46,4 @@ export const TimeFieldSchema = BaseFieldSchema.extend({
   defaultValue: zod.string().nullable().default(null),
   configuration: TimeFieldConfigurationSchema.default({}),
   rules: TimeFieldRulesSchema.default({}),
-});
+}).omit({ placeholder: true });

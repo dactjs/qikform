@@ -46,4 +46,4 @@ export const DateFieldSchema = BaseFieldSchema.extend({
   defaultValue: zod.string().nullable().default(null),
   configuration: DateFieldConfigurationSchema.default({}),
   rules: DateFieldRulesSchema.default({}),
-});
+}).omit({ placeholder: true });

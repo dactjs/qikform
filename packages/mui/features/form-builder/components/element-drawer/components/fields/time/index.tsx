@@ -139,17 +139,6 @@ export function TimeFieldSettings({
             }}
           />
 
-          <ControlledTextField
-            name={`elements.${index}.placeholder`}
-            helperText="The placeholder (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Placeholder",
-            }}
-          />
-
           <ControlledRichEditor
             name={`elements.${index}.helperText`}
             label="Helper Text"

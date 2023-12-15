@@ -70,7 +70,6 @@ export function DateFieldRenderer({
           textField: {
             required: field.rules.required,
             error: Boolean(error),
-            ...(field.placeholder && { "aria-placeholder": field.placeholder }),
           },
         }}
       />
