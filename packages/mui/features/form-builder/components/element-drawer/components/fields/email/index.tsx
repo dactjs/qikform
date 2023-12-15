@@ -9,22 +9,21 @@ import {
 } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
-import type { Form, RichTextField } from "@qikform/core";
+import type { Form, EmailField } from "@qikform/core";
 
 import {
   ControlledCheckbox,
   ControlledTextField,
   ControlledRichEditor,
-  ControlledNumberField,
 } from "../../../../../../../components";
 
-export interface RichTextFieldSettingsProps {
-  field: RichTextField;
+export interface EmailFieldSettingsProps {
+  field: EmailField;
 }
 
-export function RichTextFieldSettings({
+export function EmailFieldSettings({
   field,
-}: RichTextFieldSettingsProps): React.ReactElement {
+}: EmailFieldSettingsProps): React.ReactElement {
   const { watch } = useFormContext<Form>();
 
   const elements = watch("elements");
@@ -51,17 +50,6 @@ export function RichTextFieldSettings({
           <ControlledCheckbox
             name={`elements.${index}.rules.required`}
             label="Required"
-          />
-
-          <ControlledNumberField
-            name={`elements.${index}.rules.maxCharacters`}
-            helperText="The max characters (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Max Characters",
-            }}
           />
         </Stack>
       </FormControl>
@@ -97,6 +85,7 @@ export function RichTextFieldSettings({
             name={`elements.${index}.defaultValue`}
             helperText="The default value (optional)"
             textFieldProps={{
+              type: "email",
               autoComplete: "off",
               fullWidth: true,
               size: "small",

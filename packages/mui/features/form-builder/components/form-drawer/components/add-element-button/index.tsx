@@ -17,6 +17,7 @@ import {
   ShortText as PlainTextIcon,
   WrapText as RichTextIcon,
   Numbers as NumberIcon,
+  Email as EmailIcon,
   CheckBox as CheckboxIcon,
   AccessTime as TimeIcon,
   CalendarMonth as DateIcon,
@@ -116,6 +117,12 @@ export function AddElementButton(): React.ReactElement {
             "A field for entering numerical values like integers or decimals.",
         },
         {
+          icon: <EmailIcon />,
+          type: FormElementType.EMAIL,
+          label: "Email",
+          description: "A field for entering email addresses.",
+        },
+        {
           icon: <CheckboxIcon />,
           type: FormElementType.CHECKBOX,
           label: "Checkbox",
@@ -184,6 +191,11 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Number Element",
+      },
+      [FormElementType.EMAIL]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Email Element",
       },
       [FormElementType.CHECKBOX]: {
         type,

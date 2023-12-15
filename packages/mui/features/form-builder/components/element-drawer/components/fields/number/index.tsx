@@ -5,16 +5,14 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  FormControlLabel,
-  FormHelperText,
   FormGroup,
-  Checkbox,
 } from "@mui/material";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import type { Form, NumberField } from "@qikform/core";
 
 import {
+  ControlledCheckbox,
   ControlledTextField,
   ControlledRichEditor,
   ControlledNumberField,
@@ -39,22 +37,9 @@ export function NumberFieldSettings({
         <FormLabel component="legend">Configuration</FormLabel>
 
         <FormGroup>
-          <Controller
+          <ControlledCheckbox
             name={`elements.${index}.configuration.hidden`}
-            render={({ field: params, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Hidden"
-                  control={
-                    <Checkbox {...params} checked={Boolean(params.value)} />
-                  }
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
+            label="Hidden"
           />
         </FormGroup>
       </FormControl>
@@ -63,22 +48,9 @@ export function NumberFieldSettings({
         <FormLabel component="legend">Rules</FormLabel>
 
         <Stack spacing={2}>
-          <Controller
+          <ControlledCheckbox
             name={`elements.${index}.rules.required`}
-            render={({ field: params, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Required"
-                  control={
-                    <Checkbox {...params} checked={Boolean(params.value)} />
-                  }
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
+            label="Required"
           />
 
           <ControlledNumberField

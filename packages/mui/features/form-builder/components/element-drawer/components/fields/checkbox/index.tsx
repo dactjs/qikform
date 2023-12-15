@@ -5,16 +5,14 @@ import {
   Divider,
   FormControl,
   FormLabel,
-  FormControlLabel,
-  FormHelperText,
   FormGroup,
-  Checkbox,
 } from "@mui/material";
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 import type { Form, CheckboxField } from "@qikform/core";
 
 import {
+  ControlledCheckbox,
   ControlledTextField,
   ControlledRichEditor,
 } from "../../../../../../../components";
@@ -38,22 +36,9 @@ export function CheckboxFieldSettings({
         <FormLabel component="legend">Configuration</FormLabel>
 
         <FormGroup>
-          <Controller
+          <ControlledCheckbox
             name={`elements.${index}.configuration.hidden`}
-            render={({ field: params, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Hidden"
-                  control={
-                    <Checkbox {...params} checked={Boolean(params.value)} />
-                  }
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
+            label="Hidden"
           />
         </FormGroup>
       </FormControl>
@@ -62,22 +47,9 @@ export function CheckboxFieldSettings({
         <FormLabel component="legend">Rules</FormLabel>
 
         <Stack spacing={2}>
-          <Controller
+          <ControlledCheckbox
             name={`elements.${index}.rules.required`}
-            render={({ field: params, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Required"
-                  control={
-                    <Checkbox {...params} checked={Boolean(params.value)} />
-                  }
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
+            label="Required"
           />
         </Stack>
       </FormControl>
@@ -109,15 +81,10 @@ export function CheckboxFieldSettings({
             }}
           />
 
-          <ControlledTextField
+          <ControlledCheckbox
             name={`elements.${index}.defaultValue`}
+            label="Default Checked"
             helperText="The default value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Default Value",
-            }}
           />
 
           <ControlledRichEditor

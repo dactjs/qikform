@@ -6,6 +6,8 @@ export const FieldElementType = {
   RICH_TEXT: "RICH_TEXT",
   NUMBER: "NUMBER",
 
+  EMAIL: "EMAIL",
+
   CHECKBOX: "CHECKBOX",
 
   TIME: "TIME",
