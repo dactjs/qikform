@@ -128,14 +128,15 @@ export function DateTimeFieldSettings({
             }}
           />
 
-          <ControlledTextField
+          <ControlledDateTimePicker
             name={`elements.${index}.defaultValue`}
             helperText="The default value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
+            dateTimePickerProps={{
               label: "Default Value",
+              slotProps: {
+                field: { clearable: true },
+                textField: { size: "small" },
+              },
             }}
           />
 

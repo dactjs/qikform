@@ -128,14 +128,15 @@ export function TimeFieldSettings({
             }}
           />
 
-          <ControlledTextField
+          <ControlledTimePicker
             name={`elements.${index}.defaultValue`}
             helperText="The default value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
+            timePickerProps={{
               label: "Default Value",
+              slotProps: {
+                field: { clearable: true },
+                textField: { size: "small" },
+              },
             }}
           />
 
