@@ -35,7 +35,7 @@ export function RichTextFieldRenderer({
     field: { disabled, value, onChange },
     fieldState: { error },
   } = useController<FormRendererValues>({
-    name: field.name,
+    name: field.name || field.id,
     defaultValue: field.defaultValue,
     rules: {
       required: {

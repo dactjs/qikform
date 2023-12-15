@@ -22,7 +22,7 @@ export function TimeFieldRenderer({
     field: { value, onChange, ...params },
     fieldState: { error },
   } = useController<FormRendererValues>({
-    name: field.name,
+    name: field.name || field.id,
     defaultValue: field.defaultValue,
     rules: {
       required: {
