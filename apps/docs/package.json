@@ -10,17 +10,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "14.0.0",
+    "next": "14.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "14.0.0",
-    "@types/node": "20.8.9",
-    "@types/react": "18.2.33",
-    "@types/react-dom": "18.2.14",
+    "@next/eslint-plugin-next": "14.0.4",
+    "@types/node": "20.10.4",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.17",
     "@qikform/eslint-config-custom": "workspace:*",
     "@qikform/tsconfig": "workspace:*",
-    "typescript": "5.2.2"
+    "typescript": "5.3.3"
   }
 }
