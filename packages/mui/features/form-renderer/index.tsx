@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { Paper, Stack, Divider, Typography, Button } from "@mui/material";
+import { Paper, Stack, Typography, Button } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
@@ -21,6 +21,7 @@ import {
   RichTextFieldRenderer,
   NumberFieldRenderer,
   EmailFieldRenderer,
+  PhoneFieldRenderer,
   CheckboxFieldRenderer,
   TimeFieldRenderer,
   DateFieldRenderer,
@@ -73,8 +74,7 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
   return (
     <Stack
       {...(!transparentBackground && { component: Paper })}
-      spacing={1}
-      divider={<Divider flexItem />}
+      spacing={2}
       sx={{ ...(!disablePadding && { padding: 3 }) }}
     >
       {(!hideTitle || !hideDescription) && (
@@ -141,6 +141,10 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
                 <EmailFieldRenderer field={element} />
               )}
 
+              {element.type === FormElementType.PHONE && (
+                <PhoneFieldRenderer field={element} />
+              )}
+
               {element.type === FormElementType.CHECKBOX && (
                 <CheckboxFieldRenderer field={element} />
               )}
@@ -158,8 +162,6 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
               )}
             </Fragment>
           ))}
-
-          <Divider flexItem />
 
           <Button type="submit" variant="contained">
             {submitButtonText}

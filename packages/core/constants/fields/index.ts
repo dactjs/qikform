@@ -7,6 +7,7 @@ export const FieldElementType = {
   NUMBER: "NUMBER",
 
   EMAIL: "EMAIL",
+  PHONE: "PHONE",
 
   CHECKBOX: "CHECKBOX",
 

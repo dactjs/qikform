@@ -18,6 +18,7 @@ import {
   RichTextFieldSettings,
   NumberFieldSettings,
   EmailFieldSettings,
+  PhoneFieldSettings,
   CheckboxFieldSettings,
   TimeFieldSettings,
   DateFieldSettings,
@@ -69,6 +70,10 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.EMAIL && (
         <EmailFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.PHONE && (
+        <PhoneFieldSettings field={selectedElement} />
       )}
 
       {selectedElement.type === FormElementType.CHECKBOX && (

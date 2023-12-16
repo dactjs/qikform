@@ -18,6 +18,7 @@ import {
   WrapText as RichTextIcon,
   Numbers as NumberIcon,
   Email as EmailIcon,
+  Phone as PhoneIcon,
   CheckBox as CheckboxIcon,
   AccessTime as TimeIcon,
   CalendarMonth as DateIcon,
@@ -123,6 +124,12 @@ export function AddElementButton(): React.ReactElement {
           description: "A field for entering email addresses.",
         },
         {
+          icon: <PhoneIcon />,
+          type: FormElementType.PHONE,
+          label: "Phone",
+          description: "A field for entering phone numbers.",
+        },
+        {
           icon: <CheckboxIcon />,
           type: FormElementType.CHECKBOX,
           label: "Checkbox",
@@ -196,6 +203,11 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Email Element",
+      },
+      [FormElementType.PHONE]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Phone Element",
       },
       [FormElementType.CHECKBOX]: {
         type,

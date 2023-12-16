@@ -12,6 +12,9 @@ import { NumberFieldSchema } from "./number";
 import type { CreateEmailField } from "./email";
 import { EmailFieldSchema } from "./email";
 
+import type { CreatePhoneField } from "./phone";
+import { PhoneFieldSchema } from "./phone";
+
 import type { CreateCheckboxField } from "./checkbox";
 import { CheckboxFieldSchema } from "./checkbox";
 
@@ -33,6 +36,7 @@ export type CreateFieldElement =
   | CreateRichTextField
   | CreateNumberField
   | CreateEmailField
+  | CreatePhoneField
   | CreateCheckboxField
   | CreateTimeField
   | CreateDateField
@@ -49,6 +53,7 @@ export const FieldElementSchema = zod.union([
   RichTextFieldSchema,
   NumberFieldSchema,
   EmailFieldSchema,
+  PhoneFieldSchema,
   CheckboxFieldSchema,
   TimeFieldSchema,
   DateFieldSchema,
@@ -66,6 +71,7 @@ export * from "./rich-text";
 export * from "./number";
 
 export * from "./email";
+export * from "./phone";
 
 export * from "./checkbox";
 

@@ -233,6 +233,9 @@ importers:
       dompurify:
         specifier: 3.0.6
         version: 3.0.6
+      mui-tel-input:
+        specifier: 5.0.0
+        version: 5.0.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
       mui-tiptap:
         specifier: 1.8.6
         version: 1.8.6(@emotion/react@11.11.1)(@mui/icons-material@5.15.0)(@mui/material@5.15.0)(@tiptap/core@2.1.13)(@tiptap/extension-heading@2.1.13)(@tiptap/extension-image@2.1.13)(@tiptap/extension-table@2.1.13)(@tiptap/pm@2.1.13)(@tiptap/react@2.1.13)(react-dom@18.2.0)(react@18.2.0)
@@ -2158,7 +2161,6 @@ packages:
     resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
     dependencies:
       undici-types: 5.26.5
-    dev: true
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -4748,6 +4750,10 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /libphonenumber-js@1.10.51:
+    resolution: {integrity: sha512-vY2I+rQwrDQzoPds0JeTEpeWzbUJgqoV0O4v31PauHBb/e+1KCXKylHcDnBMgJZ9fH9mErsEbROJY3Z3JtqEmg==}
+    dev: false
+
   /lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
     engines: {node: '>=10'}
@@ -5001,6 +5007,29 @@ packages:
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
+
+  /mui-tel-input@5.0.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.15.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-FbuIQUoRt2HjsSnWW2D+4uryZC22iU4f89CJsfFciORzjsruAF25Kzppd9iO3gfz3mB/tz2npkaazps6QZBGTQ==}
+    peerDependencies:
+      '@emotion/react': ^11.5.0
+      '@emotion/styled': ^11.3.0
+      '@mui/material': ^5.0.0
+      '@types/react': ^18.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@emotion/react': 11.11.1(@types/react@18.2.45)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.45)(react@18.2.0)
+      '@mui/material': 5.15.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.45)(react-dom@18.2.0)(react@18.2.0)
+      '@types/node': 20.10.4
+      '@types/react': 18.2.45
+      libphonenumber-js: 1.10.51
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /mui-tiptap@1.8.6(@emotion/react@11.11.1)(@mui/icons-material@5.15.0)(@mui/material@5.15.0)(@tiptap/core@2.1.13)(@tiptap/extension-heading@2.1.13)(@tiptap/extension-image@2.1.13)(@tiptap/extension-table@2.1.13)(@tiptap/pm@2.1.13)(@tiptap/react@2.1.13)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-9qWRI8bEgf9ZMXchDNG+XslOVBBRi0QCNTivwr4qJ7KX1sgqnMwehE44jnJZvxPMuC8fraaiqJXQNTbPRUI3ig==}
@@ -6721,7 +6750,6 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: true
 
   /universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
