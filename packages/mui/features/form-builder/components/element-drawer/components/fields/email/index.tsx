@@ -6,7 +6,9 @@ import {
   FormControl,
   FormLabel,
   FormGroup,
+  InputAdornment,
 } from "@mui/material";
+import { Email as EmailIcon } from "@mui/icons-material";
 import { useFormContext } from "react-hook-form";
 
 import type { Form, EmailField } from "@qikform/core";
@@ -90,6 +92,14 @@ export function EmailFieldSettings({
               fullWidth: true,
               size: "small",
               label: "Default Value",
+              placeholder: "example@me.com",
+              InputProps: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <EmailIcon />
+                  </InputAdornment>
+                ),
+              },
             }}
           />
 

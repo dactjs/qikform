@@ -1,6 +1,12 @@
 "use client";
 
-import { Box, FormControl, InputLabel, OutlinedInput } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+} from "@mui/material";
 import { Email as EmailIcon } from "@mui/icons-material";
 import { RichTextReadOnly } from "mui-tiptap";
 import { StarterKit } from "@tiptap/starter-kit";
@@ -63,10 +69,14 @@ export function EmailFieldRenderer({
         type="email"
         id={field.id}
         label={field.label}
-        placeholder={field.placeholder as string | undefined}
+        placeholder={field.placeholder || "example@me.com"}
         value={typeof value === "string" ? value : ""}
         onChange={handleOnChange}
-        startAdornment={<EmailIcon />}
+        startAdornment={
+          <InputAdornment position="start">
+            <EmailIcon />
+          </InputAdornment>
+        }
       />
 
       {(Boolean(error) || Boolean(field.helperText)) && (
