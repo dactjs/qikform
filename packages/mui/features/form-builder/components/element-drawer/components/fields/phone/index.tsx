@@ -45,17 +45,6 @@ export function PhoneFieldSettings({
       </FormControl>
 
       <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">Rules</FormLabel>
-
-        <Stack spacing={2}>
-          <ControlledCheckbox
-            name={`elements.${index}.rules.required`}
-            label="Required"
-          />
-        </Stack>
-      </FormControl>
-
-      <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">Information</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
@@ -82,6 +71,42 @@ export function PhoneFieldSettings({
             }}
           />
 
+          <ControlledTextField
+            name={`elements.${index}.placeholder`}
+            helperText="The placeholder (optional)"
+            textFieldProps={{
+              autoComplete: "off",
+              fullWidth: true,
+              size: "small",
+              label: "Placeholder",
+            }}
+          />
+
+          <ControlledRichEditor
+            name={`elements.${index}.helperText`}
+            label="Helper Text"
+            helperText="The helper text (optional)"
+          />
+        </Stack>
+      </FormControl>
+
+      {/* TODO: add country filter */}
+      {/* TODO: add continent filter */}
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Rules</FormLabel>
+
+        <Stack spacing={2}>
+          <ControlledCheckbox
+            name={`elements.${index}.rules.required`}
+            label="Required"
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Content</FormLabel>
+
+        <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <Controller
             name={`elements.${index}.defaultValue`}
             rules={{ validate: matchIsValidTel }}
@@ -106,23 +131,6 @@ export function PhoneFieldSettings({
                 />
               );
             }}
-          />
-
-          <ControlledTextField
-            name={`elements.${index}.placeholder`}
-            helperText="The placeholder (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Placeholder",
-            }}
-          />
-
-          <ControlledRichEditor
-            name={`elements.${index}.helperText`}
-            label="Helper Text"
-            helperText="The helper text (optional)"
           />
         </Stack>
       </FormControl>

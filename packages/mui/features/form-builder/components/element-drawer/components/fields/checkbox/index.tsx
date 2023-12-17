@@ -44,17 +44,6 @@ export function CheckboxFieldSettings({
       </FormControl>
 
       <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">Rules</FormLabel>
-
-        <Stack spacing={2}>
-          <ControlledCheckbox
-            name={`elements.${index}.rules.required`}
-            label="Required"
-          />
-        </Stack>
-      </FormControl>
-
-      <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">Information</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
@@ -81,16 +70,33 @@ export function CheckboxFieldSettings({
             }}
           />
 
-          <ControlledCheckbox
-            name={`elements.${index}.defaultValue`}
-            label="Default Checked"
-            helperText="The default value (optional)"
-          />
-
           <ControlledRichEditor
             name={`elements.${index}.helperText`}
             label="Helper Text"
             helperText="The helper text (optional)"
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Rules</FormLabel>
+
+        <Stack spacing={2}>
+          <ControlledCheckbox
+            name={`elements.${index}.rules.required`}
+            label="Required"
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Content</FormLabel>
+
+        <Stack spacing={2}>
+          <ControlledCheckbox
+            name={`elements.${index}.defaultValue`}
+            label="Default Checked"
+            helperText="The default value (optional)"
           />
         </Stack>
       </FormControl>

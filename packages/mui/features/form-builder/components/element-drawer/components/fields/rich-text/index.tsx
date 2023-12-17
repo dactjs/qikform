@@ -45,28 +45,6 @@ export function RichTextFieldSettings({
       </FormControl>
 
       <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">Rules</FormLabel>
-
-        <Stack spacing={2}>
-          <ControlledCheckbox
-            name={`elements.${index}.rules.required`}
-            label="Required"
-          />
-
-          <ControlledNumberField
-            name={`elements.${index}.rules.maxCharacters`}
-            helperText="The max characters (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Max Characters",
-            }}
-          />
-        </Stack>
-      </FormControl>
-
-      <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">Information</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
@@ -94,17 +72,6 @@ export function RichTextFieldSettings({
           />
 
           <ControlledTextField
-            name={`elements.${index}.defaultValue`}
-            helperText="The default value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Default Value",
-            }}
-          />
-
-          <ControlledTextField
             name={`elements.${index}.placeholder`}
             helperText="The placeholder (optional)"
             textFieldProps={{
@@ -119,6 +86,40 @@ export function RichTextFieldSettings({
             name={`elements.${index}.helperText`}
             label="Helper Text"
             helperText="The helper text (optional)"
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Rules</FormLabel>
+
+        <Stack spacing={2}>
+          <ControlledCheckbox
+            name={`elements.${index}.rules.required`}
+            label="Required"
+          />
+
+          <ControlledNumberField
+            name={`elements.${index}.rules.maxCharacters`}
+            helperText="The max characters (optional)"
+            textFieldProps={{
+              autoComplete: "off",
+              fullWidth: true,
+              size: "small",
+              label: "Max Characters",
+            }}
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Content</FormLabel>
+
+        <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
+          <ControlledRichEditor
+            name={`elements.${index}.defaultValue`}
+            label="Default Value"
+            helperText="The default value (optional)"
           />
         </Stack>
       </FormControl>

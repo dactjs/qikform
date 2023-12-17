@@ -78,6 +78,8 @@ export function ImageBlockSettings({
         </Stack>
       </FormControl>
 
+      {/* TODO: add upload image feature */}
+      {/* TODO: add layout options */}
       <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">Content</FormLabel>
 

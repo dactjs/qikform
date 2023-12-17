@@ -45,6 +45,52 @@ export function PlainTextFieldSettings({
       </FormControl>
 
       <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Information</FormLabel>
+
+        <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
+          <ControlledTextField
+            name={`elements.${index}.name`}
+            helperText="Unique name for this block. Use only letters, numbers, and underscores"
+            textFieldProps={{
+              autoComplete: "off",
+              required: true,
+              fullWidth: true,
+              size: "small",
+              label: "Name",
+            }}
+          />
+
+          <ControlledTextField
+            name={`elements.${index}.label`}
+            helperText="The label (optional)"
+            textFieldProps={{
+              autoComplete: "off",
+              fullWidth: true,
+              size: "small",
+              label: "Label",
+            }}
+          />
+
+          <ControlledTextField
+            name={`elements.${index}.placeholder`}
+            helperText="The placeholder (optional)"
+            textFieldProps={{
+              autoComplete: "off",
+              fullWidth: true,
+              size: "small",
+              label: "Placeholder",
+            }}
+          />
+
+          <ControlledRichEditor
+            name={`elements.${index}.helperText`}
+            label="Helper Text"
+            helperText="The helper text (optional)"
+          />
+        </Stack>
+      </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
         <FormLabel component="legend">Rules</FormLabel>
 
         <Stack spacing={2}>
@@ -78,32 +124,9 @@ export function PlainTextFieldSettings({
       </FormControl>
 
       <FormControl component="fieldset" variant="standard">
-        <FormLabel component="legend">Information</FormLabel>
+        <FormLabel component="legend">Content</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
-          <ControlledTextField
-            name={`elements.${index}.name`}
-            helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
-          />
-
-          <ControlledTextField
-            name={`elements.${index}.label`}
-            helperText="The label (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
-          />
-
           <ControlledTextField
             name={`elements.${index}.defaultValue`}
             helperText="The default value (optional)"
@@ -113,23 +136,6 @@ export function PlainTextFieldSettings({
               size: "small",
               label: "Default Value",
             }}
-          />
-
-          <ControlledTextField
-            name={`elements.${index}.placeholder`}
-            helperText="The placeholder (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Placeholder",
-            }}
-          />
-
-          <ControlledRichEditor
-            name={`elements.${index}.helperText`}
-            label="Helper Text"
-            helperText="The helper text (optional)"
           />
         </Stack>
       </FormControl>

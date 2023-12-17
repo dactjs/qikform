@@ -82,6 +82,7 @@ export function CodeBlockSettings({
         <FormLabel component="legend">Content</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
+          {/* TODO: replace with a real code editor */}
           <ControlledTextField
             name={`elements.${index}.content`}
             helperText="Only HTML and CSS are allowed"
