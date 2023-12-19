@@ -18,6 +18,9 @@ import { PhoneFieldSchema } from "./phone";
 import type { CreateCheckboxField } from "./checkbox";
 import { CheckboxFieldSchema } from "./checkbox";
 
+import type { CreateSwitchField } from "./switch";
+import { SwitchFieldSchema } from "./switch";
+
 import type { CreateTimeField } from "./time";
 import { TimeFieldSchema } from "./time";
 
@@ -38,6 +41,7 @@ export type CreateFieldElement =
   | CreateEmailField
   | CreatePhoneField
   | CreateCheckboxField
+  | CreateSwitchField
   | CreateTimeField
   | CreateDateField
   | CreateDateTimeField;
@@ -55,6 +59,7 @@ export const FieldElementSchema = zod.union([
   EmailFieldSchema,
   PhoneFieldSchema,
   CheckboxFieldSchema,
+  SwitchFieldSchema,
   TimeFieldSchema,
   DateFieldSchema,
   DateTimeFieldSchema,
@@ -74,6 +79,7 @@ export * from "./email";
 export * from "./phone";
 
 export * from "./checkbox";
+export * from "./switch";
 
 export * from "./time";
 export * from "./date";

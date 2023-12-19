@@ -20,6 +20,7 @@ import {
   EmailFieldSettings,
   PhoneFieldSettings,
   CheckboxFieldSettings,
+  SwitchFieldSettings,
   TimeFieldSettings,
   DateFieldSettings,
   DateTimeFieldSettings,
@@ -78,6 +79,10 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.CHECKBOX && (
         <CheckboxFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.SWITCH && (
+        <SwitchFieldSettings field={selectedElement} />
       )}
 
       {selectedElement.type === FormElementType.TIME && (

@@ -5,6 +5,7 @@ export * from "./controlled-rich-editor";
 export * from "./controlled-number-field";
 
 export * from "./controlled-checkbox";
+export * from "./controlled-switch";
 
 export * from "./controlled-time-picker";
 export * from "./controlled-date-picker";

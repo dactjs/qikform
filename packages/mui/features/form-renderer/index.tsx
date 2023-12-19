@@ -23,6 +23,7 @@ import {
   EmailFieldRenderer,
   PhoneFieldRenderer,
   CheckboxFieldRenderer,
+  SwitchFieldRenderer,
   TimeFieldRenderer,
   DateFieldRenderer,
   DateTimeFieldRenderer,
@@ -147,6 +148,10 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
 
               {element.type === FormElementType.CHECKBOX && (
                 <CheckboxFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.SWITCH && (
+                <SwitchFieldRenderer field={element} />
               )}
 
               {element.type === FormElementType.TIME && (

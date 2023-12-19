@@ -20,6 +20,7 @@ import {
   Email as EmailIcon,
   Phone as PhoneIcon,
   CheckBox as CheckboxIcon,
+  ToggleOn as SwitchIcon,
   AccessTime as TimeIcon,
   CalendarMonth as DateIcon,
   Event as DateTimeIcon,
@@ -136,6 +137,12 @@ export function AddElementButton(): React.ReactElement {
           description: "A field for checking or unchecking a single value.",
         },
         {
+          icon: <SwitchIcon />,
+          type: FormElementType.SWITCH,
+          label: "Switch",
+          description: "A field for toggling between two values.",
+        },
+        {
           icon: <TimeIcon />,
           type: FormElementType.TIME,
           label: "Time",
@@ -213,6 +220,11 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Checkbox Element",
+      },
+      [FormElementType.SWITCH]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Switch Element",
       },
       [FormElementType.TIME]: {
         type,

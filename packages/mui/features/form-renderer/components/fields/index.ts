@@ -6,6 +6,7 @@ export * from "./email";
 export * from "./phone";
 
 export * from "./checkbox";
+export * from "./switch";
 
 export * from "./time";
 export * from "./date";

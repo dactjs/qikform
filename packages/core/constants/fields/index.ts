@@ -10,6 +10,7 @@ export const FieldElementType = {
   PHONE: "PHONE",
 
   CHECKBOX: "CHECKBOX",
+  SWITCH: "SWITCH",
 
   TIME: "TIME",
   DATE: "DATE",
