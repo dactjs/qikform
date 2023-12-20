@@ -21,6 +21,8 @@ import {
   PhoneFieldSettings,
   CheckboxFieldSettings,
   SwitchFieldSettings,
+  SingleChoiceFieldSettings,
+  MultipleChoiceFieldSettings,
   TimeFieldSettings,
   DateFieldSettings,
   DateTimeFieldSettings,
@@ -83,6 +85,14 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.SWITCH && (
         <SwitchFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.SINGLE_CHOICE && (
+        <SingleChoiceFieldSettings field={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.MULTIPLE_CHOICE && (
+        <MultipleChoiceFieldSettings field={selectedElement} />
       )}
 
       {selectedElement.type === FormElementType.TIME && (

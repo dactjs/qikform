@@ -92,6 +92,21 @@ export function ControlledRichEditor({
       fullWidth
       required={Boolean(rules?.required)}
       error={Boolean(error)}
+      sx={{
+        ...(error && {
+          "&& .MuiTiptap-FieldContainer-notchedOutline": {
+            borderColor: (theme) => `${theme.palette.error.main}`,
+          },
+
+          "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
+            borderColor: (theme) => `${theme.palette.error.light}`,
+          },
+
+          "&& .MuiTiptap-MenuBar-root": {
+            borderColor: (theme) => `${theme.palette.error.main}`,
+          },
+        }),
+      }}
     >
       <RichTextEditor
         editorDependencies={[placeholder]}

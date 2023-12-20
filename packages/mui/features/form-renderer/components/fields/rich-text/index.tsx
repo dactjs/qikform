@@ -93,6 +93,21 @@ export function RichTextFieldRenderer({
       fullWidth
       required={field.rules.required}
       error={Boolean(error)}
+      sx={{
+        ...(error && {
+          "&& .MuiTiptap-FieldContainer-notchedOutline": {
+            borderColor: (theme) => `${theme.palette.error.main}`,
+          },
+
+          "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
+            borderColor: (theme) => `${theme.palette.error.light}`,
+          },
+
+          "&& .MuiTiptap-MenuBar-root": {
+            borderColor: (theme) => `${theme.palette.error.main}`,
+          },
+        }),
+      }}
     >
       <RichTextEditor
         editorDependencies={[field.placeholder, field.rules.maxCharacters]}
@@ -105,6 +120,7 @@ export function RichTextFieldRenderer({
           const html = content.editor.getHTML();
           onChange(isEmpty ? null : html);
         }}
+        className="rich-text-editor"
       />
 
       {(Boolean(error) || Boolean(field.helperText)) && (

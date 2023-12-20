@@ -58,11 +58,11 @@ export function ControlledSwitch({
             sx={{ ...(error && { "*": { color: "error.main" } }) }}
           />
         }
-        sx={{ color: error ? "error.main" : "text.primary" }}
+        sx={{ minHeight: 42, color: error ? "error.main" : "text.primary" }}
       />
 
       {(Boolean(error) || Boolean(helperText)) && (
-        <FormHelperText sx={{ marginTop: -0.25 }}>
+        <FormHelperText sx={{ marginTop: -0.5 }}>
           {error?.message || helperText}
         </FormHelperText>
       )}

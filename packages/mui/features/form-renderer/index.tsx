@@ -24,6 +24,8 @@ import {
   PhoneFieldRenderer,
   CheckboxFieldRenderer,
   SwitchFieldRenderer,
+  SingleChoiceFieldRenderer,
+  MultipleChoiceFieldRenderer,
   TimeFieldRenderer,
   DateFieldRenderer,
   DateTimeFieldRenderer,
@@ -152,6 +154,14 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
 
               {element.type === FormElementType.SWITCH && (
                 <SwitchFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.SINGLE_CHOICE && (
+                <SingleChoiceFieldRenderer field={element} />
+              )}
+
+              {element.type === FormElementType.MULTIPLE_CHOICE && (
+                <MultipleChoiceFieldRenderer field={element} />
               )}
 
               {element.type === FormElementType.TIME && (

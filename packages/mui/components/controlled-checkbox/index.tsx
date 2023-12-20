@@ -58,7 +58,7 @@ export function ControlledCheckbox({
             sx={{ ...(error && { "*": { color: "error.main" } }) }}
           />
         }
-        sx={{ color: error ? "error.main" : "text.primary" }}
+        sx={{ minHeight: 42, color: error ? "error.main" : "text.primary" }}
       />
 
       {(Boolean(error) || Boolean(helperText)) && (

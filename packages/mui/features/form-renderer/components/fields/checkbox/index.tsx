@@ -53,13 +53,36 @@ export function CheckboxFieldRenderer({
             sx={{ ...(error && { "*": { color: "error.main" } }) }}
           />
         }
-        sx={{ color: error ? "error.main" : "text.primary" }}
+        sx={{
+          minHeight: 42,
+          margin: 0,
+          paddingX: 0.5,
+          paddingY: 0.75,
+          color: error ? "error.main" : "text.primary",
+          borderRadius: 1,
+          border: (theme) =>
+            error
+              ? `1px solid ${theme.palette.error.main}`
+              : `1px solid ${theme.palette.grey[700]}`,
+
+          ...(!error && {
+            "&:hover": {
+              borderColor: (theme) => theme.palette.action.active,
+            },
+          }),
+
+          "&:focus-within": {
+            outline: (theme) =>
+              error
+                ? `1px solid ${theme.palette.error.main}`
+                : `1px solid ${theme.palette.primary.main}`,
+          },
+        }}
       />
 
       {(Boolean(error) || Boolean(field.helperText)) && (
         <Box
           sx={{
-            marginTop: -0.5,
             marginLeft: 2,
             color: ({ palette }) =>
               error ? palette.error.main : palette.text.secondary,

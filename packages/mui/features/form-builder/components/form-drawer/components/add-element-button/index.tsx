@@ -21,6 +21,8 @@ import {
   Phone as PhoneIcon,
   CheckBox as CheckboxIcon,
   ToggleOn as SwitchIcon,
+  RadioButtonChecked as SingleChoiceIcon,
+  LibraryAddCheck as MultipleChoiceIcon,
   AccessTime as TimeIcon,
   CalendarMonth as DateIcon,
   Event as DateTimeIcon,
@@ -119,6 +121,24 @@ export function AddElementButton(): React.ReactElement {
             "A field for entering numerical values like integers or decimals.",
         },
         {
+          icon: <TimeIcon />,
+          type: FormElementType.TIME,
+          label: "Time",
+          description: "A field for entering time values.",
+        },
+        {
+          icon: <DateIcon />,
+          type: FormElementType.DATE,
+          label: "Date",
+          description: "A field for entering date values.",
+        },
+        {
+          icon: <DateTimeIcon />,
+          type: FormElementType.DATE_TIME,
+          label: "Date & Time",
+          description: "A field for entering date and time values.",
+        },
+        {
           icon: <EmailIcon />,
           type: FormElementType.EMAIL,
           label: "Email",
@@ -143,22 +163,18 @@ export function AddElementButton(): React.ReactElement {
           description: "A field for toggling between two values.",
         },
         {
-          icon: <TimeIcon />,
-          type: FormElementType.TIME,
-          label: "Time",
-          description: "A field for entering time values.",
+          icon: <SingleChoiceIcon />,
+          type: FormElementType.SINGLE_CHOICE,
+          label: "Single Choice",
+          description:
+            "A field for selecting a single value from a list of options.",
         },
         {
-          icon: <DateIcon />,
-          type: FormElementType.DATE,
-          label: "Date",
-          description: "A field for entering date values.",
-        },
-        {
-          icon: <DateTimeIcon />,
-          type: FormElementType.DATE_TIME,
-          label: "Date & Time",
-          description: "A field for entering date and time values.",
+          icon: <MultipleChoiceIcon />,
+          type: FormElementType.MULTIPLE_CHOICE,
+          label: "Multiple Choice",
+          description:
+            "A field for selecting multiple values from a list of options.",
         },
       ],
     },
@@ -225,6 +241,18 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Switch Element",
+      },
+      [FormElementType.SINGLE_CHOICE]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Single Choice Element",
+        options: ["Option 1", "Option 2", "Option 3"],
+      },
+      [FormElementType.MULTIPLE_CHOICE]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Multiple Choice Element",
+        options: ["Option 1", "Option 2", "Option 3"],
       },
       [FormElementType.TIME]: {
         type,
@@ -299,7 +327,7 @@ export function AddElementButton(): React.ReactElement {
                         },
                       }}
                     >
-                      <Typography>{element.label}</Typography>
+                      <Typography align="center">{element.label}</Typography>
                       {element.icon}
                     </Grid>
                   </Tooltip>

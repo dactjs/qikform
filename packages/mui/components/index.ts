@@ -7,6 +7,8 @@ export * from "./controlled-number-field";
 export * from "./controlled-checkbox";
 export * from "./controlled-switch";
 
+export * from "./controlled-select";
+
 export * from "./controlled-time-picker";
 export * from "./controlled-date-picker";
 export * from "./controlled-date-time-picker";

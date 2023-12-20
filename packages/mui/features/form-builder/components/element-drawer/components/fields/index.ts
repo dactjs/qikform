@@ -8,6 +8,9 @@ export * from "./phone";
 export * from "./checkbox";
 export * from "./switch";
 
+export * from "./single-choice";
+export * from "./multiple-choice";
+
 export * from "./time";
 export * from "./date";
 export * from "./date-time";
