@@ -62,9 +62,10 @@ export function SwitchFieldSettings({
 
           <ControlledTextField
             name={`elements.${index}.label`}
-            helperText="The label (optional)"
+            helperText="The label"
             textFieldProps={{
               autoComplete: "off",
+              required: true,
               fullWidth: true,
               size: "small",
               label: "Label",

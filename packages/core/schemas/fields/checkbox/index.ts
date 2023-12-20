@@ -39,9 +39,13 @@ export const CheckboxFieldRulesSchema = BaseFieldRulesSchema.extend({
   // no additional rules
 });
 
-export const CheckboxFieldSchema = BaseFieldSchema.extend({
+export const CheckboxFieldSchema = BaseFieldSchema.omit({
+  label: true,
+  placeholder: true,
+}).extend({
   type: zod.literal(FieldElementType.CHECKBOX),
+  label: zod.string().min(1),
   defaultValue: zod.boolean().nullable().default(null),
   configuration: CheckboxFieldConfigurationSchema.default({}),
   rules: CheckboxFieldRulesSchema.default({}),
-}).omit({ placeholder: true });
+});
