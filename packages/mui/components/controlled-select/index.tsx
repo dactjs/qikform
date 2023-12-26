@@ -97,8 +97,12 @@ export function ControlledSelect({
         value={selectedValue}
         onChange={onChange}
       >
-        <MenuItem value={multiple ? [] : ""}>
-          <em>{placeholder || "--"}</em>
+        <MenuItem
+          disabled={multiple}
+          value={multiple ? [] : ""}
+          sx={{ color: "text.secondary" }}
+        >
+          <em>{placeholder || "None"}</em>
         </MenuItem>
 
         {options.map((option, index) => {
