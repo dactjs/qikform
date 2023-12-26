@@ -56,7 +56,7 @@ export const MultipleChoiceFieldSchema = BaseFieldSchema.omit({
   .refine(
     ({ options, defaultValue }) =>
       defaultValue === null ||
-      options.every((option) => defaultValue.includes(option)),
+      defaultValue.every((option) => options.includes(option)),
     {
       message: "Default value must be one of the options",
       path: ["defaultValue"],

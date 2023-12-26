@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import type { SelectProps } from "@mui/material";
+import type { SelectProps, SelectChangeEvent } from "@mui/material";
 import {
   FormControl,
   FormHelperText,
@@ -73,6 +73,21 @@ export function ControlledSelect({
     return typeof value === "string" && options.includes(value) ? value : "";
   }, [options, multiple, value]);
 
+  const handleOnChange = (
+    event: SelectChangeEvent<string | string[]>
+  ): void => {
+    if (typeof event.target.value === "string") {
+      onChange(event.target.value || null);
+      return;
+    }
+
+    const selected = event.target.value.filter((option) =>
+      options.includes(option)
+    );
+
+    onChange(selected.length > 0 ? selected : null);
+  };
+
   return (
     <FormControl
       fullWidth
@@ -95,7 +110,7 @@ export function ControlledSelect({
         displayEmpty={Boolean(placeholder)}
         label={label}
         value={selectedValue}
-        onChange={onChange}
+        onChange={handleOnChange}
       >
         <MenuItem
           disabled={multiple}
