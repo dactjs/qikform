@@ -38,7 +38,7 @@ export function SingleChoiceOptionItem({
 
   return (
     <Stack component="li" direction="row" alignItems="center" spacing={1}>
-      <Stack direction="row" spacing={0.25}>
+      <Stack direction="row">
         <IconButton
           size="small"
           color="inherit"
