@@ -58,10 +58,12 @@ export function ThemeRegistry({
       styles += emotion.cache.inserted[name];
     }
 
+    const key = globalThis.crypto.randomUUID();
+
     return (
       <style
-        key={emotion.cache.key}
-        data-emotion={`${emotion.cache.key} ${names.join(" ")}`}
+        key={key}
+        data-emotion={`${key} ${names.join(" ")}`}
         dangerouslySetInnerHTML={{ __html: styles }}
       />
     );
