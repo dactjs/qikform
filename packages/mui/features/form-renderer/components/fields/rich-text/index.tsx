@@ -32,7 +32,7 @@ export function RichTextFieldRenderer({
   field: RichTextField;
 }): React.ReactElement {
   const {
-    field: { disabled, value, onChange },
+    field: { disabled, value, onChange, onBlur },
     fieldState: { error },
   } = useController<FormRendererValues>({
     name: field.name || field.id,
@@ -94,18 +94,16 @@ export function RichTextFieldRenderer({
       required={field.rules.required}
       error={Boolean(error)}
       sx={{
-        ...(error && {
-          "&& .MuiTiptap-FieldContainer-notchedOutline": {
-            borderColor: (theme) => `${theme.palette.error.main}`,
-          },
+        ...(!disabled && {
+          ...(error && {
+            "&& .MuiTiptap-FieldContainer-notchedOutline": {
+              borderColor: (theme) => `${theme.palette.error.main}`,
+            },
 
-          "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
-            borderColor: (theme) => `${theme.palette.error.light}`,
-          },
-
-          "&& .MuiTiptap-MenuBar-root": {
-            borderColor: (theme) => `${theme.palette.error.main}`,
-          },
+            "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
+              borderColor: (theme) => `${theme.palette.error.main}`,
+            },
+          }),
         }),
       }}
     >
@@ -115,12 +113,12 @@ export function RichTextFieldRenderer({
         renderControls={() => controls}
         editable={!disabled}
         content={typeof value === "string" ? value : field.defaultValue || null}
+        onBlur={onBlur}
         onUpdate={(content) => {
           const isEmpty = content.editor.isEmpty;
           const html = content.editor.getHTML();
           onChange(isEmpty ? null : html);
         }}
-        className="rich-text-editor"
       />
 
       {(Boolean(error) || Boolean(field.helperText)) && (

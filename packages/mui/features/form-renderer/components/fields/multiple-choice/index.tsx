@@ -84,28 +84,30 @@ export function MultipleChoiceFieldRenderer({
               ? `1px solid ${theme.palette.grey[400]}`
               : `1px solid ${theme.palette.grey[700]}`,
 
-          "&:hover": {
-            border: (theme) => `1px solid ${theme.palette.action.active}`,
-          },
-
-          "&:focus-within": {
-            paddingX: 1.4,
-            paddingBottom: 0.4,
-            border: (theme) => `2px solid ${theme.palette.primary.main}`,
-          },
-
-          ...(error && {
-            border: (theme) => `1px solid ${theme.palette.error.main}`,
-
+          ...(!params.disabled && {
             "&:hover": {
-              border: (theme) => `1px solid ${theme.palette.error.main}`,
+              border: (theme) => `1px solid ${theme.palette.action.active}`,
             },
 
             "&:focus-within": {
               paddingX: 1.4,
               paddingBottom: 0.4,
-              border: (theme) => `2px solid ${theme.palette.error.main}`,
+              border: (theme) => `2px solid ${theme.palette.primary.main}`,
             },
+
+            ...(error && {
+              border: (theme) => `1px solid ${theme.palette.error.main}`,
+
+              "&:hover": {
+                border: (theme) => `1px solid ${theme.palette.error.main}`,
+              },
+
+              "&:focus-within": {
+                paddingX: 1.4,
+                paddingBottom: 0.4,
+                border: (theme) => `2px solid ${theme.palette.error.main}`,
+              },
+            }),
           }),
         }}
       >
@@ -137,7 +139,16 @@ export function MultipleChoiceFieldRenderer({
                     sx={{ ...(error && { "*": { color: "error.main" } }) }}
                   />
                 }
-                sx={{ color: error ? "error.main" : "text.primary" }}
+                slotProps={{
+                  ...(error && {
+                    typography: {
+                      sx: {
+                        color: (theme) =>
+                          `${theme.palette.error.main} !important`,
+                      },
+                    },
+                  }),
+                }}
               />
             );
           })}

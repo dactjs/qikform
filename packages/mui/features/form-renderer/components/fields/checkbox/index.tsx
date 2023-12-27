@@ -53,38 +53,48 @@ export function CheckboxFieldRenderer({
             sx={{ ...(error && { "*": { color: "error.main" } }) }}
           />
         }
+        slotProps={{
+          ...(error && {
+            typography: {
+              sx: {
+                color: (theme) => `${theme.palette.error.main} !important`,
+              },
+            },
+          }),
+        }}
         sx={{
           minHeight: 42,
           margin: 0,
           paddingX: 0.5,
           paddingY: 0.75,
-          color: error ? "error.main" : "text.primary",
           borderRadius: 1,
           border: (theme) =>
             theme.palette.mode === "light"
               ? `1px solid ${theme.palette.grey[400]}`
               : `1px solid ${theme.palette.grey[700]}`,
 
-          "&:hover": {
-            border: (theme) => `1px solid ${theme.palette.action.active}`,
-          },
-
-          "&:focus-within": {
-            outlineOffset: -2,
-            outline: (theme) => `1px solid ${theme.palette.primary.main}`,
-            border: (theme) => `1px solid ${theme.palette.primary.main}`,
-          },
-
-          ...(error && {
-            border: (theme) => `1px solid ${theme.palette.error.main}`,
-
+          ...(!params.disabled && {
             "&:hover": {
-              border: (theme) => `1px solid ${theme.palette.error.main}`,
+              border: (theme) => `1px solid ${theme.palette.action.active}`,
             },
 
             "&:focus-within": {
-              outline: (theme) => `1px solid ${theme.palette.error.main}`,
+              outlineOffset: -2,
+              outline: (theme) => `1px solid ${theme.palette.primary.main}`,
+              border: (theme) => `1px solid ${theme.palette.primary.main}`,
             },
+
+            ...(error && {
+              border: (theme) => `1px solid ${theme.palette.error.main}`,
+
+              "&:hover": {
+                border: (theme) => `1px solid ${theme.palette.error.main}`,
+              },
+
+              "&:focus-within": {
+                outline: (theme) => `1px solid ${theme.palette.error.main}`,
+              },
+            }),
           }),
         }}
       />

@@ -40,7 +40,7 @@ export function ControlledRichEditor({
   helperText,
 }: ControlledRichEditorProps): React.ReactElement {
   const {
-    field: { value, onChange },
+    field: { value, onChange, onBlur },
     fieldState: { error },
   } = useController({
     name,
@@ -93,18 +93,16 @@ export function ControlledRichEditor({
       required={Boolean(rules?.required)}
       error={Boolean(error)}
       sx={{
-        ...(error && {
-          "&& .MuiTiptap-FieldContainer-notchedOutline": {
-            borderColor: (theme) => `${theme.palette.error.main}`,
-          },
+        ...(!disabled && {
+          ...(error && {
+            "&& .MuiTiptap-FieldContainer-notchedOutline": {
+              borderColor: (theme) => `${theme.palette.error.main}`,
+            },
 
-          "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
-            borderColor: (theme) => `${theme.palette.error.light}`,
-          },
-
-          "&& .MuiTiptap-MenuBar-root": {
-            borderColor: (theme) => `${theme.palette.error.main}`,
-          },
+            "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
+              borderColor: (theme) => `${theme.palette.error.main}`,
+            },
+          }),
         }),
       }}
     >
@@ -112,7 +110,9 @@ export function ControlledRichEditor({
         editorDependencies={[placeholder]}
         extensions={extensions}
         renderControls={() => controls}
+        editable={!disabled}
         content={typeof value === "string" ? value : defaultValue || null}
+        onBlur={onBlur}
         onUpdate={(content) => {
           const isEmpty = content.editor.isEmpty;
           const html = content.editor.getHTML();
