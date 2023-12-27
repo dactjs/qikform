@@ -48,6 +48,8 @@ export function TextBlockSettings({
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
+            // the key is used to force the component to re-render when the element is duplicated
+            key={block.name}
             name={`elements.${index}.name`}
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
             textFieldProps={{
