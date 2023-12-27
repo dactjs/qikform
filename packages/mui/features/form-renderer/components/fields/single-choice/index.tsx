@@ -63,22 +63,33 @@ export function SingleChoiceFieldRenderer({
           color: error ? "error.main" : "text.primary",
           borderRadius: 1,
           border: (theme) =>
-            error
-              ? `1px solid ${theme.palette.error.main}`
+            theme.palette.mode === "light"
+              ? `1px solid ${theme.palette.grey[400]}`
               : `1px solid ${theme.palette.grey[700]}`,
 
-          ...(!error && {
-            "&:hover": {
-              borderColor: (theme) => theme.palette.action.active,
-            },
-          }),
+          "&:hover": {
+            border: (theme) => `1px solid ${theme.palette.action.active}`,
+          },
 
           "&:focus-within": {
-            border: (theme) =>
-              error
-                ? `1px solid ${theme.palette.error.main}`
-                : `1px solid ${theme.palette.primary.main}`,
+            paddingX: 1.4,
+            paddingBottom: 0.4,
+            border: (theme) => `2px solid ${theme.palette.primary.main}`,
           },
+
+          ...(error && {
+            border: (theme) => `1px solid ${theme.palette.error.main}`,
+
+            "&:hover": {
+              border: (theme) => `1px solid ${theme.palette.error.main}`,
+            },
+
+            "&:focus-within": {
+              paddingX: 1.4,
+              paddingBottom: 0.4,
+              border: (theme) => `2px solid ${theme.palette.error.main}`,
+            },
+          }),
         }}
       >
         <FormLabel
