@@ -109,6 +109,7 @@ export function PhoneFieldSettings({
         <FormLabel component="legend">Content</FormLabel>
 
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
+          {/* TODO: refactor default value */}
           <Controller
             name={`elements.${index}.defaultValue`}
             rules={{ validate: matchIsValidTel }}
