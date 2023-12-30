@@ -1,6 +1,6 @@
 {
   "name": "@qikform/core",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "private": false,
   "license": "MIT",
   "main": "./dist/index.js",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "@qikform/eslint-config-custom": "workspace:*",
     "@qikform/tsconfig": "workspace:*",
-    "@types/node": "20.10.4",
+    "@types/node": "20.10.6",
     "tsup": "8.0.1",
     "typescript": "5.3.3"
   }
