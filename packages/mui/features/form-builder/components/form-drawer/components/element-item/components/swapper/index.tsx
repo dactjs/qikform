@@ -56,8 +56,8 @@ export function FormElementItemSwapper({
             <IconButton
               size="small"
               color="inherit"
-              aria-label="Move Element Up"
               disabled={isFirst}
+              aria-label="Move Element Up"
               onClick={handleMoveElementUp}
             >
               <ArrowUpIcon fontSize="small" />
@@ -66,8 +66,8 @@ export function FormElementItemSwapper({
             <IconButton
               size="small"
               color="inherit"
-              aria-label="Move Element Down"
               disabled={isLast}
+              aria-label="Move Element Down"
               onClick={handleMoveElementDown}
             >
               <ArrowDownIcon fontSize="small" />
@@ -77,8 +77,8 @@ export function FormElementItemSwapper({
           <IconButton
             size="small"
             color="inherit"
-            aria-label="Swap Element"
             disabled={elements.length === 1}
+            aria-label="Swap Element"
             onClick={handleClick}
           >
             <SwapIcon fontSize="small" />

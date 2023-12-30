@@ -16,11 +16,7 @@ export function ToggleColorModeButton(): React.ReactElement {
 
   return (
     <Tooltip title={message}>
-      <IconButton
-        color="inherit"
-        aria-label="Toggle Color Mode"
-        onClick={toggleMode}
-      >
+      <IconButton color="inherit" aria-label={message} onClick={toggleMode}>
         {mode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
       </IconButton>
     </Tooltip>

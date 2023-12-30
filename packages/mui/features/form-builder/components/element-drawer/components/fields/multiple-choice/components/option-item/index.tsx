@@ -42,8 +42,8 @@ export function MultipleChoiceOptionItem({
         <IconButton
           size="small"
           color="inherit"
-          aria-label="Move Option Up"
           disabled={isFirst}
+          aria-label="Move Option Up"
           onClick={onMoveUp}
         >
           <ArrowUpIcon fontSize="small" />
@@ -52,8 +52,8 @@ export function MultipleChoiceOptionItem({
         <IconButton
           size="small"
           color="inherit"
-          aria-label="Move Option Down"
           disabled={isLast}
+          aria-label="Move Option Down"
           onClick={onMoveDown}
         >
           <ArrowDownIcon fontSize="small" />

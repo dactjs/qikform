@@ -101,6 +101,7 @@ export function Header(): React.ReactElement {
           variant="outlined"
           size="small"
           endIcon={<DuplicateIcon />}
+          aria-label="Duplicate Element"
           onClick={handleDuplicate}
         >
           Duplicate
@@ -110,6 +111,7 @@ export function Header(): React.ReactElement {
           variant="outlined"
           size="small"
           endIcon={<DeleteIcon color="error" />}
+          aria-label="Delete Element"
           onClick={handleDelete}
         >
           Delete
