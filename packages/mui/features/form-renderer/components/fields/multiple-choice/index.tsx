@@ -122,7 +122,7 @@ export function MultipleChoiceFieldRenderer({
           {field.label}
         </FormLabel>
 
-        <FormGroup sx={{ paddingX: 0.5, paddingY: 0.5 }}>
+        <FormGroup sx={{ paddingX: 0.5, paddingBottom: 0.5 }}>
           {field.options.map((option, index) => {
             const key = `${index}-${option}`;
 
