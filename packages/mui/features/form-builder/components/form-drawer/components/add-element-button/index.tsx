@@ -14,6 +14,7 @@ import {
   Image as ImageIcon,
   Code as CodeIcon,
   HorizontalRule as DividerIcon,
+  InsertPageBreak as PageBreakIcon,
   ShortText as PlainTextIcon,
   WrapText as RichTextIcon,
   Numbers as NumberIcon,
@@ -94,6 +95,13 @@ export function AddElementButton(): React.ReactElement {
           label: "Divider",
           description:
             "A horizontal line or divider used to separate content sections.",
+        },
+        {
+          icon: <PageBreakIcon />,
+          type: FormElementType.PAGE_BREAK,
+          label: "Page Break",
+          description:
+            "A page break that can be used to separate your form into multiple pages.",
         },
       ],
     },
@@ -205,6 +213,11 @@ export function AddElementButton(): React.ReactElement {
         type,
         name: `element${elements.length + 1}`,
         label: "New Divider Element",
+      },
+      [FormElementType.PAGE_BREAK]: {
+        type,
+        name: `element${elements.length + 1}`,
+        label: "New Page Break Element",
       },
       // Fields
       [FormElementType.PLAIN_TEXT]: {

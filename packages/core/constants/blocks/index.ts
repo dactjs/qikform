@@ -6,4 +6,5 @@ export const BlockElementType = {
   IMAGE: "IMAGE",
   CODE: "CODE",
   DIVIDER: "DIVIDER",
+  PAGE_BREAK: "PAGE_BREAK",
 } as const;

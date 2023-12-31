@@ -12,6 +12,9 @@ import { CodeBlockSchema } from "./code";
 import type { CreateDividerBlock } from "./divider";
 import { DividerBlockSchema } from "./divider";
 
+import type { CreatePageBreakBlock } from "./page-break";
+import { PageBreakBlockSchema } from "./page-break";
+
 ///////////
 // Types //
 ///////////
@@ -20,7 +23,8 @@ export type CreateBlockElement =
   | CreateTextBlock
   | CreateImageBlock
   | CreateCodeBlock
-  | CreateDividerBlock;
+  | CreateDividerBlock
+  | CreatePageBreakBlock;
 
 export type BlockElement = zod.infer<typeof BlockElementSchema>;
 
@@ -33,6 +37,7 @@ export const BlockElementSchema = zod.union([
   ImageBlockSchema,
   CodeBlockSchema,
   DividerBlockSchema,
+  PageBreakBlockSchema,
 ]);
 
 ////////////////
@@ -44,3 +49,4 @@ export * from "./text";
 export * from "./image";
 export * from "./code";
 export * from "./divider";
+export * from "./page-break";

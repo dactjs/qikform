@@ -14,6 +14,7 @@ import {
   ImageBlockSettings,
   CodeBlockSettings,
   DividerBlockSettings,
+  PageBreakBlockSettings,
   PlainTextFieldSettings,
   RichTextFieldSettings,
   NumberFieldSettings,
@@ -57,6 +58,10 @@ export function ElementDrawer(): React.ReactElement {
 
       {selectedElement.type === FormElementType.DIVIDER && (
         <DividerBlockSettings block={selectedElement} />
+      )}
+
+      {selectedElement.type === FormElementType.PAGE_BREAK && (
+        <PageBreakBlockSettings block={selectedElement} />
       )}
 
       {selectedElement.type === FormElementType.PLAIN_TEXT && (
