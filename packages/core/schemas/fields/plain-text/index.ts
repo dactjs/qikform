@@ -42,6 +42,9 @@ export const PlainTextFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const PlainTextFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.PLAIN_TEXT),
+  label: zod.string().min(1).nullable().default(null),
+  placeholder: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.string().nullable().default(null),
   configuration: PlainTextFieldConfigurationSchema.default({}),
   rules: PlainTextFieldRulesSchema.default({}),

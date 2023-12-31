@@ -31,5 +31,7 @@ export const DividerBlockConfigurationSchema =
 
 export const DividerBlockSchema = BaseBlockSchema.extend({
   type: zod.literal(BlockElementType.DIVIDER),
+  label: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   configuration: DividerBlockConfigurationSchema.default({}),
 });

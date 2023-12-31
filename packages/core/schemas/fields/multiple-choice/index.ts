@@ -41,24 +41,20 @@ export const MultipleChoiceFieldRulesSchema = BaseFieldRulesSchema.extend({
   // no additional rules
 });
 
-export const MultipleChoiceFieldSchema = BaseFieldSchema.omit({
-  label: true,
-  placeholder: true,
-})
-  .extend({
-    type: zod.literal(FieldElementType.MULTIPLE_CHOICE),
-    label: zod.string().min(1),
-    options: zod.string().min(1).array().min(1).default([]),
-    defaultValue: zod.string().array().nullable().default(null),
-    configuration: MultipleChoiceFieldConfigurationSchema.default({}),
-    rules: MultipleChoiceFieldRulesSchema.default({}),
-  })
-  .refine(
-    ({ options, defaultValue }) =>
-      defaultValue === null ||
-      defaultValue.every((option) => options.includes(option)),
-    {
-      message: "Default value must be one of the options",
-      path: ["defaultValue"],
-    }
-  );
+export const MultipleChoiceFieldSchema = BaseFieldSchema.extend({
+  type: zod.literal(FieldElementType.MULTIPLE_CHOICE),
+  label: zod.string().min(1),
+  helperText: zod.string().min(1).nullable().default(null),
+  options: zod.string().min(1).array().min(1).default([]),
+  defaultValue: zod.string().array().nullable().default(null),
+  configuration: MultipleChoiceFieldConfigurationSchema.default({}),
+  rules: MultipleChoiceFieldRulesSchema.default({}),
+}).refine(
+  ({ options, defaultValue }) =>
+    defaultValue === null ||
+    defaultValue.every((option) => options.includes(option)),
+  {
+    message: "Default value must be one of the options",
+    path: ["defaultValue"],
+  }
+);

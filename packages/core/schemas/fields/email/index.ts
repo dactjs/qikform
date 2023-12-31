@@ -41,6 +41,9 @@ export const EmailFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const EmailFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.EMAIL),
+  label: zod.string().min(1).nullable().default(null),
+  placeholder: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.string().email().nullable().default(null),
   configuration: EmailFieldConfigurationSchema.default({}),
   rules: EmailFieldRulesSchema.default({}),

@@ -34,5 +34,7 @@ export const CodeBlockConfigurationSchema = BaseBlockConfigurationSchema.extend(
 export const CodeBlockSchema = BaseBlockSchema.extend({
   type: zod.literal(BlockElementType.CODE),
   content: zod.string().min(1),
+  label: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   configuration: CodeBlockConfigurationSchema.default({}),
 });

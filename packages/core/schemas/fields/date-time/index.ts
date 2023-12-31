@@ -42,7 +42,9 @@ export const DateTimeFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const DateTimeFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.DATE_TIME),
+  label: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.date().nullable().default(null),
   configuration: DateTimeFieldConfigurationSchema.default({}),
   rules: DateTimeFieldRulesSchema.default({}),
-}).omit({ placeholder: true });
+});

@@ -41,6 +41,9 @@ export const RichTextFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const RichTextFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.RICH_TEXT),
+  label: zod.string().min(1).nullable().default(null),
+  placeholder: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.string().nullable().default(null),
   configuration: RichTextFieldConfigurationSchema.default({}),
   rules: RichTextFieldRulesSchema.default({}),

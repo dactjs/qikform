@@ -30,9 +30,6 @@ export const BaseBlockSchema = zod.object({
     .string()
     .min(1)
     .regex(/^[0-9a-zA-Z_]+$/),
-
-  label: zod.string().min(1).nullable().default(null),
-  helperText: zod.string().min(1).nullable().default(null),
 });
 
 export const BaseBlockConfigurationSchema = zod.object({

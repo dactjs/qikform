@@ -39,12 +39,10 @@ export const SwitchFieldRulesSchema = BaseFieldRulesSchema.extend({
   // no additional rules
 });
 
-export const SwitchFieldSchema = BaseFieldSchema.omit({
-  label: true,
-  placeholder: true,
-}).extend({
+export const SwitchFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.SWITCH),
   label: zod.string().min(1),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.boolean().nullable().default(null),
   configuration: SwitchFieldConfigurationSchema.default({}),
   rules: SwitchFieldRulesSchema.default({}),

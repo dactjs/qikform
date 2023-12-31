@@ -29,9 +29,8 @@ export const PageBreakBlockConfigurationSchema =
     // no additional configuration
   });
 
-export const PageBreakBlockSchema = BaseBlockSchema.omit({
-  helperText: true,
-}).extend({
+export const PageBreakBlockSchema = BaseBlockSchema.extend({
   type: zod.literal(BlockElementType.PAGE_BREAK),
+  label: zod.string().min(1).nullable().default(null),
   configuration: PageBreakBlockConfigurationSchema.default({}),
 });

@@ -41,6 +41,9 @@ export const PhoneFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const PhoneFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.PHONE),
+  label: zod.string().min(1).nullable().default(null),
+  placeholder: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.string().nullable().default(null),
   configuration: PhoneFieldConfigurationSchema.default({}),
   rules: PhoneFieldRulesSchema.default({}),

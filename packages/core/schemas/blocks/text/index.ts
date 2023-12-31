@@ -34,5 +34,7 @@ export const TextBlockConfigurationSchema = BaseBlockConfigurationSchema.extend(
 export const TextBlockSchema = BaseBlockSchema.extend({
   type: zod.literal(BlockElementType.TEXT),
   content: zod.string().min(1),
+  label: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   configuration: TextBlockConfigurationSchema.default({}),
 });

@@ -42,6 +42,9 @@ export const NumberFieldRulesSchema = BaseFieldRulesSchema.extend({
 
 export const NumberFieldSchema = BaseFieldSchema.extend({
   type: zod.literal(FieldElementType.NUMBER),
+  label: zod.string().min(1).nullable().default(null),
+  placeholder: zod.string().min(1).nullable().default(null),
+  helperText: zod.string().min(1).nullable().default(null),
   defaultValue: zod.number().nullable().default(null),
   configuration: NumberFieldConfigurationSchema.default({}),
   rules: NumberFieldRulesSchema.default({}),

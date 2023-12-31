@@ -41,23 +41,19 @@ export const SingleChoiceFieldRulesSchema = BaseFieldRulesSchema.extend({
   // no additional rules
 });
 
-export const SingleChoiceFieldSchema = BaseFieldSchema.omit({
-  label: true,
-  placeholder: true,
-})
-  .extend({
-    type: zod.literal(FieldElementType.SINGLE_CHOICE),
-    label: zod.string().min(1),
-    options: zod.string().min(1).array().min(1).default([]),
-    defaultValue: zod.string().nullable().default(null),
-    configuration: SingleChoiceFieldConfigurationSchema.default({}),
-    rules: SingleChoiceFieldRulesSchema.default({}),
-  })
-  .refine(
-    ({ options, defaultValue }) =>
-      defaultValue === null || options.includes(defaultValue),
-    {
-      message: "Default value must be one of the options",
-      path: ["defaultValue"],
-    }
-  );
+export const SingleChoiceFieldSchema = BaseFieldSchema.extend({
+  type: zod.literal(FieldElementType.SINGLE_CHOICE),
+  label: zod.string().min(1),
+  helperText: zod.string().min(1).nullable().default(null),
+  options: zod.string().min(1).array().min(1).default([]),
+  defaultValue: zod.string().nullable().default(null),
+  configuration: SingleChoiceFieldConfigurationSchema.default({}),
+  rules: SingleChoiceFieldRulesSchema.default({}),
+}).refine(
+  ({ options, defaultValue }) =>
+    defaultValue === null || options.includes(defaultValue),
+  {
+    message: "Default value must be one of the options",
+    path: ["defaultValue"],
+  }
+);
