@@ -31,6 +31,8 @@ export const PageBreakBlockConfigurationSchema =
 
 export const PageBreakBlockSchema = BaseBlockSchema.extend({
   type: zod.literal(BlockElementType.PAGE_BREAK),
+  nextPageButtonText: zod.string().min(1).default("Next"),
+  previousPageButtonText: zod.string().min(1).default("Previous"),
   label: zod.string().min(1).nullable().default(null),
   configuration: PageBreakBlockConfigurationSchema.default({}),
 });

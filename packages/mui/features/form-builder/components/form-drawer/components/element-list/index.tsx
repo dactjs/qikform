@@ -24,8 +24,7 @@ export function FormElementList(): React.ReactElement {
       elements.filter(
         (element) =>
           element.name.toLowerCase().includes(search.toLowerCase()) ||
-          element.label?.toLowerCase().includes(search.toLowerCase()) ||
-          element.helperText?.toLowerCase().includes(search.toLowerCase())
+          element.label?.toLowerCase().includes(search.toLowerCase())
       ),
     [elements, search]
   );

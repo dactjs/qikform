@@ -6,14 +6,12 @@ import { StarterKit } from "@tiptap/starter-kit";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { useFormContext } from "react-hook-form";
 
-import type { Form } from "@qikform/core";
-
 import { useFormRenderer } from "../../context";
 
 export function SubmissionText(): React.ReactElement {
-  const { form } = useFormRenderer();
+  const { reset } = useFormContext();
 
-  const { reset } = useFormContext<Form>();
+  const { form } = useFormRenderer();
 
   const extensions = [
     StarterKit,

@@ -72,6 +72,36 @@ export function PageBreakBlockSettings({
           />
         </Stack>
       </FormControl>
+
+      <FormControl component="fieldset" variant="standard">
+        <FormLabel component="legend">Content</FormLabel>
+
+        <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
+          <ControlledTextField
+            name={`elements.${index}.nextPageButtonText`}
+            helperText="The text for the `next page button`. Shown on the current page."
+            textFieldProps={{
+              autoComplete: "off",
+              required: true,
+              fullWidth: true,
+              size: "small",
+              label: "Next Page Button Text",
+            }}
+          />
+
+          <ControlledTextField
+            name={`elements.${index}.previousPageButtonText`}
+            helperText="The text for the `previous page button`. Shown on the next page."
+            textFieldProps={{
+              autoComplete: "off",
+              required: true,
+              fullWidth: true,
+              size: "small",
+              label: "Previous Page Button Text",
+            }}
+          />
+        </Stack>
+      </FormControl>
     </Stack>
   );
 }
