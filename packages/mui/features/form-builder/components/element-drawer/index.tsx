@@ -38,6 +38,7 @@ export function ElementDrawer(): React.ReactElement {
 
   return (
     <Stack
+      key={selectedElement.id} // the key is used to force the component to re-render when the element is duplicated
       spacing={1.5}
       divider={<Divider flexItem />}
       sx={{ position: "relative" }}

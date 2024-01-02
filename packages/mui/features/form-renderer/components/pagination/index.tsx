@@ -1,10 +1,15 @@
 "use client";
 
 import { Stack, Button, CircularProgress } from "@mui/material";
+import { useFormContext } from "react-hook-form";
 
 import { useFormRenderer } from "../../context";
 
 export function Pagination(): React.ReactElement {
+  const {
+    formState: { errors },
+  } = useFormContext();
+
   const { form, pages, currentPage, setCurrentPage } = useFormRenderer();
 
   const isFirstPage = currentPage === 1;
@@ -16,6 +21,15 @@ export function Pagination(): React.ReactElement {
 
   const currentBreaker =
     pages.find((page) => page.number === currentPage)?.breaker || null;
+
+  const hiddenElements = pages
+    .filter((page) => page.number !== currentPage)
+    .map((page) => page.elements.map((element) => element.name))
+    .flat();
+
+  const hasHiddenErrors = Object.keys(errors).some((key) =>
+    hiddenElements.includes(key)
+  );
 
   const handlePreviousPage = (): void => {
     if (isFirstPage) return;
@@ -46,7 +60,7 @@ export function Pagination(): React.ReactElement {
           <Button
             variant="contained"
             size="small"
-            color="primary"
+            color={hasHiddenErrors ? "error" : "primary"}
             onClick={handlePreviousPage}
           >
             {previousBreaker?.previousPageButtonText || "Previous"}
@@ -57,7 +71,7 @@ export function Pagination(): React.ReactElement {
           <Button
             variant="contained"
             size="small"
-            color="primary"
+            color={hasHiddenErrors ? "error" : "primary"}
             onClick={handleNextPage}
           >
             {currentBreaker?.nextPageButtonText || "Next"}
