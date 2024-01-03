@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { DialogProps } from "@mui/material";
 import {
   Dialog,
@@ -11,6 +12,21 @@ import {
   IconButton,
 } from "@mui/material";
 import { AddCircle as AddIcon } from "@mui/icons-material";
+import type { Active, DragStartEvent, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragOverlay,
+  useSensors,
+  useSensor,
+  PointerSensor,
+  KeyboardSensor,
+  closestCenter,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  sortableKeyboardCoordinates,
+} from "@dnd-kit/sortable";
 import { useFormContext, useFieldArray } from "react-hook-form";
 
 import type { Form, SingleChoiceField } from "@qikform/core";
@@ -18,6 +34,7 @@ import type { Form, SingleChoiceField } from "@qikform/core";
 import { NoData } from "../../../../../../../../../components";
 
 import { SingleChoiceOptionItem } from "../option-item";
+import { SingleChoiceOptionItemOverlay } from "../option-item-overlay";
 
 export interface SingleChoiceOptionsDialogProps extends DialogProps {
   field: SingleChoiceField;
@@ -38,24 +55,36 @@ export function SingleChoiceOptionsDialog({
     append,
     remove,
     move,
-  } = useFieldArray({
-    name: `elements.${index}.options`,
-  });
+  } = useFieldArray({ name: `elements.${index}.options` });
 
   const handleAddOption = (): void => {
     append("");
   };
 
-  const handleMoveOptionUp = (optionIndex: number) => () => {
-    move(optionIndex, optionIndex - 1);
-  };
-
-  const handleMoveOptionDown = (optionIndex: number) => () => {
-    move(optionIndex, optionIndex + 1);
-  };
-
   const handleRemoveOption = (optionIndex: number) => () => {
     remove(optionIndex);
+  };
+
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  const [active, setActive] = useState<Active | null>(null);
+
+  const handleDragStart = (event: DragStartEvent): void => {
+    setActive(event.active);
+  };
+
+  const handleDragEnd = (event: DragEndEvent): void => {
+    if (!event.over) return;
+
+    const oldIndex = Number(event.active.data.current?.optionIndex);
+    const newIndex = Number(event.over.data.current?.optionIndex);
+
+    if (oldIndex !== newIndex) move(oldIndex, newIndex);
+
+    setActive(null);
   };
 
   return (
@@ -81,27 +110,45 @@ export function SingleChoiceOptionsDialog({
 
       <Divider flexItem />
 
-      <DialogContent sx={{ maxHeight: 300, paddingX: 1 }}>
+      <DialogContent
+        sx={{
+          maxHeight: 300,
+          overflowX: "hidden",
+          overflowY: "auto",
+        }}
+      >
         {options.length > 0 ? (
-          <Stack component="ul" spacing={2}>
-            {options.map((option, optionIndex) => {
-              const isFirst = optionIndex === 0;
+          <Stack component="ul" spacing={2} sx={{ padding: 0 }}>
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragStart={handleDragStart}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={options.map((option) => option.id)}
+                strategy={verticalListSortingStrategy}
+              >
+                {options.map((option, optionIndex) => (
+                  <SingleChoiceOptionItem
+                    key={option.id}
+                    fieldIndex={index}
+                    optionIndex={optionIndex}
+                    sortableId={option.id}
+                    onRemove={handleRemoveOption(optionIndex)}
+                  />
+                ))}
 
-              const isLast = optionIndex === options.length - 1;
-
-              return (
-                <SingleChoiceOptionItem
-                  key={option.id}
-                  fieldIndex={index}
-                  optionIndex={optionIndex}
-                  isFirst={isFirst}
-                  isLast={isLast}
-                  onMoveUp={handleMoveOptionUp(optionIndex)}
-                  onMoveDown={handleMoveOptionDown(optionIndex)}
-                  onRemove={handleRemoveOption(optionIndex)}
-                />
-              );
-            })}
+                <DragOverlay>
+                  {Boolean(active) && (
+                    <SingleChoiceOptionItemOverlay
+                      optionIndex={Number(active?.data.current?.optionIndex)}
+                      value={String(active?.data.current?.value)}
+                    />
+                  )}
+                </DragOverlay>
+              </SortableContext>
+            </DndContext>
           </Stack>
         ) : (
           <NoData message="At least one option is required" />

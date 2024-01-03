@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Stack } from "@mui/material";
+import { Stack, IconButton } from "@mui/material";
+import { DragHandle as SortIcon } from "@mui/icons-material";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { useFormContext } from "react-hook-form";
 
 import type { Form, FormElement } from "@qikform/core";
 
-import {
-  FormElementItemSwapper,
-  FormElementItemContent,
-  FormElementItemActions,
-} from "./components";
+import { FormElementItemContent, FormElementItemActions } from "./components";
 
 export interface FormElementItemProps {
   filtering: boolean;
@@ -42,14 +41,38 @@ export function FormElementItem({
     setHovering(false);
   };
 
+  const {
+    attributes,
+    listeners,
+    transition,
+    transform,
+    setNodeRef,
+    setActivatorNodeRef,
+  } = useSortable({
+    id: element.id,
+    data: {
+      elementIndex: index,
+      type: element.type,
+      name: element.name,
+      label: element.label,
+    },
+  });
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
   return (
     <Stack
+      ref={setNodeRef}
       component="li"
       direction="row"
       alignItems="center"
       spacing={1}
       onMouseEnter={handleHover}
       onMouseLeave={handleBlur}
+      style={style}
       sx={{
         padding: (theme) => theme.spacing(1, 0.5),
         borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
@@ -57,7 +80,19 @@ export function FormElementItem({
         ...(isElementError && { color: "error.main" }),
       }}
     >
-      {Boolean(filtering) && <FormElementItemSwapper element={element} />}
+      {!filtering && (
+        <IconButton
+          {...attributes}
+          {...listeners}
+          ref={setActivatorNodeRef}
+          size="small"
+          color="inherit"
+          aria-label="Sort Element (Drag / Drop)"
+        >
+          <SortIcon fontSize="small" />
+        </IconButton>
+      )}
+
       <FormElementItemContent element={element} />
       <FormElementItemActions show={hovering} element={element} />
     </Stack>

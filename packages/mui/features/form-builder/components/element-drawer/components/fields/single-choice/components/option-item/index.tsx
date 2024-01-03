@@ -2,10 +2,11 @@
 
 import { Stack, TextField, IconButton } from "@mui/material";
 import {
-  ArrowDropUp as ArrowUpIcon,
-  ArrowDropDown as ArrowDownIcon,
+  DragHandle as SortIcon,
   RemoveCircle as DeleteIcon,
 } from "@mui/icons-material";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { useController } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
@@ -13,20 +14,14 @@ import type { Form } from "@qikform/core";
 export interface SingleChoiceOptionItemProps {
   fieldIndex: number;
   optionIndex: number;
-  isFirst: boolean;
-  isLast: boolean;
-  onMoveUp: () => void;
-  onMoveDown: () => void;
+  sortableId: string;
   onRemove: () => void;
 }
 
 export function SingleChoiceOptionItem({
   fieldIndex,
   optionIndex,
-  isFirst,
-  isLast,
-  onMoveUp,
-  onMoveDown,
+  sortableId,
   onRemove,
 }: SingleChoiceOptionItemProps): React.ReactElement {
   const {
@@ -36,29 +31,42 @@ export function SingleChoiceOptionItem({
     name: `elements.${fieldIndex}.options.${optionIndex}`,
   });
 
-  return (
-    <Stack component="li" direction="row" alignItems="center" spacing={1}>
-      <Stack direction="row">
-        <IconButton
-          size="small"
-          color="inherit"
-          disabled={isFirst}
-          aria-label="Move Option Up"
-          onClick={onMoveUp}
-        >
-          <ArrowUpIcon fontSize="small" />
-        </IconButton>
+  const {
+    attributes,
+    listeners,
+    transition,
+    transform,
+    setNodeRef,
+    setActivatorNodeRef,
+  } = useSortable({
+    id: sortableId,
+    data: { optionIndex, value },
+  });
 
-        <IconButton
-          size="small"
-          color="inherit"
-          disabled={isLast}
-          aria-label="Move Option Down"
-          onClick={onMoveDown}
-        >
-          <ArrowDownIcon fontSize="small" />
-        </IconButton>
-      </Stack>
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
+  return (
+    <Stack
+      ref={setNodeRef}
+      component="li"
+      direction="row"
+      alignItems="center"
+      spacing={1}
+      style={style}
+    >
+      <IconButton
+        {...attributes}
+        {...listeners}
+        ref={setActivatorNodeRef}
+        size="small"
+        color="inherit"
+        aria-label="Sort Option (Drag / Drop)"
+      >
+        <SortIcon fontSize="small" />
+      </IconButton>
 
       <TextField
         {...params}
