@@ -29,7 +29,7 @@ export function ImageBlockRenderer({
           loading="lazy"
           alt={block.label || block.name}
           src={block.url}
-          sx={{ maxHeight: 300 }}
+          sx={{ maxWidth: "100%", maxHeight: 300, objectFit: "cover" }}
         />
       </Box>
 

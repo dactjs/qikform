@@ -1,12 +1,14 @@
+import type { BoxProps } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 
-export interface NoDataProps {
+export interface NoDataProps extends BoxProps {
   message?: string;
 }
 
-export function NoData({ message }: NoDataProps): React.ReactElement {
+export function NoData({ message, ...rest }: NoDataProps): React.ReactElement {
   return (
     <Box
+      {...rest}
       sx={{
         display: "grid",
         placeContent: "center",
@@ -16,6 +18,7 @@ export function NoData({ message }: NoDataProps): React.ReactElement {
         height: "100%",
         padding: 4,
         overflow: "auto",
+        ...rest.sx,
       }}
     >
       <Box sx={{ maxWidth: "5em" }}>

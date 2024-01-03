@@ -1,6 +1,6 @@
 "use client";
 
-import { Stack, Button, CircularProgress } from "@mui/material";
+import { Stack, Typography, Button, CircularProgress } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 import { useFormRenderer } from "../../context";
@@ -45,69 +45,81 @@ export function Pagination(): React.ReactElement {
 
   return (
     <Stack
-      // TODO: add media query to change direction to column
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
       spacing={1}
       sx={{
         paddingTop: 1,
         borderTop: (theme) => `1px dashed ${theme.palette.divider}`,
       }}
     >
-      <Stack direction="row" spacing={1}>
-        {!isFirstPage && (
-          <Button
-            variant="contained"
-            size="small"
-            color={hasHiddenErrors ? "error" : "primary"}
-            onClick={handlePreviousPage}
-          >
-            {previousBreaker?.previousPageButtonText || "Previous"}
-          </Button>
-        )}
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        spacing={1}
+        sx={{ overflowX: "auto" }}
+      >
+        <Stack direction="row" spacing={1}>
+          {!isFirstPage && (
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              onClick={handlePreviousPage}
+            >
+              {previousBreaker?.previousPageButtonText || "Previous"}
+            </Button>
+          )}
 
-        {!isLastPage && (
-          <Button
-            variant="contained"
-            size="small"
-            color={hasHiddenErrors ? "error" : "primary"}
-            onClick={handleNextPage}
-          >
-            {currentBreaker?.nextPageButtonText || "Next"}
-          </Button>
-        )}
+          {!isLastPage && (
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              onClick={handleNextPage}
+            >
+              {currentBreaker?.nextPageButtonText || "Next"}
+            </Button>
+          )}
 
-        {Boolean(isLastPage) && (
-          <Button
-            type="submit"
-            variant="contained"
-            size="small"
-            color="warning"
-          >
-            {form.customization.submitButtonText}
-          </Button>
+          {Boolean(isLastPage) && (
+            <Button
+              type="submit"
+              variant="contained"
+              size="small"
+              color="warning"
+            >
+              {form.customization.submitButtonText}
+            </Button>
+          )}
+        </Stack>
+
+        {pages.length > 1 && (
+          <Stack sx={{ position: "relative" }}>
+            <CircularProgress
+              variant="determinate"
+              size={25}
+              thickness={6}
+              color="inherit"
+              value={100}
+              sx={{ position: "absolute" }}
+            />
+
+            <CircularProgress
+              variant="determinate"
+              size={25}
+              thickness={6}
+              color="info"
+              value={progress}
+            />
+          </Stack>
         )}
       </Stack>
 
-      <Stack sx={{ position: "relative" }}>
-        <CircularProgress
-          variant="determinate"
-          size={25}
-          thickness={6}
-          color="inherit"
-          value={100}
-          sx={{ position: "absolute" }}
-        />
-
-        <CircularProgress
-          variant="determinate"
-          size={25}
-          thickness={6}
-          color="info"
-          value={progress}
-        />
-      </Stack>
+      {Boolean(hasHiddenErrors) && (
+        <Typography variant="caption" color="error">
+          There are errors on other pages. Please fix them before submitting.
+        </Typography>
+      )}
     </Stack>
   );
 }
