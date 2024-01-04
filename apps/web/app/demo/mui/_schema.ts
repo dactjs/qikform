@@ -1,7 +1,7 @@
-import type { CreateForm } from "@qikform/core";
+import { FormSchema } from "@qikform/core";
 
-export const schema = {
+export const schema = FormSchema.parse({
   title: "This is a form",
   description: "This is a description",
   elements: [],
-} satisfies CreateForm;
+});
