@@ -36,13 +36,13 @@ export default function MuiDemoPage(): React.ReactElement {
       await navigator.clipboard.writeText(JSON.stringify(form, null, 2));
 
       setSnackbar({
-        message: "Copied to clipboard",
+        message: "📋 Copied to clipboard",
         color: "info.contrastText",
         backgroundColor: "info.main",
       });
     } catch (err) {
       setSnackbar({
-        message: "Failed to copy to clipboard",
+        message: "😵 Failed to copy to clipboard",
         color: "error.contrastText",
         backgroundColor: "error.main",
       });
