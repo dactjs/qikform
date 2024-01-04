@@ -1,6 +1,6 @@
 {
   "name": "@qikform/eslint-config-custom",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "private": false,
   "license": "MIT",
   "devDependencies": {
