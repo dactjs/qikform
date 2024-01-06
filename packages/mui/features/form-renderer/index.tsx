@@ -27,11 +27,14 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
   const { disablePadding, hideTitle, hideDescription, transparentBackground } =
     form.customization;
 
+  const showHeader = !hideTitle || !hideDescription;
+
   if (isSubmitSuccessful) {
     return (
       <Stack
-        {...(!transparentBackground && { component: Paper })}
-        sx={{ ...(!disablePadding && { padding: 4 }) }}
+        component={Paper}
+        elevation={transparentBackground ? 0 : 1}
+        sx={[{ padding: 4 }, disablePadding && { padding: 0 }]}
       >
         <SubmissionText />
       </Stack>
@@ -40,12 +43,13 @@ function FormRenderer({ onSubmit }: FormRendererProps): React.ReactElement {
 
   return (
     <Stack
-      {...(!transparentBackground && { component: Paper })}
+      component={Paper}
+      elevation={transparentBackground ? 0 : 1}
       spacing={2}
       divider={<Divider flexItem />}
-      sx={{ ...(!disablePadding && { padding: 3 }) }}
+      sx={[{ padding: 4 }, disablePadding && { padding: 0 }]}
     >
-      {(!hideTitle || !hideDescription) && <Header />}
+      {Boolean(showHeader) && <Header />}
       <Content onSubmit={onSubmit} />
     </Stack>
   );

@@ -7,17 +7,16 @@ import { useController } from "react-hook-form";
 
 export interface ControlledTextFieldProps
   extends UseControllerProps<Record<string, unknown>> {
+  type?: TextFieldProps["type"];
+  autoComplete?: TextFieldProps["autoComplete"];
+  required?: boolean;
+  multiline?: boolean;
+  fullWidth?: boolean;
+  size?: TextFieldProps["size"];
+  label?: string | null;
+  placeholder?: string | null;
   helperText?: string | null;
-  textFieldProps: Omit<
-    TextFieldProps,
-    | "name"
-    | "disabled"
-    | "defaultValue"
-    | "value"
-    | "onChange"
-    | "error"
-    | "helperText"
-  >;
+  startAdornment?: React.ReactNode;
 }
 
 export function ControlledTextField({
@@ -27,8 +26,16 @@ export function ControlledTextField({
   defaultValue,
   rules,
   shouldUnregister,
+  type,
+  autoComplete,
+  required,
+  multiline,
+  fullWidth,
+  size,
+  label,
+  placeholder,
   helperText,
-  textFieldProps,
+  startAdornment,
 }: ControlledTextFieldProps): React.ReactElement {
   const {
     field: { value, onChange, ...params },
@@ -53,11 +60,19 @@ export function ControlledTextField({
   return (
     <TextField
       {...params}
-      {...textFieldProps}
+      type={type}
+      autoComplete={autoComplete}
+      required={required}
+      multiline={multiline}
+      fullWidth={fullWidth}
+      size={size}
+      label={label}
+      placeholder={placeholder as string | undefined}
       value={typeof value === "string" ? value : ""}
       onChange={handleOnChange}
       error={Boolean(error)}
       helperText={error?.message || helperText}
+      InputProps={{ startAdornment }}
     />
   );
 }

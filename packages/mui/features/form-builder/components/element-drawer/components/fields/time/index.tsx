@@ -50,25 +50,21 @@ export function TimeFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.name`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Name"
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.label`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Label"
             helperText="The label (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
           />
 
           <ControlledRichEditor
@@ -90,20 +86,16 @@ export function TimeFieldSettings({
 
           <ControlledTimePicker
             name={`elements.${index}.rules.minTime`}
+            size="small"
+            label="Min Time"
             helperText="The min time (optional)"
-            timePickerProps={{
-              label: "Min Time",
-              slotProps: { textField: { size: "small" } },
-            }}
           />
 
           <ControlledTimePicker
             name={`elements.${index}.rules.maxTime`}
+            size="small"
+            label="Max Time"
             helperText="The max time (optional)"
-            timePickerProps={{
-              label: "Max Time",
-              slotProps: { textField: { size: "small" } },
-            }}
           />
         </Stack>
       </FormControl>
@@ -114,14 +106,9 @@ export function TimeFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTimePicker
             name={`elements.${index}.defaultValue`}
+            size="small"
+            label="Default Value"
             helperText="The default value (optional)"
-            timePickerProps={{
-              label: "Default Value",
-              slotProps: {
-                field: { clearable: true },
-                textField: { size: "small" },
-              },
-            }}
           />
         </Stack>
       </FormControl>

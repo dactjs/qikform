@@ -1,23 +1,15 @@
 "use client";
 
-import type { TimePickerProps } from "@mui/x-date-pickers";
+import type { TextFieldProps } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers";
 import type { UseControllerProps } from "react-hook-form";
 import { useController } from "react-hook-form";
 
 export interface ControlledTimePickerProps
   extends UseControllerProps<Record<string, unknown>> {
+  size?: TextFieldProps["size"];
+  label?: string | null;
   helperText?: string | null;
-  timePickerProps: Omit<
-    TimePickerProps<Date>,
-    | "name"
-    | "disabled"
-    | "defaultValue"
-    | "value"
-    | "onChange"
-    | "error"
-    | "helperText"
-  >;
 }
 
 export function ControlledTimePicker({
@@ -27,8 +19,9 @@ export function ControlledTimePicker({
   defaultValue,
   rules,
   shouldUnregister,
+  size,
+  label,
   helperText,
-  timePickerProps,
 }: ControlledTimePickerProps): React.ReactElement {
   const {
     field: { value, onChange, ...params },
@@ -45,13 +38,13 @@ export function ControlledTimePicker({
   return (
     <TimePicker
       {...params}
-      {...timePickerProps}
       value={value instanceof Date ? value : null}
       onChange={onChange}
       slotProps={{
-        ...timePickerProps.slotProps,
+        field: { clearable: true },
         textField: {
-          ...timePickerProps.slotProps?.textField,
+          size,
+          label,
           error: Boolean(error),
           helperText: error?.message || helperText,
         },

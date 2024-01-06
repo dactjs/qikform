@@ -7,19 +7,13 @@ import { useController } from "react-hook-form";
 
 export interface ControlledNumberFieldProps
   extends UseControllerProps<Record<string, unknown>> {
+  autoComplete?: TextFieldProps["autoComplete"];
+  required?: boolean;
+  fullWidth?: boolean;
+  size?: TextFieldProps["size"];
+  label?: string | null;
+  placeholder?: string | null;
   helperText?: string | null;
-  textFieldProps: Omit<
-    TextFieldProps,
-    | "type"
-    | "name"
-    | "disabled"
-    | "defaultValue"
-    | "value"
-    | "onChange"
-    | "error"
-    | "helperText"
-    | "inputProps"
-  >;
 }
 
 export function ControlledNumberField({
@@ -29,8 +23,13 @@ export function ControlledNumberField({
   defaultValue,
   rules,
   shouldUnregister,
+  autoComplete,
+  required,
+  fullWidth,
+  size,
+  label,
+  placeholder,
   helperText,
-  textFieldProps,
 }: ControlledNumberFieldProps): React.ReactElement {
   const {
     field: { value, onChange, ...params },
@@ -59,8 +58,13 @@ export function ControlledNumberField({
   return (
     <TextField
       {...params}
-      {...textFieldProps}
       type="number"
+      autoComplete={autoComplete}
+      required={required}
+      fullWidth={fullWidth}
+      size={size}
+      label={label}
+      placeholder={placeholder as string | undefined}
       value={isValidNumber(value) ? Number(value) : ""}
       onChange={handleOnChange}
       error={Boolean(error)}

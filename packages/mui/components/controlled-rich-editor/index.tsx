@@ -1,6 +1,7 @@
 "use client";
 
 import { FormControl, FormLabel, FormHelperText } from "@mui/material";
+import type { RichTextEditorProps } from "mui-tiptap";
 import {
   RichTextEditor,
   MenuControlsContainer,
@@ -15,14 +16,15 @@ import {
   MenuButtonAlignRight,
   MenuDivider,
 } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import type { UseControllerProps } from "react-hook-form";
 import { useController } from "react-hook-form";
 
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../lib";
+
 export interface ControlledRichEditorProps
   extends UseControllerProps<Record<string, unknown>> {
+  required?: boolean;
   label?: string | null;
   placeholder?: string | null;
   helperText?: string | null;
@@ -35,6 +37,7 @@ export function ControlledRichEditor({
   defaultValue,
   rules,
   shouldUnregister,
+  required,
   label,
   placeholder,
   helperText,
@@ -52,11 +55,7 @@ export function ControlledRichEditor({
   });
 
   const extensions = [
-    StarterKit.configure({
-      bulletList: false,
-      orderedList: false,
-    }),
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
+    ...BASE_MUI_TIPTAP_EXTENSIONS,
     Placeholder.configure({ placeholder: placeholder || "Write something..." }),
   ];
 
@@ -87,20 +86,28 @@ export function ControlledRichEditor({
     </MenuControlsContainer>
   );
 
+  const handleOnUpdate: RichTextEditorProps["onUpdate"] = (content) => {
+    const isEmpty = content.editor.isEmpty;
+
+    const html = content.editor.getHTML();
+
+    onChange(isEmpty ? null : html);
+  };
+
   return (
     <FormControl
       fullWidth
-      required={Boolean(rules?.required)}
+      required={required}
       error={Boolean(error)}
       sx={{
         ...(!disabled && {
           ...(error && {
             "&& .MuiTiptap-FieldContainer-notchedOutline": {
-              borderColor: (theme) => `${theme.palette.error.main}`,
+              borderColor: "error.main",
             },
 
-            "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
-              borderColor: (theme) => `${theme.palette.error.main}`,
+            "&& .MuiTiptap-FieldContainer-notchedOutline:focus-within": {
+              borderColor: "error.main",
             },
           }),
         }),
@@ -113,11 +120,7 @@ export function ControlledRichEditor({
         editable={!disabled}
         content={typeof value === "string" ? value : defaultValue || null}
         onBlur={onBlur}
-        onUpdate={(content) => {
-          const isEmpty = content.editor.isEmpty;
-          const html = content.editor.getHTML();
-          onChange(isEmpty ? null : html);
-        }}
+        onUpdate={handleOnUpdate}
       />
 
       {(Boolean(error) || Boolean(helperText)) && (

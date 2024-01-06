@@ -60,11 +60,7 @@ export function ControlledSwitch({
         }
         slotProps={{
           ...(error && {
-            typography: {
-              sx: {
-                color: (theme) => `${theme.palette.error.main} !important`,
-              },
-            },
+            typography: { color: "error.main" },
           }),
         }}
         sx={{ minHeight: 42 }}

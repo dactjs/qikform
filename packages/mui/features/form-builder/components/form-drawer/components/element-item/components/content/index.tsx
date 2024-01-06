@@ -39,25 +39,21 @@ export function FormElementItemContent({
             {editing === "label" && (
               <ControlledTextField
                 name={`elements.${index}.label`}
-                textFieldProps={{
-                  autoComplete: "off",
-                  fullWidth: true,
-                  size: "small",
-                  label: "Label",
-                }}
+                autoComplete="off"
+                fullWidth
+                size="small"
+                label="Label"
               />
             )}
 
             {editing === "name" && (
               <ControlledTextField
                 name={`elements.${index}.name`}
-                textFieldProps={{
-                  autoComplete: "off",
-                  required: true,
-                  fullWidth: true,
-                  size: "small",
-                  label: "Name",
-                }}
+                autoComplete="off"
+                required
+                fullWidth
+                size="small"
+                label="Name"
               />
             )}
           </>

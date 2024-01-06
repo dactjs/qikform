@@ -2,11 +2,11 @@
 
 import { Box, FormControl, InputLabel, OutlinedInput } from "@mui/material";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import { useController } from "react-hook-form";
 
 import type { NumberField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -40,11 +40,6 @@ export function NumberFieldRenderer({
       }),
     },
   });
-
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
 
   const isValidNumber = (text: unknown): boolean => {
     return text !== "" && text !== undefined && text !== null;
@@ -84,12 +79,11 @@ export function NumberFieldRenderer({
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly
-            extensions={extensions}
+            extensions={BASE_MUI_TIPTAP_EXTENSIONS}
             content={error?.message || field.helperText}
           />
         </Box>

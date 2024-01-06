@@ -2,10 +2,10 @@
 
 import { Box, Stack, Divider, Typography } from "@mui/material";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 
 import type { DividerBlock } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 export function DividerBlockRenderer({
   block,
@@ -14,28 +14,24 @@ export function DividerBlockRenderer({
 }): React.ReactElement {
   if (!block.label && !block.helperText) return <Divider flexItem />;
 
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
-
   return (
     <Box
       sx={{
         display: "flex",
         alignItems: "center",
-        margin: (theme) => theme.spacing(4),
         "::before": {
           content: '""',
           flexGrow: 1,
-          marginRight: (theme) => theme.spacing(2),
-          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+          marginRight: 2,
+          borderBottom: 1,
+          borderBottomColor: "divider",
         },
         "::after": {
           content: '""',
           flexGrow: 1,
-          marginLeft: (theme) => theme.spacing(2),
-          borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
+          marginLeft: 2,
+          borderBottom: 1,
+          borderBottomColor: "divider",
         },
       }}
     >
@@ -47,9 +43,9 @@ export function DividerBlockRenderer({
         )}
 
         {Boolean(block.helperText) && (
-          <Box sx={{ color: (theme) => theme.palette.text.secondary }}>
+          <Box sx={{ color: "text.secondary" }}>
             <RichTextReadOnly
-              extensions={extensions}
+              extensions={BASE_MUI_TIPTAP_EXTENSIONS}
               content={block.helperText}
             />
           </Box>

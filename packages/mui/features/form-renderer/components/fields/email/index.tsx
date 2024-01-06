@@ -9,11 +9,11 @@ import {
 } from "@mui/material";
 import { Email as EmailIcon } from "@mui/icons-material";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import { useController } from "react-hook-form";
 
 import type { EmailField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -39,11 +39,6 @@ export function EmailFieldRenderer({
       },
     },
   });
-
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
 
   const handleOnChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -83,12 +78,11 @@ export function EmailFieldRenderer({
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly
-            extensions={extensions}
+            extensions={BASE_MUI_TIPTAP_EXTENSIONS}
             content={error?.message || field.helperText}
           />
         </Box>

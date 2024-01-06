@@ -1,23 +1,15 @@
 "use client";
 
-import type { DatePickerProps } from "@mui/x-date-pickers";
+import type { TextFieldProps } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers";
 import type { UseControllerProps } from "react-hook-form";
 import { useController } from "react-hook-form";
 
 export interface ControlledDatePickerProps
   extends UseControllerProps<Record<string, unknown>> {
+  size?: TextFieldProps["size"];
+  label?: string | null;
   helperText?: string | null;
-  datePickerProps: Omit<
-    DatePickerProps<Date>,
-    | "name"
-    | "disabled"
-    | "defaultValue"
-    | "value"
-    | "onChange"
-    | "error"
-    | "helperText"
-  >;
 }
 
 export function ControlledDatePicker({
@@ -27,8 +19,9 @@ export function ControlledDatePicker({
   defaultValue,
   rules,
   shouldUnregister,
+  size,
+  label,
   helperText,
-  datePickerProps,
 }: ControlledDatePickerProps): React.ReactElement {
   const {
     field: { value, onChange, ...params },
@@ -45,13 +38,13 @@ export function ControlledDatePicker({
   return (
     <DatePicker
       {...params}
-      {...datePickerProps}
       value={value instanceof Date ? value : null}
       onChange={onChange}
       slotProps={{
-        ...datePickerProps.slotProps,
+        field: { clearable: true },
         textField: {
-          ...datePickerProps.slotProps?.textField,
+          size,
+          label,
           error: Boolean(error),
           helperText: error?.message || helperText,
         },

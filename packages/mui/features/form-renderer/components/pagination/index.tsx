@@ -1,7 +1,10 @@
 "use client";
 
+import { useMemo } from "react";
 import { Stack, Typography, Button, CircularProgress } from "@mui/material";
 import { useFormContext } from "react-hook-form";
+
+import type { PageBreakBlock } from "@qikform/core";
 
 import { useFormRenderer } from "../../context";
 
@@ -16,20 +19,33 @@ export function Pagination(): React.ReactElement {
   const isLastPage = currentPage === pages.length;
   const progress = Math.abs((currentPage / pages.length) * 100);
 
-  const previousBreaker =
-    pages.find((page) => page.number === currentPage - 1)?.breaker || null;
+  const previousBreaker = useMemo<PageBreakBlock | null>(() => {
+    const page = pages.find(({ number }) => number === currentPage - 1);
 
-  const currentBreaker =
-    pages.find((page) => page.number === currentPage)?.breaker || null;
+    return page?.breaker || null;
+  }, [pages, currentPage]);
 
-  const hiddenElements = pages
-    .filter((page) => page.number !== currentPage)
-    .map((page) => page.elements.map((element) => element.name))
-    .flat();
+  const currentBreaker = useMemo<PageBreakBlock | null>(() => {
+    const page = pages.find(({ number }) => number === currentPage);
 
-  const hasHiddenErrors = Object.keys(errors).some((key) =>
-    hiddenElements.includes(key)
-  );
+    return page?.breaker || null;
+  }, [pages, currentPage]);
+
+  const hiddenElementNames = useMemo<string[]>(() => {
+    const hiddenPages = pages.filter(({ number }) => number !== currentPage);
+
+    const names = hiddenPages.flatMap(({ elements }) =>
+      elements.map((element) => element.name)
+    );
+
+    return names;
+  }, [pages, currentPage]);
+
+  const hasHiddenErrors = useMemo<boolean>(() => {
+    const keys = Object.keys(errors);
+
+    return keys.some((key) => hiddenElementNames.includes(key));
+  }, [errors, hiddenElementNames]);
 
   const handlePreviousPage = (): void => {
     if (isFirstPage) return;
@@ -48,7 +64,9 @@ export function Pagination(): React.ReactElement {
       spacing={1}
       sx={{
         paddingTop: 1,
-        borderTop: (theme) => `1px dashed ${theme.palette.divider}`,
+        borderTopWidth: 1,
+        borderTopStyle: "dashed",
+        borderTopColor: "divider",
       }}
     >
       <Stack

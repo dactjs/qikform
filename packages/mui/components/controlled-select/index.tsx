@@ -17,23 +17,10 @@ export interface ControlledSelectProps
   options: string[];
   multiple?: boolean;
   required?: boolean;
+  size?: SelectProps["size"];
   label?: string | null;
   placeholder?: string | null;
   helperText?: string | null;
-  selectProps?: Omit<
-    SelectProps,
-    | "id"
-    | "labelId"
-    | "name"
-    | "multiple"
-    | "required"
-    | "disabled"
-    | "displayEmpty"
-    | "label"
-    | "defaultValue"
-    | "value"
-    | "onChange"
-  >;
 }
 
 export function ControlledSelect({
@@ -46,10 +33,10 @@ export function ControlledSelect({
   options,
   multiple,
   required,
+  size,
   label,
   placeholder,
   helperText,
-  selectProps,
 }: ControlledSelectProps): React.ReactElement {
   const {
     field: { value, onChange, ...params },
@@ -92,7 +79,7 @@ export function ControlledSelect({
     <FormControl
       fullWidth
       variant="outlined"
-      size={selectProps?.size}
+      size={size}
       required={required}
       error={Boolean(error)}
     >
@@ -102,12 +89,12 @@ export function ControlledSelect({
 
       <Select
         {...params}
-        {...selectProps}
         id={`${name}-select`}
         labelId={`${name}-select-label`}
         multiple={multiple}
         required={required}
         displayEmpty={Boolean(placeholder)}
+        size={size}
         label={label}
         value={selectedValue}
         onChange={handleOnChange}

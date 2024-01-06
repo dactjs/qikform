@@ -3,12 +3,12 @@
 import { Box, FormControl } from "@mui/material";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import type { Validate } from "react-hook-form";
 import { useController } from "react-hook-form";
 
 import type { PhoneField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -35,11 +35,6 @@ export function PhoneFieldRenderer({
     },
   });
 
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
-
   const handleOnChange = (phone: string): void => {
     onChange(phone || null);
   };
@@ -54,10 +49,10 @@ export function PhoneFieldRenderer({
       <MuiTelInput
         {...params}
         forceCallingCode
-        defaultCountry="US"
+        defaultCountry="US" // TODO: make this configurable
         required={field.rules.required}
         label={field.label}
-        placeholder={field.placeholder || "555 555 5555"}
+        placeholder={field.placeholder || "555 555 5555"} // TODO: add a correct placeholder
         value={typeof value === "string" ? value : ""}
         onChange={handleOnChange}
         error={Boolean(error)}
@@ -67,12 +62,11 @@ export function PhoneFieldRenderer({
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly
-            extensions={extensions}
+            extensions={BASE_MUI_TIPTAP_EXTENSIONS}
             content={error?.message || field.helperText}
           />
         </Box>

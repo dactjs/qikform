@@ -49,26 +49,22 @@ export function CheckboxFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.name`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Name"
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.label`}
-            helperText="The label"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Label"
+            helperText="The label (optional)"
           />
 
           <ControlledRichEditor

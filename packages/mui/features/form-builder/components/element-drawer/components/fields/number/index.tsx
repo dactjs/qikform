@@ -50,36 +50,30 @@ export function NumberFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.name`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Name"
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.label`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Label"
             helperText="The label (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.placeholder`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Placeholder"
             helperText="The placeholder (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Placeholder",
-            }}
           />
 
           <ControlledRichEditor
@@ -101,24 +95,20 @@ export function NumberFieldSettings({
 
           <ControlledNumberField
             name={`elements.${index}.rules.min`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Min Value"
             helperText="The min value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Min Value",
-            }}
           />
 
           <ControlledNumberField
             name={`elements.${index}.rules.max`}
             helperText="The max value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Max Value",
-            }}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Max Value"
           />
         </Stack>
       </FormControl>
@@ -129,13 +119,11 @@ export function NumberFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledNumberField
             name={`elements.${index}.defaultValue`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Default Value"
             helperText="The default value (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Default Value",
-            }}
           />
         </Stack>
       </FormControl>

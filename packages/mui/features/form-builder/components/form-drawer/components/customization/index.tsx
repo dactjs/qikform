@@ -112,30 +112,26 @@ export function FormCustomization(): React.ReactElement {
 
           <ControlledTextField
             name="customization.fillAgainButtonText"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Fill Again Button Text",
-            }}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Fill Again Button Text"
           />
 
           <ControlledTextField
             name="customization.submitButtonText"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Submit Button Text",
-            }}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Submit Button Text"
           />
 
           <ControlledRichEditor
             name="customization.submissionText"
+            required
             label="Submission Text"
-            rules={{ required: true }}
           />
         </Stack>
       </FormControl>

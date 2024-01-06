@@ -1,7 +1,7 @@
 "use client";
 
 import type { Reducer } from "react";
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useMemo, useContext, createContext } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
@@ -17,10 +17,14 @@ interface FormRendererState {
   currentPage: number;
 }
 
-interface FormRendererAction {
-  type: "SET_CURRENT_PAGE";
-  payload: number;
-}
+type FormRendererAction =
+  | {
+      type: "SET_CURRENT_PAGE";
+      payload: number;
+    }
+  | {
+      type: "START_NEW_SUBMISSION";
+    };
 
 const reducer: Reducer<FormRendererState, FormRendererAction> = (
   state,
@@ -32,6 +36,10 @@ const reducer: Reducer<FormRendererState, FormRendererAction> = (
         ...state,
         currentPage: action.payload,
       };
+    }
+
+    case "START_NEW_SUBMISSION": {
+      return initialState;
     }
   }
 };
@@ -49,6 +57,7 @@ export interface FormRendererContextValue {
   pages: FormPage[];
   currentPage: number;
   setCurrentPage: (page: number) => void;
+  startNewSubmission: () => void;
 }
 
 export const FormRendererContext = createContext<FormRendererContextValue>({
@@ -56,6 +65,7 @@ export const FormRendererContext = createContext<FormRendererContextValue>({
   pages: [],
   currentPage: initialState.currentPage,
   setCurrentPage: () => undefined,
+  startNewSubmission: () => undefined,
 });
 
 export interface FormRendererProviderProps {
@@ -71,38 +81,48 @@ export function FormRendererProvider({
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const pages: FormPage[] = form.elements.reduce<FormPage[]>(
-    (acc, element) => {
-      if (element.configuration.hidden) return acc;
+  const pages = useMemo<FormPage[]>(
+    () =>
+      form.elements.reduce<FormPage[]>(
+        (acc, element) => {
+          if (element.configuration.hidden) return acc;
 
-      const lastPage = acc[acc.length - 1];
+          const lastPage = acc[acc.length - 1];
 
-      if (element.type !== FormElementType.PAGE_BREAK)
-        lastPage.elements.push(element);
+          if (element.type !== FormElementType.PAGE_BREAK)
+            lastPage.elements.push(element);
 
-      if (element.type === FormElementType.PAGE_BREAK) {
-        lastPage.breaker = element;
+          if (element.type === FormElementType.PAGE_BREAK) {
+            lastPage.breaker = element;
 
-        acc.push({
-          number: lastPage.number + 1,
-          elements: [],
-          breaker: null,
-        });
-      }
+            acc.push({
+              number: lastPage.number + 1,
+              elements: [],
+              breaker: null,
+            });
+          }
 
-      return acc;
-    },
-    [
-      {
-        number: 1,
-        elements: [],
-        breaker: null,
-      },
-    ]
+          return acc;
+        },
+        [
+          {
+            number: 1,
+            elements: [],
+            breaker: null,
+          },
+        ]
+      ),
+    [form]
   );
 
   const handleSetCurrentPage = (page: number): void => {
     dispatch({ type: "SET_CURRENT_PAGE", payload: page });
+  };
+
+  const handleStartNewSubmission = (): void => {
+    methods.reset();
+
+    dispatch({ type: "START_NEW_SUBMISSION" });
   };
 
   return (
@@ -112,6 +132,7 @@ export function FormRendererProvider({
         pages,
         currentPage: state.currentPage,
         setCurrentPage: handleSetCurrentPage,
+        startNewSubmission: handleStartNewSubmission,
       }}
     >
       <FormProvider {...methods}>{children}</FormProvider>

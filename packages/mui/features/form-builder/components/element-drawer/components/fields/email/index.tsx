@@ -51,36 +51,30 @@ export function EmailFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.name`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Name"
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.label`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Label"
             helperText="The label (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.placeholder`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Placeholder"
             helperText="The placeholder (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Placeholder",
-            }}
           />
 
           <ControlledRichEditor
@@ -109,22 +103,18 @@ export function EmailFieldSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.defaultValue`}
+            type="email"
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Default Value"
+            placeholder="example@me.com"
             helperText="The default value (optional)"
-            textFieldProps={{
-              type: "email",
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Default Value",
-              placeholder: "example@me.com",
-              InputProps: {
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <EmailIcon />
-                  </InputAdornment>
-                ),
-              },
-            }}
+            startAdornment={
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            }
           />
         </Stack>
       </FormControl>

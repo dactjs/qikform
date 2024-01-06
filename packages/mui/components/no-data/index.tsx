@@ -1,34 +1,34 @@
-import type { BoxProps } from "@mui/material";
+import type { SxProps, Theme } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 
-export interface NoDataProps extends BoxProps {
+export interface NoDataProps {
   message?: string;
+  sx?: SxProps<Theme>;
 }
 
-export function NoData({ message, ...rest }: NoDataProps): React.ReactElement {
+export function NoData({ message, sx }: NoDataProps): React.ReactElement {
   return (
     <Box
-      {...rest}
-      sx={{
-        display: "grid",
-        placeContent: "center",
-        placeItems: "center",
-        gap: 1,
-        width: "100%",
-        height: "100%",
-        padding: 4,
-        overflow: "auto",
-        ...rest.sx,
-      }}
+      component="figure"
+      sx={[
+        {
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 1,
+          padding: 4,
+        },
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- `sx` is a `SxProps` object.
+        ...(Array.isArray(sx) ? sx : [sx]), // You cannot spread `sx` directly because `SxProps` can be an array.
+      ]}
     >
       <Box sx={{ maxWidth: "5em" }}>
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          data-name="Layer 1"
           width="647.63626"
           height="632.17383"
           viewBox="0 0 647.63626 632.17383"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
           style={{ width: "100%", height: "auto", objectFit: "cover" }}
         >
           <path
@@ -76,10 +76,11 @@ export function NoData({ message, ...rest }: NoDataProps): React.ReactElement {
       </Box>
 
       <Typography
+        component="figcaption"
         variant="caption"
         align="center"
         fontWeight="bolder"
-        color="textSecondary"
+        color="text.secondary"
       >
         {message || "No data to display"}
       </Typography>

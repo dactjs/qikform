@@ -48,25 +48,21 @@ export function PageBreakBlockSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.name`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Name"
             helperText="Unique name for this block. Use only letters, numbers, and underscores"
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Name",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.label`}
+            autoComplete="off"
+            fullWidth
+            size="small"
+            label="Label"
             helperText="The label (optional)"
-            textFieldProps={{
-              autoComplete: "off",
-              fullWidth: true,
-              size: "small",
-              label: "Label",
-            }}
           />
         </Stack>
       </FormControl>
@@ -77,26 +73,22 @@ export function PageBreakBlockSettings({
         <Stack spacing={2} sx={{ paddingTop: (theme) => theme.spacing(1.5) }}>
           <ControlledTextField
             name={`elements.${index}.nextPageButtonText`}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Next Page Button Text"
             helperText="The text for the `next page button`. Shown on the current page."
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Next Page Button Text",
-            }}
           />
 
           <ControlledTextField
             name={`elements.${index}.previousPageButtonText`}
             helperText="The text for the `previous page button`. Shown on the next page."
-            textFieldProps={{
-              autoComplete: "off",
-              required: true,
-              fullWidth: true,
-              size: "small",
-              label: "Previous Page Button Text",
-            }}
+            autoComplete="off"
+            required
+            fullWidth
+            size="small"
+            label="Previous Page Button Text"
           />
         </Stack>
       </FormControl>

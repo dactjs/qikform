@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, FormControl, FormLabel } from "@mui/material";
+import type { RichTextEditorProps } from "mui-tiptap";
 import {
   RichTextEditor,
   RichTextReadOnly,
@@ -16,13 +17,13 @@ import {
   MenuButtonAlignRight,
   MenuDivider,
 } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import { Placeholder } from "@tiptap/extension-placeholder";
 import { CharacterCount } from "@tiptap/extension-character-count";
 import { useController } from "react-hook-form";
 
 import type { RichTextField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -46,13 +47,7 @@ export function RichTextFieldRenderer({
   });
 
   const extensions = [
-    StarterKit.configure({
-      bulletList: false,
-      orderedList: false,
-    }),
-    TextAlign.configure({
-      types: ["heading", "paragraph"],
-    }),
+    ...BASE_MUI_TIPTAP_EXTENSIONS,
     Placeholder.configure({
       placeholder: field.placeholder || "Write something...",
     }),
@@ -88,6 +83,14 @@ export function RichTextFieldRenderer({
     </MenuControlsContainer>
   );
 
+  const handleOnUpdate: RichTextEditorProps["onUpdate"] = (content) => {
+    const isEmpty = content.editor.isEmpty;
+
+    const html = content.editor.getHTML();
+
+    onChange(isEmpty ? null : html);
+  };
+
   return (
     <FormControl
       fullWidth
@@ -97,11 +100,11 @@ export function RichTextFieldRenderer({
         ...(!disabled && {
           ...(error && {
             "&& .MuiTiptap-FieldContainer-notchedOutline": {
-              borderColor: (theme) => `${theme.palette.error.main}`,
+              borderColor: "error.main",
             },
 
-            "&& .MuiTiptap-FieldContainer-notchedOutline:focus": {
-              borderColor: (theme) => `${theme.palette.error.main}`,
+            "&& .MuiTiptap-FieldContainer-notchedOutline:focus-within": {
+              borderColor: "error.main",
             },
           }),
         }),
@@ -114,19 +117,14 @@ export function RichTextFieldRenderer({
         editable={!disabled}
         content={typeof value === "string" ? value : field.defaultValue || null}
         onBlur={onBlur}
-        onUpdate={(content) => {
-          const isEmpty = content.editor.isEmpty;
-          const html = content.editor.getHTML();
-          onChange(isEmpty ? null : html);
-        }}
+        onUpdate={handleOnUpdate}
       />
 
       {(Boolean(error) || Boolean(field.helperText)) && (
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly

@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { ClearAll as ClearIcon } from "@mui/icons-material";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import { useController } from "react-hook-form";
 
 import type { SingleChoiceField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -38,11 +38,6 @@ export function SingleChoiceFieldRenderer({
     },
   });
 
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
-
   const handleClear = (): void => {
     onChange(null);
   };
@@ -56,50 +51,48 @@ export function SingleChoiceFieldRenderer({
     >
       <Box
         component="fieldset"
-        sx={{
-          margin: 0,
-          paddingX: 1.5,
-          paddingBottom: 0.5,
-          color: error ? "error.main" : "text.primary",
-          borderRadius: 1,
-          border: (theme) =>
-            theme.palette.mode === "light"
-              ? `1px solid ${theme.palette.grey[400]}`
-              : `1px solid ${theme.palette.grey[700]}`,
-
-          ...(!params.disabled && {
-            "&:hover": {
-              border: (theme) => `1px solid ${theme.palette.action.active}`,
-            },
+        sx={[
+          {
+            margin: 0,
+            paddingX: 1.5,
+            paddingBottom: 0.5,
+            color: error ? "error.main" : "text.primary",
+            borderRadius: 1,
+            border: 1,
+            borderColor: (theme) =>
+              theme.palette.mode === "light" ? "grey.400" : "grey.700",
+          },
+          !params.disabled && {
+            "&:hover": { borderColor: "action.active" },
 
             "&:focus-within": {
               paddingX: 1.4,
               paddingBottom: 0.4,
-              border: (theme) => `2px solid ${theme.palette.primary.main}`,
+              border: 2,
+              borderColor: "primary.main",
             },
 
             ...(error && {
-              border: (theme) => `1px solid ${theme.palette.error.main}`,
+              borderColor: "error.main",
 
-              "&:hover": {
-                border: (theme) => `1px solid ${theme.palette.error.main}`,
-              },
+              "&:hover": { borderColor: "error.main" },
 
               "&:focus-within": {
                 paddingX: 1.4,
                 paddingBottom: 0.4,
-                border: (theme) => `2px solid ${theme.palette.error.main}`,
+                border: 2,
+                borderColor: "error.main",
               },
             }),
-          }),
-        }}
+          },
+        ]}
       >
         <FormLabel
           component="legend"
           sx={{
             marginX: -0.5,
             paddingX: 0.5,
-            fontSize: (theme) => theme.typography.caption.fontSize,
+            fontSize: "caption.fontSize",
           }}
         >
           {field.label}
@@ -129,8 +122,7 @@ export function SingleChoiceFieldRenderer({
                   ...(error && {
                     typography: {
                       sx: {
-                        color: (theme) =>
-                          `${theme.palette.error.main} !important`,
+                        color: "error.main",
                       },
                     },
                   }),
@@ -157,12 +149,11 @@ export function SingleChoiceFieldRenderer({
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly
-            extensions={extensions}
+            extensions={BASE_MUI_TIPTAP_EXTENSIONS}
             content={error?.message || field.helperText}
           />
         </Box>

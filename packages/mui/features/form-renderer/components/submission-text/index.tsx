@@ -2,39 +2,30 @@
 
 import { Stack, Divider, Button } from "@mui/material";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
-import { useFormContext } from "react-hook-form";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../lib";
 
 import { useFormRenderer } from "../../context";
 
 export function SubmissionText(): React.ReactElement {
-  const { reset } = useFormContext();
-
-  const { form } = useFormRenderer();
-
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
+  const { form, startNewSubmission } = useFormRenderer();
 
   const { submissionText, allowMultipleSubmissions, fillAgainButtonText } =
     form.customization;
 
-  const handleReset = (): void => {
-    reset();
-  };
-
   return (
     <Stack spacing={1} divider={<Divider flexItem />}>
-      <RichTextReadOnly extensions={extensions} content={submissionText} />
+      <RichTextReadOnly
+        extensions={BASE_MUI_TIPTAP_EXTENSIONS}
+        content={submissionText}
+      />
 
       {Boolean(allowMultipleSubmissions) && (
         <Button
           variant="contained"
           size="small"
           color="primary"
-          onClick={handleReset}
+          onClick={startNewSubmission}
         >
           {fillAgainButtonText}
         </Button>

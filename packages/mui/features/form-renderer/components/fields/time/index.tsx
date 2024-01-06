@@ -3,13 +3,13 @@
 import { Box, FormControl } from "@mui/material";
 import { TimePicker } from "@mui/x-date-pickers";
 import { RichTextReadOnly } from "mui-tiptap";
-import { StarterKit } from "@tiptap/starter-kit";
-import { TextAlign } from "@tiptap/extension-text-align";
 import type { Validate } from "react-hook-form";
 import { useController } from "react-hook-form";
 import { isValid, isBefore, isAfter } from "date-fns";
 
 import type { TimeField } from "@qikform/core";
+
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../lib";
 
 import type { FormRendererValues } from "../../../types";
 
@@ -46,11 +46,6 @@ export function TimeFieldRenderer({
     },
   });
 
-  const extensions = [
-    StarterKit,
-    TextAlign.configure({ types: ["heading", "paragraph"] }),
-  ];
-
   return (
     <FormControl
       fullWidth
@@ -78,12 +73,11 @@ export function TimeFieldRenderer({
         <Box
           sx={{
             marginLeft: 2,
-            color: ({ palette }) =>
-              error ? palette.error.main : palette.text.secondary,
+            color: error ? "error.main" : "text.secondary",
           }}
         >
           <RichTextReadOnly
-            extensions={extensions}
+            extensions={BASE_MUI_TIPTAP_EXTENSIONS}
             content={error?.message || field.helperText}
           />
         </Box>
