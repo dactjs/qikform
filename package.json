@@ -1,0 +1,29 @@
+{
+  "name": "@qikform/monorepo",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "packageManager": "pnpm@8.8.0",
+  "engines": {
+    "node": "^20.0.0 || ^22.0.0",
+    "pnpm": "^8.8.0 || ^9.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "publish-packages": "turbo run build lint && changeset version && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.27.1",
+    "@commitlint/cli": "18.4.3",
+    "@commitlint/config-conventional": "18.4.3",
+    "@qikform/tsconfig": "workspace:*",
+    "eslint": "8.56.0",
+    "husky": "8.0.3",
+    "prettier": "3.1.1",
+    "turbo": "1.11.2"
+  }
+}

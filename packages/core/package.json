@@ -1,0 +1,27 @@
+{
+  "name": "@qikform/core",
+  "version": "1.0.0",
+  "private": false,
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint .",
+    "dev": "pnpm run build --watch",
+    "build": "tsup index.ts --format cjs,esm --dts"
+  },
+  "dependencies": {
+    "libphonenumber-js": "1.10.54"
+  },
+  "peerDependencies": {
+    "zod": "^3.22.4 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@qikform/eslint-config-custom": "workspace:*",
+    "@qikform/tsconfig": "workspace:*",
+    "@types/node": "20.10.6",
+    "tsup": "8.0.1",
+    "typescript": "5.3.3"
+  }
+}
