@@ -23,22 +23,6 @@ export function FormDrawerCustomization(): React.ReactElement {
 
         <FormGroup>
           <Controller
-            name="customization.disablePadding"
-            render={({ field, fieldState: { error } }) => (
-              <FormControl error={Boolean(error)}>
-                <FormControlLabel
-                  label="Disable Padding"
-                  control={<Switch {...field} checked={Boolean(field.value)} />}
-                />
-
-                {Boolean(error) && (
-                  <FormHelperText>{error?.message}</FormHelperText>
-                )}
-              </FormControl>
-            )}
-          />
-
-          <Controller
             name="customization.hideTitle"
             render={({ field, fieldState: { error } }) => (
               <FormControl error={Boolean(error)}>
@@ -60,6 +44,22 @@ export function FormDrawerCustomization(): React.ReactElement {
               <FormControl error={Boolean(error)}>
                 <FormControlLabel
                   label="Hide Description"
+                  control={<Switch {...field} checked={Boolean(field.value)} />}
+                />
+
+                {Boolean(error) && (
+                  <FormHelperText>{error?.message}</FormHelperText>
+                )}
+              </FormControl>
+            )}
+          />
+
+          <Controller
+            name="customization.disablePadding"
+            render={({ field, fieldState: { error } }) => (
+              <FormControl error={Boolean(error)}>
+                <FormControlLabel
+                  label="Disable Padding"
                   control={<Switch {...field} checked={Boolean(field.value)} />}
                 />
 

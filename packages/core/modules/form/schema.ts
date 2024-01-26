@@ -9,9 +9,9 @@ export const FormElementSchema = zod.union([
 ]);
 
 export const FormCustomizationSchema = zod.object({
-  disablePadding: zod.boolean().default(false),
   hideTitle: zod.boolean().default(false),
   hideDescription: zod.boolean().default(false),
+  disablePadding: zod.boolean().default(false),
   transparentBackground: zod.boolean().default(false),
   allowMultipleSubmissions: zod.boolean().default(false),
   fillAgainButtonText: zod.string().min(1).default("Fill Again"),
