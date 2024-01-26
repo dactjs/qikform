@@ -1,6 +1,6 @@
 import { z as zod } from "zod";
 
-import { BASE_BLOCK_CATEGORY, BASE_BLOCK_NAME_REGEX } from "./constants";
+import { BASE_BLOCK_KIND, BASE_BLOCK_NAME_REGEX } from "./constants";
 
 export const BaseBlockSchema = zod.object({
   id: zod
@@ -8,7 +8,7 @@ export const BaseBlockSchema = zod.object({
     .uuid()
     .default(() => globalThis.crypto.randomUUID()),
 
-  category: zod.literal(BASE_BLOCK_CATEGORY).default(BASE_BLOCK_CATEGORY),
+  kind: zod.literal(BASE_BLOCK_KIND).default(BASE_BLOCK_KIND),
   name: zod.string().min(1).regex(BASE_BLOCK_NAME_REGEX),
 });
 

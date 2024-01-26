@@ -1,6 +1,6 @@
 import { z as zod } from "zod";
 
-import { BASE_FIELD_CATEGORY, BASE_FIELD_NAME_REGEX } from "./constants";
+import { BASE_FIELD_KIND, BASE_FIELD_NAME_REGEX } from "./constants";
 
 export const BaseFieldSchema = zod.object({
   id: zod
@@ -8,7 +8,7 @@ export const BaseFieldSchema = zod.object({
     .uuid()
     .default(() => globalThis.crypto.randomUUID()),
 
-  category: zod.literal(BASE_FIELD_CATEGORY).default(BASE_FIELD_CATEGORY),
+  kind: zod.literal(BASE_FIELD_KIND).default(BASE_FIELD_KIND),
   name: zod.string().min(1).regex(BASE_FIELD_NAME_REGEX),
 });
 

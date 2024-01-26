@@ -10,7 +10,7 @@ import {
 import { Controller } from "react-hook-form";
 
 import type { FormElement } from "@qikform/core";
-import { FormElementCategory } from "@qikform/core";
+import { FormElementKind } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../../context";
 
@@ -33,7 +33,7 @@ export function ElementItemActions({
 
   return (
     <Stack direction="row" justifyContent="flex-end" alignItems="center">
-      {element.category === FormElementCategory.FIELD && (
+      {element.kind === FormElementKind.FIELD && (
         <Controller
           name={`elements.${index}.rules.required`}
           render={({ field: { value, onChange } }) => {

@@ -1,16 +1,16 @@
-import { BASE_BLOCK_CATEGORY, BlockElementType } from "../blocks";
-import { BASE_FIELD_CATEGORY, FieldElementType } from "../fields";
+import { BASE_BLOCK_KIND, BlockElementType } from "../blocks";
+import { BASE_FIELD_KIND, FieldElementType } from "../fields";
 
-//////////////////////
-// Element Category //
-//////////////////////
+//////////////////
+// Element Kind //
+//////////////////
 
-export type FormElementCategory =
-  (typeof FormElementCategory)[keyof typeof FormElementCategory];
+export type FormElementKind =
+  (typeof FormElementKind)[keyof typeof FormElementKind];
 
-export const FormElementCategory = {
-  [BASE_BLOCK_CATEGORY]: BASE_BLOCK_CATEGORY,
-  [BASE_FIELD_CATEGORY]: BASE_FIELD_CATEGORY,
+export const FormElementKind = {
+  [BASE_BLOCK_KIND]: BASE_BLOCK_KIND,
+  [BASE_FIELD_KIND]: BASE_FIELD_KIND,
 } as const;
 
 //////////////////
