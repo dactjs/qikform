@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Stack,
   Divider,
@@ -25,6 +24,7 @@ import {
 import { useFormBuilder } from "../../../../context";
 
 import { SingleChoiceOptionsDialog } from "./components";
+import { useSingleChoiceFieldSettings } from "./hooks";
 
 export interface SingleChoiceFieldSettingsProps {
   field: SingleChoiceField;
@@ -40,6 +40,9 @@ export function SingleChoiceFieldSettings({
 
   const { elementIndexById } = useFormBuilder();
 
+  const { isOptionsDialogOpen, openOptionsDialog, closeOptionsDialog } =
+    useSingleChoiceFieldSettings();
+
   const index = elementIndexById[field.id];
 
   const fieldOptions = watch(`elements.${index}.options`);
@@ -47,17 +50,6 @@ export function SingleChoiceFieldSettings({
   const fieldErrors = errors.elements?.[index] as
     | FieldErrors<SingleChoiceField>
     | undefined;
-
-  const [isOptionsDialogOpen, setIsOptionsDialogOpen] =
-    useState<boolean>(false);
-
-  const handleOpenOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(true);
-  };
-
-  const handleCloseOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(false);
-  };
 
   return (
     <Stack spacing={2} divider={<Divider flexItem />}>
@@ -124,7 +116,7 @@ export function SingleChoiceFieldSettings({
             maxWidth="sm"
             field={field}
             open={isOptionsDialogOpen}
-            onClose={handleCloseOptionsDialog}
+            onClose={closeOptionsDialog}
           />
 
           <ControlledSelect
@@ -140,7 +132,7 @@ export function SingleChoiceFieldSettings({
             variant="outlined"
             color={fieldErrors?.options ? "error" : "primary"}
             endIcon={<OptionsIcon />}
-            onClick={handleOpenOptionsDialog}
+            onClick={openOptionsDialog}
           >
             Manage Options
           </Button>

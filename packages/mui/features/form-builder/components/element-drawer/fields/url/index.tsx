@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Stack,
   Divider,
@@ -28,6 +27,7 @@ import {
 import { useFormBuilder } from "../../../../context";
 
 import { URLAllowedDomainsDialog } from "./components";
+import { useURLFieldSettings } from "./hooks";
 
 export interface URLFieldSettingsProps {
   field: URLField;
@@ -42,22 +42,17 @@ export function URLFieldSettings({
 
   const { elementIndexById } = useFormBuilder();
 
+  const {
+    isAllowedDomainsDialogOpen,
+    openAllowedDomainsDialog,
+    closeAllowedDomainsDialog,
+  } = useURLFieldSettings();
+
   const index = elementIndexById[field.id];
 
   const fieldErrors = errors.elements?.[index] as
     | FieldErrors<URLField>
     | undefined;
-
-  const [isAllowedDomainsDialogOpen, setIsAllowedDomainsDialogOpen] =
-    useState<boolean>(false);
-
-  const handleOpenAllowedDomainsDialog = (): void => {
-    setIsAllowedDomainsDialogOpen(true);
-  };
-
-  const handleCloseAllowedDomainsDialog = (): void => {
-    setIsAllowedDomainsDialogOpen(false);
-  };
 
   return (
     <Stack spacing={2} divider={<Divider flexItem />}>
@@ -121,7 +116,7 @@ export function URLFieldSettings({
             maxWidth="sm"
             field={field}
             open={isAllowedDomainsDialogOpen}
-            onClose={handleCloseAllowedDomainsDialog}
+            onClose={closeAllowedDomainsDialog}
           />
 
           <ControlledCheckbox
@@ -134,7 +129,7 @@ export function URLFieldSettings({
             variant="outlined"
             color={fieldErrors?.rules?.allowedDomains ? "error" : "primary"}
             endIcon={<AllowedDomainsIcon />}
-            onClick={handleOpenAllowedDomainsDialog}
+            onClick={openAllowedDomainsDialog}
           >
             Manage Allowed Domains
           </Button>

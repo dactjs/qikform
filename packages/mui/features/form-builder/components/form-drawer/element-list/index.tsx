@@ -34,8 +34,8 @@ export function FormDrawerElementList(): React.ReactElement {
 
   const {
     search,
-    searchElements,
     filteredElements,
+    searchElements,
     active,
     startDrag,
     endDrag,

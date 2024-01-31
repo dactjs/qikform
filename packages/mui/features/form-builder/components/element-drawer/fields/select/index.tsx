@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Stack,
   Divider,
@@ -25,6 +24,7 @@ import {
 import { useFormBuilder } from "../../../../context";
 
 import { SelectOptionsDialog } from "./components";
+import { useSelectFieldSettings } from "./hooks";
 
 export interface SelectFieldSettingsProps {
   field: SelectField;
@@ -40,6 +40,9 @@ export function SelectFieldSettings({
 
   const { elementIndexById } = useFormBuilder();
 
+  const { isOptionsDialogOpen, openOptionsDialog, closeOptionsDialog } =
+    useSelectFieldSettings();
+
   const index = elementIndexById[field.id];
 
   const multiple = watch(`elements.${index}.configuration.multiple`);
@@ -49,17 +52,6 @@ export function SelectFieldSettings({
   const fieldErrors = errors.elements?.[index] as
     | FieldErrors<SelectField>
     | undefined;
-
-  const [isOptionsDialogOpen, setIsOptionsDialogOpen] =
-    useState<boolean>(false);
-
-  const handleOpenOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(true);
-  };
-
-  const handleCloseOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(false);
-  };
 
   return (
     <Stack spacing={2} divider={<Divider flexItem />}>
@@ -139,7 +131,7 @@ export function SelectFieldSettings({
             maxWidth="sm"
             field={field}
             open={isOptionsDialogOpen}
-            onClose={handleCloseOptionsDialog}
+            onClose={closeOptionsDialog}
           />
 
           <ControlledSelect
@@ -156,7 +148,7 @@ export function SelectFieldSettings({
             variant="outlined"
             color={fieldErrors?.options ? "error" : "primary"}
             endIcon={<OptionsIcon />}
-            onClick={handleOpenOptionsDialog}
+            onClick={openOptionsDialog}
           >
             Manage Options
           </Button>

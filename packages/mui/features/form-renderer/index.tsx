@@ -16,7 +16,7 @@ function FormRenderer(): React.ReactElement {
 
   const { form } = useFormRenderer();
 
-  const { disablePadding, hideTitle, hideDescription, transparentBackground } =
+  const { hideTitle, hideDescription, disablePadding, transparentBackground } =
     form.customization;
 
   const showHeader = !hideTitle || !hideDescription;

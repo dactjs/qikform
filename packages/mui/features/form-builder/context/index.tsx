@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { Form, FormElement } from "@qikform/core";
 import { FormSchema } from "@qikform/core";
 
-import { objectURLFileURLBuildStrategy } from "../utils";
 import type { FileURLBuildStrategy } from "../types";
 
 ///////////
@@ -77,14 +76,14 @@ export const FormBuilderContext = createContext<FormBuilderContextValue>({
 
 export interface FormBuilderProviderProps {
   form: Form;
-  fileURLBuildStrategy?: FileURLBuildStrategy;
+  fileURLBuildStrategy: FileURLBuildStrategy;
   onSave?: (form: Form) => void | Promise<void>;
   children: React.ReactElement;
 }
 
 export function FormBuilderProvider({
   form,
-  fileURLBuildStrategy = objectURLFileURLBuildStrategy,
+  fileURLBuildStrategy,
   onSave,
   children,
 }: FormBuilderProviderProps): React.ReactElement {

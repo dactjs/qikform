@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   Stack,
   Divider,
@@ -25,6 +24,7 @@ import {
 import { useFormBuilder } from "../../../../context";
 
 import { MultipleChoiceOptionsDialog } from "./components";
+import { useMultipleChoiceFieldSettings } from "./hooks";
 
 export interface MultipleChoiceFieldSettingsProps {
   field: MultipleChoiceField;
@@ -40,6 +40,9 @@ export function MultipleChoiceFieldSettings({
 
   const { elementIndexById } = useFormBuilder();
 
+  const { isOptionsDialogOpen, openOptionsDialog, closeOptionsDialog } =
+    useMultipleChoiceFieldSettings();
+
   const index = elementIndexById[field.id];
 
   const fieldOptions = watch(`elements.${index}.options`);
@@ -47,17 +50,6 @@ export function MultipleChoiceFieldSettings({
   const fieldErrors = errors.elements?.[index] as
     | FieldErrors<MultipleChoiceField>
     | undefined;
-
-  const [isOptionsDialogOpen, setIsOptionsDialogOpen] =
-    useState<boolean>(false);
-
-  const handleOpenOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(true);
-  };
-
-  const handleCloseOptionsDialog = (): void => {
-    setIsOptionsDialogOpen(false);
-  };
 
   return (
     <Stack spacing={2} divider={<Divider flexItem />}>
@@ -124,7 +116,7 @@ export function MultipleChoiceFieldSettings({
             maxWidth="sm"
             field={field}
             open={isOptionsDialogOpen}
-            onClose={handleCloseOptionsDialog}
+            onClose={closeOptionsDialog}
           />
 
           <ControlledSelect
@@ -141,7 +133,7 @@ export function MultipleChoiceFieldSettings({
             variant="outlined"
             color={fieldErrors?.options ? "error" : "primary"}
             endIcon={<OptionsIcon />}
-            onClick={handleOpenOptionsDialog}
+            onClick={openOptionsDialog}
           >
             Manage Options
           </Button>

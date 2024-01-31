@@ -9,6 +9,8 @@ import { FormRenderer } from "../form-renderer";
 
 import { FormBuilderProvider, useFormBuilder } from "./context";
 import { Header, FormDrawer, ElementDrawer } from "./components";
+import { objectURLFileURLBuildStrategy } from "./utils";
+import type { FileURLBuildStrategy } from "./types";
 
 export interface FormBuilderProps {
   toolbarContent?: React.ReactElement;
@@ -110,16 +112,22 @@ function FormBuilder({ toolbarContent }: FormBuilderProps): React.ReactElement {
 interface FormBuilderWrapperProps {
   form: Form;
   toolbarContent?: React.ReactElement;
+  fileURLBuildStrategy?: FileURLBuildStrategy;
   onSave?: (form: Form) => void | Promise<void>;
 }
 
 function FormBuilderWrapper({
   form,
   toolbarContent,
+  fileURLBuildStrategy = objectURLFileURLBuildStrategy,
   onSave,
 }: FormBuilderWrapperProps): React.ReactElement {
   return (
-    <FormBuilderProvider form={form} onSave={onSave}>
+    <FormBuilderProvider
+      form={form}
+      fileURLBuildStrategy={fileURLBuildStrategy}
+      onSave={onSave}
+    >
       <FormBuilder toolbarContent={toolbarContent} />
     </FormBuilderProvider>
   );

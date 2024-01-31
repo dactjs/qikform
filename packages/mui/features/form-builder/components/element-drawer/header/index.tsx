@@ -25,10 +25,6 @@ export function ElementDrawerHeader(): React.ReactElement {
   const { elementIndexById, selectedElement, selectElement, unselectElement } =
     useFormBuilder();
 
-  const handleClose = (): void => {
-    unselectElement();
-  };
-
   const handleDuplicate = (): void => {
     if (!selectedElement) return;
 
@@ -51,6 +47,10 @@ export function ElementDrawerHeader(): React.ReactElement {
 
     remove(index);
 
+    unselectElement();
+  };
+
+  const handleClose = (): void => {
     unselectElement();
   };
 

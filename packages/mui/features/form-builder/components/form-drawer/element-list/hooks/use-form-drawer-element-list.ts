@@ -8,8 +8,8 @@ import { useFormBuilder } from "../../../../context";
 
 export interface UseFormDrawerElementListReturn {
   search: string;
-  searchElements: (event: React.ChangeEvent<HTMLInputElement>) => void;
   filteredElements: FormElement[];
+  searchElements: (event: React.ChangeEvent<HTMLInputElement>) => void;
   active: Active | null;
   startDrag: (event: DragStartEvent) => void;
   endDrag: (event: DragEndEvent) => void;
@@ -64,8 +64,8 @@ export function useFormDrawerElementList(): UseFormDrawerElementListReturn {
 
   return {
     search,
-    searchElements,
     filteredElements,
+    searchElements,
     active,
     startDrag: handleStartDrag,
     endDrag: handleEndDrag,

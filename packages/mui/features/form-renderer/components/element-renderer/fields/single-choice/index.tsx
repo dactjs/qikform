@@ -143,7 +143,7 @@ export function SingleChoiceFieldRenderer({
           })}
         </RadioGroup>
 
-        {Boolean(value) && (
+        {Boolean(state) && (
           <Button
             variant="outlined"
             size="small"

@@ -10,7 +10,7 @@ import { useFormRenderer } from "../../context";
 export function SubmissionText(): React.ReactElement {
   const { form, startNewSubmission } = useFormRenderer();
 
-  const { submissionText, allowMultipleSubmissions, fillAgainButtonText } =
+  const { allowMultipleSubmissions, fillAgainButtonText, submissionText } =
     form.customization;
 
   return (
