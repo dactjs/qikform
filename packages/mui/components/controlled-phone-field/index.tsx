@@ -82,7 +82,7 @@ export function ControlledPhoneField({
     if (!result.success) {
       return {
         number: "",
-        country: "US",
+        country: defaultCountry,
       };
     }
 
@@ -91,7 +91,7 @@ export function ControlledPhoneField({
       country:
         result.data.country !== UNKNOWN_PHONE_COUNTRY_CODE
           ? result.data.country
-          : "US",
+          : defaultCountry,
     };
   });
 

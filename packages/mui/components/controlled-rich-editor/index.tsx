@@ -98,6 +98,7 @@ export function ControlledRichEditor({
     <FormControl
       {...params}
       fullWidth
+      variant="outlined"
       required={required}
       error={Boolean(error)}
       sx={{

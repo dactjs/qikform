@@ -24,7 +24,7 @@ export interface ControlledCodeEditorProps
 export function ControlledCodeEditor({
   name,
   control,
-  disabled,
+  disabled: _disabled,
   defaultValue,
   rules,
   shouldUnregister,
@@ -37,12 +37,12 @@ export function ControlledCodeEditor({
   const theme = useTheme();
 
   const {
-    field: { value: state, onChange, ...params },
+    field: { disabled, value: state, onChange, ...params },
     fieldState: { error },
   } = useController({
     name,
     control,
-    disabled,
+    disabled: _disabled,
     defaultValue,
     rules,
     shouldUnregister,
@@ -56,6 +56,7 @@ export function ControlledCodeEditor({
 
   return (
     <FormControl
+      {...params}
       fullWidth
       variant="outlined"
       required={required}
@@ -70,7 +71,7 @@ export function ControlledCodeEditor({
             borderColor:
               theme.palette.mode === "light" ? "grey.400" : "grey.700",
           },
-          !params.disabled && {
+          !disabled && {
             "&:hover": { borderColor: "action.active" },
 
             "&:focus-within": {
@@ -114,7 +115,7 @@ export function ControlledCodeEditor({
           language={language}
           value={value}
           onChange={handleOnChange}
-          options={options}
+          options={{ readOnly: disabled, ...options }}
         />
       </Box>
 
