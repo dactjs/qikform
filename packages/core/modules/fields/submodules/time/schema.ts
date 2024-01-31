@@ -20,8 +20,8 @@ export const TimeFieldRulesSchema = BaseFieldRulesSchema.extend({
     const min = new Date(minTime);
     const max = new Date(maxTime);
 
-    min.setFullYear(1995, 11, 5);
-    max.setFullYear(1995, 11, 5);
+    min.setFullYear(2000, 0, 1);
+    max.setFullYear(2000, 0, 1);
 
     return min <= max;
   },
@@ -45,7 +45,7 @@ export const TimeFieldSchema = BaseFieldSchema.extend({
     if (rules.minTime) {
       const min = new Date(rules.minTime);
 
-      min.setFullYear(1995, 11, 5);
+      min.setFullYear(2000, 0, 1);
 
       return defaultValue >= min;
     }
@@ -53,7 +53,7 @@ export const TimeFieldSchema = BaseFieldSchema.extend({
     if (rules.maxTime) {
       const max = new Date(rules.maxTime);
 
-      max.setFullYear(1995, 11, 5);
+      max.setFullYear(2000, 0, 1);
 
       return defaultValue <= max;
     }
