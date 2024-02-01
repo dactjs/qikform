@@ -4,7 +4,7 @@ import { useState } from "react";
 import { InputAdornment } from "@mui/material";
 import { Image as ImageIcon, Cancel as DeleteIcon } from "@mui/icons-material";
 import { MuiFileInput } from "mui-file-input";
-import { SnackbarProvider, enqueueSnackbar } from "notistack";
+import { useSnackbar } from "notistack";
 import type { FieldPath } from "react-hook-form";
 import { useController } from "react-hook-form";
 
@@ -19,6 +19,8 @@ export interface ControlledUploadImageInputProps {
 export function ControlledUploadImageInput({
   name,
 }: ControlledUploadImageInputProps): React.ReactElement {
+  const { enqueueSnackbar } = useSnackbar();
+
   const {
     field: { value: state, onChange, ...params },
     fieldState: { error },
@@ -46,33 +48,29 @@ export function ControlledUploadImageInput({
   };
 
   return (
-    <>
-      <SnackbarProvider />
-
-      <MuiFileInput
-        {...params}
-        required
-        hideSizeText
-        label="Image"
-        placeholder="Upload Image"
-        value={file}
-        onChange={handleOnChange}
-        error={Boolean(error)}
-        helperText={error?.message}
-        inputProps={{ accept: "image/*" }}
-        clearIconButtonProps={{
-          title: "Remove",
-          children: <DeleteIcon fontSize="small" />,
-        }}
-        InputProps={{
-          sx: { overflowX: "hidden", textOverflow: "ellipsis" },
-          startAdornment: (
-            <InputAdornment position="start">
-              <ImageIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
-    </>
+    <MuiFileInput
+      {...params}
+      required
+      hideSizeText
+      label="Image"
+      placeholder="Upload Image"
+      value={file}
+      onChange={handleOnChange}
+      error={Boolean(error)}
+      helperText={error?.message}
+      inputProps={{ accept: "image/*" }}
+      clearIconButtonProps={{
+        title: "Remove",
+        children: <DeleteIcon fontSize="small" />,
+      }}
+      InputProps={{
+        sx: { overflowX: "hidden", textOverflow: "ellipsis" },
+        startAdornment: (
+          <InputAdornment position="start">
+            <ImageIcon />
+          </InputAdornment>
+        ),
+      }}
+    />
   );
 }

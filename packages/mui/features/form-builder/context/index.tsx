@@ -2,6 +2,7 @@
 
 import type { Reducer } from "react";
 import { useReducer, useContext, createContext } from "react";
+import { SnackbarProvider } from "notistack";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -130,18 +131,20 @@ export function FormBuilderProvider({
   );
 
   return (
-    <FormBuilderContext.Provider
-      value={{
-        elementIndexById,
-        selectedElement,
-        selectElement: handleSelectElement,
-        unselectElement: handleUnselectElement,
-        save: handleSave,
-        fileURLBuildStrategy,
-      }}
-    >
-      <FormProvider {...methods}>{children}</FormProvider>
-    </FormBuilderContext.Provider>
+    <SnackbarProvider>
+      <FormBuilderContext.Provider
+        value={{
+          elementIndexById,
+          selectedElement,
+          selectElement: handleSelectElement,
+          unselectElement: handleUnselectElement,
+          save: handleSave,
+          fileURLBuildStrategy,
+        }}
+      >
+        <FormProvider {...methods}>{children}</FormProvider>
+      </FormBuilderContext.Provider>
+    </SnackbarProvider>
   );
 }
 

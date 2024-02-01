@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSnackbar } from "notistack";
 import { useFieldArray } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
@@ -14,6 +15,8 @@ export interface UseFormDrawerAddElementButtonReturn {
 }
 
 export function useFormDrawerAddElementButton(): UseFormDrawerAddElementButtonReturn {
+  const { enqueueSnackbar } = useSnackbar();
+
   const { fields: elements, append } = useFieldArray<Form>({
     name: "elements",
   });
@@ -151,7 +154,10 @@ export function useFormDrawerAddElementButton(): UseFormDrawerAddElementButtonRe
 
     const result = FormElementSchema.safeParse(schemas[type]);
 
-    if (!result.success) return;
+    if (!result.success) {
+      enqueueSnackbar(result.error.message, { variant: "error" });
+      return;
+    }
 
     const element = result.data;
 
