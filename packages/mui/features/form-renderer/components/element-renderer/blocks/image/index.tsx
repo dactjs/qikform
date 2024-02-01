@@ -16,8 +16,13 @@ export function ImageBlockRenderer({
 }: {
   block: ImageBlock;
 }): React.ReactElement {
-  const { isGalleryDialogOpen, openGalleryDialog, closeGalleryDialog } =
-    useImageBlockRenderer();
+  const {
+    loading,
+    endLoading,
+    isGalleryDialogOpen,
+    openGalleryDialog,
+    closeGalleryDialog,
+  } = useImageBlockRenderer({ initialLoading: true });
 
   return (
     <>
@@ -30,7 +35,7 @@ export function ImageBlockRenderer({
       />
 
       <Box component="figure" sx={{ position: "relative" }}>
-        {Boolean(block.url) && (
+        {!loading && Boolean(block.url) && (
           <Box
             sx={{
               position: "absolute",
@@ -61,6 +66,7 @@ export function ImageBlockRenderer({
         <Box
           component="img"
           loading="lazy"
+          onLoad={endLoading}
           alt={block.label || block.name}
           src={block.url}
           sx={{ maxWidth: "100%", maxHeight: 300, objectFit: "cover" }}

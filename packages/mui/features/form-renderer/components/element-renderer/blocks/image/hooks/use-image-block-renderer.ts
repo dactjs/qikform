@@ -1,12 +1,31 @@
 import { useState } from "react";
 
+export interface UseImageBlockRendererParams {
+  initialLoading: boolean;
+}
+
 export interface UseImageBlockRendererReturn {
+  loading: boolean;
+  startLoading: () => void;
+  endLoading: () => void;
   isGalleryDialogOpen: boolean;
   openGalleryDialog: () => void;
   closeGalleryDialog: () => void;
 }
 
-export function useImageBlockRenderer(): UseImageBlockRendererReturn {
+export function useImageBlockRenderer({
+  initialLoading,
+}: UseImageBlockRendererParams): UseImageBlockRendererReturn {
+  const [loading, setLoading] = useState<boolean>(initialLoading);
+
+  const startLoading = (): void => {
+    setLoading(true);
+  };
+
+  const endLoading = (): void => {
+    setLoading(false);
+  };
+
   const [isGalleryDialogOpen, setIsGalleryDialogOpen] =
     useState<boolean>(false);
 
@@ -19,6 +38,9 @@ export function useImageBlockRenderer(): UseImageBlockRendererReturn {
   };
 
   return {
+    loading,
+    startLoading,
+    endLoading,
     isGalleryDialogOpen,
     openGalleryDialog: handleOpenGalleryDialog,
     closeGalleryDialog: handleCloseGalleryDialog,
