@@ -12,7 +12,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function TimeFieldRenderer({
+export function FormRendererTimeFieldRenderer({
   field,
 }: {
   field: TimeField;
@@ -45,7 +45,7 @@ export function TimeFieldRenderer({
             minTime.setHours(
               field.rules.minTime.getHours(),
               field.rules.minTime.getMinutes(),
-              field.rules.minTime.getSeconds()
+              field.rules.minTime.getSeconds(),
             );
 
             if (isAfter(date, minTime)) return true;
@@ -62,7 +62,7 @@ export function TimeFieldRenderer({
             maxTime.setHours(
               field.rules.maxTime.getHours(),
               field.rules.maxTime.getMinutes(),
-              field.rules.maxTime.getSeconds()
+              field.rules.maxTime.getSeconds(),
             );
 
             if (isBefore(date, maxTime)) return true;

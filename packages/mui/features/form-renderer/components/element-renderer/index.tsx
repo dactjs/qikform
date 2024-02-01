@@ -8,35 +8,35 @@ import { FormElementType } from "@qikform/core";
 import { useFormRenderer } from "../../context";
 
 import {
-  TextBlockRenderer,
-  ImageBlockRenderer,
-  CodeBlockRenderer,
-  DividerBlockRenderer,
+  FormRendererTextBlockRenderer as TextBlockRenderer,
+  FormRendererImageBlockRenderer as ImageBlockRenderer,
+  FormRendererCodeBlockRenderer as CodeBlockRenderer,
+  FormRendererDividerBlockRenderer as DividerBlockRenderer,
 } from "./blocks";
 import {
-  PlainTextFieldRenderer,
-  RichTextFieldRenderer,
-  NumberFieldRenderer,
-  EmailFieldRenderer,
-  PhoneFieldRenderer,
-  URLFieldRenderer,
-  CheckboxFieldRenderer,
-  SwitchFieldRenderer,
-  SingleChoiceFieldRenderer,
-  MultipleChoiceFieldRenderer,
-  SelectFieldRenderer,
-  TimeFieldRenderer,
-  DateFieldRenderer,
-  DateTimeFieldRenderer,
+  FormRendererPlainTextFieldRenderer as PlainTextFieldRenderer,
+  FormRendererRichTextFieldRenderer as RichTextFieldRenderer,
+  FormRendererNumberFieldRenderer as NumberFieldRenderer,
+  FormRendererEmailFieldRenderer as EmailFieldRenderer,
+  FormRendererPhoneFieldRenderer as PhoneFieldRenderer,
+  FormRendererURLFieldRenderer as URLFieldRenderer,
+  FormRendererCheckboxFieldRenderer as CheckboxFieldRenderer,
+  FormRendererSwitchFieldRenderer as SwitchFieldRenderer,
+  FormRendererSingleChoiceFieldRenderer as SingleChoiceFieldRenderer,
+  FormRendererMultipleChoiceFieldRenderer as MultipleChoiceFieldRenderer,
+  FormRendererSelectFieldRenderer as SelectFieldRenderer,
+  FormRendererTimeFieldRenderer as TimeFieldRenderer,
+  FormRendererDateFieldRenderer as DateFieldRenderer,
+  FormRendererDateTimeFieldRenderer as DateTimeFieldRenderer,
 } from "./fields";
 
-export interface ElementRendererProps {
+export interface FormRendererElementRendererProps {
   element: FormElement;
 }
 
-export function ElementRenderer({
+export function FormRendererElementRenderer({
   element,
-}: ElementRendererProps): React.ReactNode {
+}: FormRendererElementRendererProps): React.ReactNode {
   const { visibleElements } = useFormRenderer();
 
   const isVisible = visibleElements.some(({ id }) => id === element.id);

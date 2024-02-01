@@ -18,7 +18,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function SelectFieldRenderer({
+export function FormRendererSelectFieldRenderer({
   field,
 }: {
   field: SelectField;
@@ -56,7 +56,7 @@ export function SelectFieldRenderer({
   const value = normalizeValue(state);
 
   const handleOnChange = (
-    event: SelectChangeEvent<string | string[]>
+    event: SelectChangeEvent<string | string[]>,
   ): void => {
     const selected = event.target.value;
 

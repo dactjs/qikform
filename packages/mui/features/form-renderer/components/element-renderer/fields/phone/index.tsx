@@ -20,7 +20,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function PhoneFieldRenderer({
+export function FormRendererPhoneFieldRenderer({
   field,
 }: {
   field: PhoneField;
@@ -89,7 +89,7 @@ export function PhoneFieldRenderer({
             country: info.countryCode || UNKNOWN_PHONE_COUNTRY_CODE,
             number: info.numberValue,
           } satisfies Phone)
-        : null
+        : null,
     );
 
     setPhone((prev) => ({

@@ -19,7 +19,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function SingleChoiceFieldRenderer({
+export function FormRendererSingleChoiceFieldRenderer({
   field,
 }: {
   field: SingleChoiceField;
@@ -41,7 +41,7 @@ export function SingleChoiceFieldRenderer({
   const value = typeof state === "string" ? state : null;
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const option = event.target.value;
     onChange(option || null);

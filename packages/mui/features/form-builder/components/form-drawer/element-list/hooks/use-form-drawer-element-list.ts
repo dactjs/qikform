@@ -34,7 +34,7 @@ export function useFormDrawerElementList(): UseFormDrawerElementListReturn {
     (element) =>
       !element.name || // in the schema, the name is required, but in the <FormBuilder /> it could be null
       element.name.toLowerCase().includes(search.toLowerCase()) ||
-      element.label?.toLowerCase().includes(search.toLowerCase())
+      element.label?.toLowerCase().includes(search.toLowerCase()),
   );
 
   const searchElements = (event: React.ChangeEvent<HTMLInputElement>): void => {

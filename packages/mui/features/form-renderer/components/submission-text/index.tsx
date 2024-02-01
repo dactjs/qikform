@@ -7,7 +7,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../lib";
 
 import { useFormRenderer } from "../../context";
 
-export function SubmissionText(): React.ReactElement {
+export function FormRendererSubmissionText(): React.ReactElement {
   const { form, startNewSubmission } = useFormRenderer();
 
   const { allowMultipleSubmissions, fillAgainButtonText, submissionText } =

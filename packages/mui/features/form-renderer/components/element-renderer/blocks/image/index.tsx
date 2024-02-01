@@ -11,7 +11,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 import { GalleryDialog } from "./components";
 import { useImageBlockRenderer } from "./hooks";
 
-export function ImageBlockRenderer({
+export function FormRendererImageBlockRenderer({
   block,
 }: {
   block: ImageBlock;

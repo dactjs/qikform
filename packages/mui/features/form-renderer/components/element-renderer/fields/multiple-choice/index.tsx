@@ -19,7 +19,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function MultipleChoiceFieldRenderer({
+export function FormRendererMultipleChoiceFieldRenderer({
   field,
 }: {
   field: MultipleChoiceField;

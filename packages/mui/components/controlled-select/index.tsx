@@ -67,7 +67,7 @@ export function ControlledSelect({
   const value = normalizeValue(state);
 
   const handleOnChange = (
-    event: SelectChangeEvent<string | string[]>
+    event: SelectChangeEvent<string | string[]>,
   ): void => {
     const selected = event.target.value;
 

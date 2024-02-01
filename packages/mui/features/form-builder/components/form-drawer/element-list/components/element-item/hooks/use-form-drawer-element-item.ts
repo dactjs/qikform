@@ -13,7 +13,7 @@ export interface UseFormDrawerElementItemReturn {
 }
 
 export function useFormDrawerElementItem(
-  element: FormElement
+  element: FormElement,
 ): UseFormDrawerElementItemReturn {
   const {
     formState: { errors },

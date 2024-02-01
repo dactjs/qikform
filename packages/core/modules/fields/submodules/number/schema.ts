@@ -23,7 +23,7 @@ export const NumberFieldRulesSchema = BaseFieldRulesSchema.extend({
     path: ["min"],
     message:
       "The minimum number must be less than or equal to the maximum number",
-  }
+  },
 );
 
 export const NumberFieldSchema = BaseFieldSchema.extend({
@@ -51,5 +51,5 @@ export const NumberFieldSchema = BaseFieldSchema.extend({
   {
     path: ["defaultValue"],
     message: "The default value must be between the minimum and maximum number",
-  }
+  },
 );

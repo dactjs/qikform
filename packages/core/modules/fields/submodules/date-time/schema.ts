@@ -23,7 +23,7 @@ export const DateTimeFieldRulesSchema = BaseFieldRulesSchema.extend({
     path: ["minDateTime"],
     message:
       "The minimum date/time must be less than or equal to the maximum date/time",
-  }
+  },
 );
 
 export const DateTimeFieldSchema = BaseFieldSchema.extend({
@@ -51,5 +51,5 @@ export const DateTimeFieldSchema = BaseFieldSchema.extend({
     path: ["defaultValue"],
     message:
       "The default value must be between the minimum and maximum date/time",
-  }
+  },
 );

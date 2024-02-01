@@ -52,7 +52,7 @@ export function ControlledTextField({
   const value = typeof state === "string" ? state : "";
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const text = event.target.value;
     onChange(text || null);

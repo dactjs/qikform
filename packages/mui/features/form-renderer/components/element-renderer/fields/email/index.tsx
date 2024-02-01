@@ -18,7 +18,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function EmailFieldRenderer({
+export function FormRendererEmailFieldRenderer({
   field,
 }: {
   field: EmailField;
@@ -63,7 +63,7 @@ export function EmailFieldRenderer({
   const value = typeof state === "string" ? state : "";
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const text = event.target.value;
     onChange(text || null);

@@ -27,7 +27,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function RichTextFieldRenderer({
+export function FormRendererRichTextFieldRenderer({
   field,
 }: {
   field: RichTextField;

@@ -10,7 +10,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function CheckboxFieldRenderer({
+export function FormRendererCheckboxFieldRenderer({
   field,
 }: {
   field: CheckboxField;

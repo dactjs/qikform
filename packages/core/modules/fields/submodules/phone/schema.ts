@@ -39,7 +39,7 @@ export const PhoneSchema = zod
     {
       path: ["number"],
       message: "Invalid phone number",
-    }
+    },
   );
 
 export const PhoneFieldConfigurationSchema = BaseFieldConfigurationSchema; // no additional configuration

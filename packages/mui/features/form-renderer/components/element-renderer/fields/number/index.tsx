@@ -10,7 +10,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function NumberFieldRenderer({
+export function FormRendererNumberFieldRenderer({
   field,
 }: {
   field: NumberField;
@@ -47,7 +47,7 @@ export function NumberFieldRenderer({
   const value = isValidNumber(state) ? Number(state) : "";
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const text = event.target.value;
     onChange(isValidNumber(text) ? Number(text) : null);

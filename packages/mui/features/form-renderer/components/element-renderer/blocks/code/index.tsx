@@ -8,7 +8,7 @@ import type { CodeBlock } from "@qikform/core";
 
 import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
-export function CodeBlockRenderer({
+export function FormRendererCodeBlockRenderer({
   block,
 }: {
   block: CodeBlock;

@@ -33,7 +33,7 @@ import {
   DateTimeFieldSettings,
 } from "./fields";
 
-export function ElementDrawer(): React.ReactElement {
+export function FormBuilderElementDrawer(): React.ReactElement {
   const { selectedElement } = useFormBuilder();
 
   if (!selectedElement) {

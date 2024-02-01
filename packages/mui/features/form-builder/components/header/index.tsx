@@ -5,11 +5,13 @@ import { Save as SaveIcon } from "@mui/icons-material";
 
 import { useFormBuilder } from "../../context";
 
-export interface HeaderProps {
+export interface FormBuilderHeaderProps {
   children?: React.ReactElement;
 }
 
-export function Header({ children }: HeaderProps): React.ReactElement {
+export function FormBuilderHeader({
+  children,
+}: FormBuilderHeaderProps): React.ReactElement {
   const { save } = useFormBuilder();
 
   return (

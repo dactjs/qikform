@@ -29,7 +29,9 @@ import { useFormDrawerElementList } from "./hooks";
 export function FormDrawerElementList(): React.ReactElement {
   const sensors = useSensors(
     useSensor(PointerSensor),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    }),
   );
 
   const {

@@ -6,10 +6,10 @@ import { NoData } from "../../../../components";
 
 import { useFormRenderer } from "../../context";
 
-import { ElementRenderer } from "../element-renderer";
-import { Pagination } from "../pagination";
+import { FormRendererElementRenderer as ElementRenderer } from "../element-renderer";
+import { FormRendererPagination as Pagination } from "../pagination";
 
-export function Content(): React.ReactElement {
+export function FormRendererContent(): React.ReactElement {
   const { form, visibleElements, endSubmission } = useFormRenderer();
 
   if (form.elements.length === 0) {

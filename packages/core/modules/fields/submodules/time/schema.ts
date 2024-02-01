@@ -28,7 +28,7 @@ export const TimeFieldRulesSchema = BaseFieldRulesSchema.extend({
   {
     path: ["minTime"],
     message: "The minimum time must be less than or equal to the maximum time",
-  }
+  },
 );
 
 export const TimeFieldSchema = BaseFieldSchema.extend({
@@ -63,5 +63,5 @@ export const TimeFieldSchema = BaseFieldSchema.extend({
   {
     path: ["defaultValue"],
     message: "The default value must be between the minimum and maximum time",
-  }
+  },
 );

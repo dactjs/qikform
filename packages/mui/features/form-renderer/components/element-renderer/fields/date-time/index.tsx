@@ -12,7 +12,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function DateTimeFieldRenderer({
+export function FormRendererDateTimeFieldRenderer({
   field,
 }: {
   field: DateTimeField;

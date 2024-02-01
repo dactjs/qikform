@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 
 import { useFormRenderer } from "../../context";
 
-export function Pagination(): React.ReactElement {
+export function FormRendererPagination(): React.ReactElement {
   const {
     formState: { errors },
   } = useFormContext();
@@ -28,7 +28,7 @@ export function Pagination(): React.ReactElement {
   const currentBreaker = pages[currentPage - 1]?.breaker ?? null;
 
   const hasHiddenErrors = Object.keys(errors).some((key) =>
-    visibleElements.some(({ name }) => name !== key)
+    visibleElements.every(({ name }) => name !== key),
   );
 
   return (

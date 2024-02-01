@@ -7,7 +7,7 @@ import type { TextBlock } from "@qikform/core";
 
 import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
-export function TextBlockRenderer({
+export function FormRendererTextBlockRenderer({
   block,
 }: {
   block: TextBlock;

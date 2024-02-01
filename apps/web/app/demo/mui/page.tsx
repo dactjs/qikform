@@ -10,7 +10,7 @@ import { form } from "./_schema";
 
 const DynamicFormBuilder = dynamic(
   () => import("@qikform/mui").then(({ FormBuilder }) => FormBuilder),
-  { ssr: false } // No ssr for this component (it uses the window object)
+  { ssr: false }, // No ssr for this component (it uses the window object)
 );
 
 export default function MuiDemoPage(): React.ReactElement {

@@ -43,5 +43,5 @@ export const SelectFieldSchema = BaseFieldSchema.extend({
   {
     path: ["defaultValue"],
     message: "Default value must be one of the options",
-  }
+  },
 );

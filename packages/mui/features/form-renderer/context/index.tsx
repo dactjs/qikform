@@ -24,7 +24,7 @@ type FormRendererAction =
 
 const reducer: Reducer<FormRendererState, FormRendererAction> = (
   state,
-  action
+  action,
 ): FormRendererState => {
   switch (action.type) {
     case "GO_TO_PREVIOUS_PAGE": {
@@ -119,7 +119,7 @@ export function FormRendererProvider({
         elements: [],
         breaker: null,
       },
-    ]
+    ],
   );
 
   const visibleElements = pages[state.currentPage - 1]?.elements ?? [];
@@ -151,7 +151,7 @@ export function FormRendererProvider({
       if (!onSubmit) return;
 
       await onSubmit(values);
-    }
+    },
   );
 
   return (

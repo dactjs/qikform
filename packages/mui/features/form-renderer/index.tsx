@@ -6,7 +6,11 @@ import { useFormContext } from "react-hook-form";
 import type { Form } from "@qikform/core";
 
 import { FormRendererProvider, useFormRenderer } from "./context";
-import { Header, Content, SubmissionText } from "./components";
+import {
+  FormRendererHeader as Header,
+  FormRendererContent as Content,
+  FormRendererSubmissionText as SubmissionText,
+} from "./components";
 import type { FormRendererValues } from "./types";
 
 function FormRenderer(): React.ReactElement {

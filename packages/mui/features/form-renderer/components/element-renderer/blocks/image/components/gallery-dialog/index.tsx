@@ -18,6 +18,7 @@ export function GalleryDialog({
       <DialogContent>
         <Box
           component="img"
+          loading="lazy"
           src={block.url}
           alt={block.label || block.name}
           sx={{

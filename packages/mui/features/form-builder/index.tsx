@@ -8,7 +8,11 @@ import type { Form } from "@qikform/core";
 import { FormRenderer } from "../form-renderer";
 
 import { FormBuilderProvider, useFormBuilder } from "./context";
-import { Header, FormDrawer, ElementDrawer } from "./components";
+import {
+  FormBuilderHeader as Header,
+  FormBuilderFormDrawer as FormDrawer,
+  FormBuilderElementDrawer as ElementDrawer,
+} from "./components";
 import { objectURLFileURLBuildStrategy } from "./utils";
 import type { FileURLBuildStrategy } from "./types";
 

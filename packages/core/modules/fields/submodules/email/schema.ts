@@ -25,7 +25,7 @@ export const EmailFieldRulesSchema = BaseFieldRulesSchema.extend({
     .transform((value) =>
       Array.isArray(value) && value.length === 0
         ? EMAIL_FIELD_ALL_ALLOWED_DOMAINS_SYMBOL
-        : value
+        : value,
     ),
 });
 
@@ -51,5 +51,5 @@ export const EmailFieldSchema = BaseFieldSchema.extend({
   {
     path: ["defaultValue"],
     message: "Default value must be one of the allowed domains",
-  }
+  },
 );

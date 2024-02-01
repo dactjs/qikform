@@ -23,7 +23,7 @@ export const PlainTextFieldRulesSchema = BaseFieldRulesSchema.extend({
     path: ["minLength"],
     message:
       "The minimum length must be less than or equal to the maximum length",
-  }
+  },
 );
 
 export const PlainTextFieldSchema = BaseFieldSchema.extend({
@@ -51,5 +51,5 @@ export const PlainTextFieldSchema = BaseFieldSchema.extend({
   {
     path: ["defaultValue"],
     message: "The default value must be between the minimum and maximum length",
-  }
+  },
 );

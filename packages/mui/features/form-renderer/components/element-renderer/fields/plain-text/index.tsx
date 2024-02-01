@@ -10,7 +10,7 @@ import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
 import type { FormRendererValues } from "../../../../types";
 
-export function PlainTextFieldRenderer({
+export function FormRendererPlainTextFieldRenderer({
   field,
 }: {
   field: PlainTextField;
@@ -44,7 +44,7 @@ export function PlainTextFieldRenderer({
   const value = typeof state === "string" ? state : "";
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const text = event.target.value;
     onChange(text || null);

@@ -49,7 +49,7 @@ export function ControlledNumberField({
   const value = isValidNumber(state) ? Number(state) : "";
 
   const handleOnChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ): void => {
     const text = event.target.value;
     onChange(isValidNumber(text) ? Number(text) : null);

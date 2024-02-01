@@ -7,7 +7,7 @@ import type { DividerBlock } from "@qikform/core";
 
 import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
 
-export function DividerBlockRenderer({
+export function FormRendererDividerBlockRenderer({
   block,
 }: {
   block: DividerBlock;

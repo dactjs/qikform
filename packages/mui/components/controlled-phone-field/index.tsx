@@ -107,7 +107,7 @@ export function ControlledPhoneField({
             country: info.countryCode || UNKNOWN_PHONE_COUNTRY_CODE,
             number: info.numberValue,
           } satisfies Phone)
-        : null
+        : null,
     );
 
     setPhone((prev) => ({

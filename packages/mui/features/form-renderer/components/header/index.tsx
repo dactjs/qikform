@@ -4,7 +4,7 @@ import { Stack, Typography } from "@mui/material";
 
 import { useFormRenderer } from "../../context";
 
-export function Header(): React.ReactElement {
+export function FormRendererHeader(): React.ReactElement {
   const { form } = useFormRenderer();
 
   const { hideTitle, hideDescription } = form.customization;

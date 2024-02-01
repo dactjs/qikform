@@ -17,11 +17,11 @@ import { useFormContext } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
 
-import { FormDrawerInformation } from "./information";
-import { FormDrawerElementList } from "./element-list";
-import { FormDrawerCustomization } from "./customization";
+import { FormDrawerInformation as Information } from "./information";
+import { FormDrawerElementList as ElementList } from "./element-list";
+import { FormDrawerCustomization as Customization } from "./customization";
 
-export function FormDrawer(): React.ReactElement {
+export function FormBuilderFormDrawer(): React.ReactElement {
   const {
     formState: { errors },
   } = useFormContext<Form>();
@@ -49,7 +49,7 @@ export function FormDrawer(): React.ReactElement {
         </AccordionSummary>
 
         <AccordionDetails>
-          <FormDrawerInformation />
+          <Information />
         </AccordionDetails>
       </Accordion>
 
@@ -70,7 +70,7 @@ export function FormDrawer(): React.ReactElement {
         </AccordionSummary>
 
         <AccordionDetails>
-          <FormDrawerElementList />
+          <ElementList />
         </AccordionDetails>
       </Accordion>
 
@@ -91,7 +91,7 @@ export function FormDrawer(): React.ReactElement {
         </AccordionSummary>
 
         <AccordionDetails>
-          <FormDrawerCustomization />
+          <Customization />
         </AccordionDetails>
       </Accordion>
     </>

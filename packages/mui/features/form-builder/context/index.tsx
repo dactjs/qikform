@@ -30,7 +30,7 @@ type FormBuilderAction =
 
 const reducer: Reducer<FormBuilderState, FormBuilderAction> = (
   state,
-  action
+  action,
 ): FormBuilderState => {
   switch (action.type) {
     case "SELECT_ELEMENT": {
@@ -107,7 +107,7 @@ export function FormBuilderProvider({
       acc[current.id] = index;
       return acc;
     },
-    {}
+    {},
   );
 
   const selectedElement = state.selectedElementId
@@ -127,7 +127,7 @@ export function FormBuilderProvider({
       if (!onSave) return;
 
       await onSave(schema);
-    }
+    },
   );
 
   return (
