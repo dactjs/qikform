@@ -1,6 +1,6 @@
 import type { z as zod } from "zod";
 
-import type { DeepPartial } from "../../../../types";
+import type { DeepPartial } from "@/types";
 
 import type { BlockElementType } from "../../constants";
 

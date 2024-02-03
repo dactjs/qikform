@@ -1,5 +1,14 @@
 {
   "extends": "@qikform/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "@/form": ["./modules/form/index.ts"],
+      "@/blocks": ["./modules/blocks/index.ts"],
+      "@/fields": ["./modules/fields/index.ts"]
+    }
+  },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

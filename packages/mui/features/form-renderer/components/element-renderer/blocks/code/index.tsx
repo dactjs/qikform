@@ -6,7 +6,7 @@ import sanitizer from "dompurify";
 
 import type { CodeBlock } from "@qikform/core";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 export function FormRendererCodeBlockRenderer({
   block,

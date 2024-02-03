@@ -20,7 +20,7 @@ import { Placeholder } from "@tiptap/extension-placeholder";
 import type { UseControllerProps } from "react-hook-form";
 import { useController } from "react-hook-form";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 export interface ControlledRichEditorProps
   extends UseControllerProps<Record<string, unknown>> {

@@ -13,7 +13,7 @@ import { useController } from "react-hook-form";
 
 import type { URLField } from "@qikform/core";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 import type { FormRendererValues } from "../../../../types";
 

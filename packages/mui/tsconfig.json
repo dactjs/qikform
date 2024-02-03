@@ -1,5 +1,14 @@
 {
   "extends": "@qikform/tsconfig/react-library.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "@/features": ["./features/index.ts"],
+      "@/components": ["./components/index.ts"],
+      "@/lib": ["./lib/index.ts"]
+    }
+  },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

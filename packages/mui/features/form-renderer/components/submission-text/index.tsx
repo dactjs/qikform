@@ -3,7 +3,7 @@
 import { Stack, Divider, Button } from "@mui/material";
 import { RichTextReadOnly } from "mui-tiptap";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 import { useFormRenderer } from "../../context";
 

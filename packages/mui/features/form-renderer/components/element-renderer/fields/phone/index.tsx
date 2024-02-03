@@ -15,8 +15,8 @@ import {
   UNKNOWN_PHONE_COUNTRY_CODE,
 } from "@qikform/core";
 
-import { getPhonePlaceholderByCountryCode } from "../../../../../../components";
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
+import { getPhonePlaceholderByCountryCode } from "@/components";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 import type { FormRendererValues } from "../../../../types";
 

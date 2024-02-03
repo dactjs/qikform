@@ -10,10 +10,7 @@ import {
 
 import type { PageBreakBlock } from "@qikform/core";
 
-import {
-  ControlledCheckbox,
-  ControlledTextField,
-} from "../../../../../../components";
+import { ControlledCheckbox, ControlledTextField } from "@/components";
 
 import { useFormBuilder } from "../../../../context";
 

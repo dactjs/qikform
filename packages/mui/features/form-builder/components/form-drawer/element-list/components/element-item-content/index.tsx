@@ -4,7 +4,7 @@ import { Stack, Typography, ClickAwayListener } from "@mui/material";
 
 import type { FormElement } from "@qikform/core";
 
-import { ControlledTextField } from "../../../../../../../components";
+import { ControlledTextField } from "@/components";
 
 import { useFormBuilder } from "../../../../../context";
 

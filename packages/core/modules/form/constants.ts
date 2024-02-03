@@ -1,5 +1,5 @@
-import { BASE_BLOCK_KIND, BlockElementType } from "../blocks";
-import { BASE_FIELD_KIND, FieldElementType } from "../fields";
+import { BASE_BLOCK_KIND, BlockElementType } from "@/blocks";
+import { BASE_FIELD_KIND, FieldElementType } from "@/fields";
 
 //////////////////
 // Element Kind //

@@ -2,7 +2,7 @@
 
 import { Stack } from "@mui/material";
 
-import { NoData } from "../../../../components";
+import { NoData } from "@/components";
 
 import { useFormRenderer } from "../../context";
 

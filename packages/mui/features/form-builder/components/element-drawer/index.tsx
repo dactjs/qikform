@@ -4,7 +4,7 @@ import { Stack, Divider } from "@mui/material";
 
 import { FormElementType } from "@qikform/core";
 
-import { NoData } from "../../../../components";
+import { NoData } from "@/components";
 
 import { useFormBuilder } from "../../context";
 

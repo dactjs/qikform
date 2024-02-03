@@ -10,10 +10,7 @@ import {
 } from "@mui/material";
 import { Controller } from "react-hook-form";
 
-import {
-  ControlledTextField,
-  ControlledRichEditor,
-} from "../../../../../components";
+import { ControlledTextField, ControlledRichEditor } from "@/components";
 
 export function FormDrawerCustomization(): React.ReactElement {
   return (

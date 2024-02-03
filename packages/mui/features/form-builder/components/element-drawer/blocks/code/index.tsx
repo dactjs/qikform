@@ -15,7 +15,7 @@ import {
   ControlledTextField,
   ControlledRichEditor,
   ControlledCodeEditor,
-} from "../../../../../../components";
+} from "@/components";
 
 import { useFormBuilder } from "../../../../context";
 

@@ -1,9 +1,8 @@
 import type { z as zod } from "zod";
 
-import type { DeepPartial } from "../../types";
-
-import { type CreateBlockElement } from "../blocks";
-import { type CreateFieldElement } from "../fields";
+import type { CreateBlockElement } from "@/blocks";
+import type { CreateFieldElement } from "@/fields";
+import type { DeepPartial } from "@/types";
 
 import type {
   FormSchema,

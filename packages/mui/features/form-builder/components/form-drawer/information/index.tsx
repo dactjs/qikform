@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 
-import { ControlledTextField } from "../../../../../components";
+import { ControlledTextField } from "@/components";
 
 export function FormDrawerInformation(): React.ReactElement {
   return (

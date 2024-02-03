@@ -31,7 +31,7 @@ import { useFieldArray } from "react-hook-form";
 
 import type { SingleChoiceField } from "@qikform/core";
 
-import { NoData } from "../../../../../../../../components";
+import { NoData } from "@/components";
 
 import { useFormBuilder } from "../../../../../../context";
 

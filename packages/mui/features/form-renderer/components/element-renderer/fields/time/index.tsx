@@ -8,7 +8,7 @@ import { isValid, isBefore, isAfter } from "date-fns";
 
 import type { TimeField } from "@qikform/core";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 import type { FormRendererValues } from "../../../../types";
 

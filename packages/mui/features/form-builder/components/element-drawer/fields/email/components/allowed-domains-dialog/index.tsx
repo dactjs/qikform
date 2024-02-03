@@ -32,7 +32,7 @@ import { useFieldArray } from "react-hook-form";
 
 import type { EmailField } from "@qikform/core";
 
-import { NoData } from "../../../../../../../../components";
+import { NoData } from "@/components";
 
 import { useFormBuilder } from "../../../../../../context";
 

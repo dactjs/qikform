@@ -14,7 +14,7 @@ import {
   ControlledCheckbox,
   ControlledTextField,
   ControlledRichEditor,
-} from "../../../../../../components";
+} from "@/components";
 
 import { useFormBuilder } from "../../../../context";
 

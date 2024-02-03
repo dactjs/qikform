@@ -1,7 +1,7 @@
 import { z as zod } from "zod";
 
-import { BlockElementSchema } from "../blocks";
-import { FieldElementSchema } from "../fields";
+import { BlockElementSchema } from "@/blocks";
+import { FieldElementSchema } from "@/fields";
 
 export const FormElementSchema = zod.union([
   BlockElementSchema,

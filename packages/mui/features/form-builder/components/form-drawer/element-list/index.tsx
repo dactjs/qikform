@@ -17,7 +17,7 @@ import {
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
 
-import { NoData } from "../../../../../components";
+import { NoData } from "@/components";
 
 import {
   ElementItem,

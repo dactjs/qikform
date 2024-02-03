@@ -5,7 +5,7 @@ import { RichTextReadOnly } from "mui-tiptap";
 
 import type { TextBlock } from "@qikform/core";
 
-import { BASE_MUI_TIPTAP_EXTENSIONS } from "../../../../../../lib";
+import { BASE_MUI_TIPTAP_EXTENSIONS } from "@/lib";
 
 export function FormRendererTextBlockRenderer({
   block,
