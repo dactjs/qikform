@@ -12,7 +12,7 @@ import {
   FormRendererImageBlockRenderer as ImageBlockRenderer,
   FormRendererCodeBlockRenderer as CodeBlockRenderer,
   FormRendererDividerBlockRenderer as DividerBlockRenderer,
-} from "./blocks";
+} from "../block-renderers";
 import {
   FormRendererPlainTextFieldRenderer as PlainTextFieldRenderer,
   FormRendererRichTextFieldRenderer as RichTextFieldRenderer,
@@ -28,7 +28,7 @@ import {
   FormRendererTimeFieldRenderer as TimeFieldRenderer,
   FormRendererDateFieldRenderer as DateFieldRenderer,
   FormRendererDateTimeFieldRenderer as DateTimeFieldRenderer,
-} from "./fields";
+} from "../field-renderers";
 
 export interface FormRendererElementRendererProps {
   element: FormElement;

@@ -15,7 +15,7 @@ import {
   CodeBlockSettings,
   DividerBlockSettings,
   PageBreakBlockSettings,
-} from "./blocks";
+} from "./block-settings";
 import {
   PlainTextFieldSettings,
   RichTextFieldSettings,
@@ -31,7 +31,7 @@ import {
   TimeFieldSettings,
   DateFieldSettings,
   DateTimeFieldSettings,
-} from "./fields";
+} from "./field-settings";
 
 export function FormBuilderElementDrawer(): React.ReactElement {
   const { selectedElement } = useFormBuilder();

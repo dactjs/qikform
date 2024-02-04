@@ -19,11 +19,10 @@ import {
 
 import { NoData } from "@/components";
 
-import {
-  ElementItem,
-  ElementItemOverlay,
-  AddElementButton,
-} from "./components";
+import { FormDrawerElementItem as ElementItem } from "../element-item";
+import { FormDrawerElementItemOverlay as ElementItemOverlay } from "../element-item-overlay";
+import { FormDrawerAddElementButton as AddElementButton } from "../add-element-button";
+
 import { useFormDrawerElementList } from "./hooks";
 
 export function FormDrawerElementList(): React.ReactElement {
