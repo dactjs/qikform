@@ -159,7 +159,15 @@ export function SelectOptionsDialog({
         ) : (
           <NoData
             message="At least one option is required"
-            sx={{ padding: 2 }}
+            sx={{
+              padding: 4,
+              borderRadius: 1,
+              border: 1,
+              borderColor: "error.main",
+              outlineOffset: -2,
+              outline: 1,
+              outlineColor: "error.main",
+            }}
           />
         )}
       </DialogContent>
