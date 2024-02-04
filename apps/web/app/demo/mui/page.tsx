@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { Box, Snackbar } from "@mui/material";
 
-import { MuiToggleColorModeButton } from "~/theme";
+import { MuiToggleColorModeButton } from "@/theme";
 
 import { useMuiDemoPage } from "./_hooks";
 import { form } from "./_schema";

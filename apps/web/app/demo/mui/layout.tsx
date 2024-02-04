@@ -4,7 +4,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { MuiThemeRegistry } from "~/theme";
+import { MuiThemeRegistry } from "@/theme";
 
 export const metadata: Metadata = {
   title: "QikForm - MUI",
