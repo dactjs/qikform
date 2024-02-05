@@ -2,7 +2,6 @@
   "name": "@qikform/eslint-config-custom",
   "version": "1.2.0",
   "private": true,
-  "license": "MIT",
   "devDependencies": {
     "@vercel/style-guide": "5.1.0",
     "eslint-config-turbo": "1.11.2",
