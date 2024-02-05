@@ -1,7 +1,7 @@
 {
   "name": "@qikform/web",
-  "version": "1.0.0",
-  "private": false,
+  "version": "1.2.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "lint": "next lint",
