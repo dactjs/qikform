@@ -8,15 +8,13 @@ import { NoData } from "@/components";
 
 import { useFormBuilder } from "../../context";
 
-import { ElementDrawerHeader } from "./header";
 import {
+  ElementDrawerHeader,
   TextBlockSettings,
   ImageBlockSettings,
   CodeBlockSettings,
   DividerBlockSettings,
   PageBreakBlockSettings,
-} from "./block-settings";
-import {
   PlainTextFieldSettings,
   RichTextFieldSettings,
   NumberFieldSettings,
@@ -31,7 +29,7 @@ import {
   TimeFieldSettings,
   DateFieldSettings,
   DateTimeFieldSettings,
-} from "./field-settings";
+} from "./components";
 
 export function FormBuilderElementDrawer(): React.ReactElement {
   const { selectedElement } = useFormBuilder();

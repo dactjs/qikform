@@ -8,27 +8,25 @@ import { FormElementType } from "@qikform/core";
 import { useFormRenderer } from "../../context";
 
 import {
-  FormRendererTextBlockRenderer as TextBlockRenderer,
-  FormRendererImageBlockRenderer as ImageBlockRenderer,
-  FormRendererCodeBlockRenderer as CodeBlockRenderer,
-  FormRendererDividerBlockRenderer as DividerBlockRenderer,
-} from "../block-renderers";
-import {
-  FormRendererPlainTextFieldRenderer as PlainTextFieldRenderer,
-  FormRendererRichTextFieldRenderer as RichTextFieldRenderer,
-  FormRendererNumberFieldRenderer as NumberFieldRenderer,
-  FormRendererEmailFieldRenderer as EmailFieldRenderer,
-  FormRendererPhoneFieldRenderer as PhoneFieldRenderer,
-  FormRendererURLFieldRenderer as URLFieldRenderer,
-  FormRendererCheckboxFieldRenderer as CheckboxFieldRenderer,
-  FormRendererSwitchFieldRenderer as SwitchFieldRenderer,
-  FormRendererSingleChoiceFieldRenderer as SingleChoiceFieldRenderer,
-  FormRendererMultipleChoiceFieldRenderer as MultipleChoiceFieldRenderer,
-  FormRendererSelectFieldRenderer as SelectFieldRenderer,
-  FormRendererTimeFieldRenderer as TimeFieldRenderer,
-  FormRendererDateFieldRenderer as DateFieldRenderer,
-  FormRendererDateTimeFieldRenderer as DateTimeFieldRenderer,
-} from "../field-renderers";
+  TextBlockRenderer,
+  ImageBlockRenderer,
+  CodeBlockRenderer,
+  DividerBlockRenderer,
+  PlainTextFieldRenderer,
+  RichTextFieldRenderer,
+  NumberFieldRenderer,
+  EmailFieldRenderer,
+  PhoneFieldRenderer,
+  URLFieldRenderer,
+  CheckboxFieldRenderer,
+  SwitchFieldRenderer,
+  SingleChoiceFieldRenderer,
+  MultipleChoiceFieldRenderer,
+  SelectFieldRenderer,
+  TimeFieldRenderer,
+  DateFieldRenderer,
+  DateTimeFieldRenderer,
+} from "./components";
 
 export interface FormRendererElementRendererProps {
   element: FormElement;

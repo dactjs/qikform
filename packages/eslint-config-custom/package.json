@@ -1,6 +1,6 @@
 {
   "name": "@qikform/eslint-config-custom",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "devDependencies": {
     "@vercel/style-guide": "5.1.0",
