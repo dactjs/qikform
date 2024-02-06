@@ -17,11 +17,7 @@ import { useFormContext } from "react-hook-form";
 
 import type { Form } from "@qikform/core";
 
-import {
-  FormDrawerInformation as Information,
-  FormDrawerElementList as ElementList,
-  FormDrawerCustomization as Customization,
-} from "./components";
+import { Information, ElementList, Customization } from "./components";
 
 export function FormBuilderFormDrawer(): React.ReactElement {
   const {

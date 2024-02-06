@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export interface UseFormDrawerElementItemContentReturn {
+export interface UseElementItemContentReturn {
   editing: "name" | "label" | null;
   onDoubleClick: (field: "name" | "label") => () => void;
   onBlur: () => void;
 }
 
-export function useFormDrawerElementItemContent(): UseFormDrawerElementItemContentReturn {
+export function useElementItemContent(): UseElementItemContentReturn {
   const [editing, setEditing] = useState<"name" | "label" | null>(null);
 
   const handleOnDoubleClick = (field: "name" | "label") => (): void => {

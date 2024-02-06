@@ -7,20 +7,20 @@ import { CSS } from "@dnd-kit/utilities";
 
 import type { FormElement } from "@qikform/core";
 
-import { FormDrawerElementItemContent as ElementItemContent } from "../element-item-content";
-import { FormDrawerElementItemActions as ElementItemActions } from "../element-item-actions";
+import { ElementItemContent } from "../element-item-content";
+import { ElementItemActions } from "../element-item-actions";
 
-import { useFormDrawerElementItem } from "./hooks";
+import { useElementItem } from "./hooks";
 
-export interface FormDrawerElementItemProps {
+export interface ElementItemProps {
   filtering: boolean;
   element: FormElement;
 }
 
-export function FormDrawerElementItem({
+export function ElementItem({
   filtering,
   element,
-}: FormDrawerElementItemProps): React.ReactElement {
+}: ElementItemProps): React.ReactElement {
   const {
     attributes,
     listeners,
@@ -37,8 +37,7 @@ export function FormDrawerElementItem({
     },
   });
 
-  const { hasError, hovering, onHover, onBlur } =
-    useFormDrawerElementItem(element);
+  const { hasError, hovering, onHover, onBlur } = useElementItem(element);
 
   const style = {
     transition,

@@ -4,17 +4,17 @@ import {
   Settings as SettingsIcon,
 } from "@mui/icons-material";
 
-export interface FormDrawerElementItemOverlayProps {
+export interface ElementItemOverlayProps {
   type: string;
   name: string;
   label: string | null;
 }
 
-export function FormDrawerElementItemOverlay({
+export function ElementItemOverlay({
   type,
   name,
   label,
-}: FormDrawerElementItemOverlayProps): React.ReactElement {
+}: ElementItemOverlayProps): React.ReactElement {
   return (
     <Stack
       component="li"

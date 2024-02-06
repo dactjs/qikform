@@ -9,7 +9,7 @@ import { NoData } from "@/components";
 import { useFormBuilder } from "../../context";
 
 import {
-  ElementDrawerHeader,
+  Header,
   TextBlockSettings,
   ImageBlockSettings,
   CodeBlockSettings,
@@ -50,7 +50,7 @@ export function FormBuilderElementDrawer(): React.ReactElement {
       divider={<Divider flexItem />}
       sx={{ position: "relative" }}
     >
-      <ElementDrawerHeader />
+      <Header />
 
       {selectedElement.type === FormElementType.TEXT && (
         <TextBlockSettings block={selectedElement} />

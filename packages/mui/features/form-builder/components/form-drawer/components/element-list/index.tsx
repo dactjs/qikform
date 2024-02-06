@@ -19,13 +19,13 @@ import {
 
 import { NoData } from "@/components";
 
-import { FormDrawerElementItem as ElementItem } from "../element-item";
-import { FormDrawerElementItemOverlay as ElementItemOverlay } from "../element-item-overlay";
-import { FormDrawerAddElementButton as AddElementButton } from "../add-element-button";
+import { ElementItem } from "../element-item";
+import { ElementItemOverlay } from "../element-item-overlay";
+import { AddElementButton } from "../add-element-button";
 
-import { useFormDrawerElementList } from "./hooks";
+import { useElementList } from "./hooks";
 
-export function FormDrawerElementList(): React.ReactElement {
+export function ElementList(): React.ReactElement {
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -40,7 +40,7 @@ export function FormDrawerElementList(): React.ReactElement {
     active,
     startDrag,
     endDrag,
-  } = useFormDrawerElementList();
+  } = useElementList();
 
   return (
     <Stack spacing={1} divider={<Divider flexItem />}>

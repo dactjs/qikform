@@ -36,15 +36,15 @@ import {
 
 import { FormElementType } from "@qikform/core";
 
-import { useFormDrawerAddElementButton } from "./hooks";
+import { useAddElementButton } from "./hooks";
 
-export function FormDrawerAddElementButton(): React.ReactElement {
+export function AddElementButton(): React.ReactElement {
   const {
     isElementsDrawerOpen,
     openElementsDrawer,
     closeElementsDrawer,
     addElement,
-  } = useFormDrawerAddElementButton();
+  } = useAddElementButton();
 
   return (
     <>

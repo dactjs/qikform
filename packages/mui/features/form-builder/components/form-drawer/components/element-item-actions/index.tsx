@@ -14,15 +14,15 @@ import { FormElementKind } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../context";
 
-export interface FormDrawerElementItemActionsProps {
+export interface ElementItemActionsProps {
   show: boolean;
   element: FormElement;
 }
 
-export function FormDrawerElementItemActions({
+export function ElementItemActions({
   show,
   element,
-}: FormDrawerElementItemActionsProps): React.ReactElement {
+}: ElementItemActionsProps): React.ReactElement {
   const { elementIndexById, selectElement } = useFormBuilder();
 
   const index = elementIndexById[element.id];

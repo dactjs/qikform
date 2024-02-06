@@ -7,14 +7,14 @@ import { FormElementSchema, FormElementType } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../../context";
 
-export interface UseFormDrawerAddElementButtonReturn {
+export interface UseAddElementButtonReturn {
   isElementsDrawerOpen: boolean;
   openElementsDrawer: () => void;
   closeElementsDrawer: () => void;
   addElement: (type: FormElementType) => () => void;
 }
 
-export function useFormDrawerAddElementButton(): UseFormDrawerAddElementButtonReturn {
+export function useAddElementButton(): UseAddElementButtonReturn {
   const { enqueueSnackbar } = useSnackbar();
 
   const { fields: elements, append } = useFieldArray<Form>({

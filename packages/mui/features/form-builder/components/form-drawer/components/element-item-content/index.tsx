@@ -8,18 +8,18 @@ import { ControlledTextField } from "@/components";
 
 import { useFormBuilder } from "../../../../context";
 
-import { useFormDrawerElementItemContent } from "./hooks";
+import { useElementItemContent } from "./hooks";
 
-export interface FormDrawerElementItemContentProps {
+export interface ElementItemContentProps {
   element: FormElement;
 }
 
-export function FormDrawerElementItemContent({
+export function ElementItemContent({
   element,
-}: FormDrawerElementItemContentProps): React.ReactElement {
+}: ElementItemContentProps): React.ReactElement {
   const { elementIndexById } = useFormBuilder();
 
-  const { editing, onDoubleClick, onBlur } = useFormDrawerElementItemContent();
+  const { editing, onDoubleClick, onBlur } = useElementItemContent();
 
   const index = elementIndexById[element.id];
 

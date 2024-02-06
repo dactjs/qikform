@@ -19,7 +19,7 @@ import type { Form } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../context";
 
-export function ElementDrawerHeader(): React.ReactElement {
+export function Header(): React.ReactElement {
   const { insert, remove } = useFieldArray<Form>({ name: "elements" });
 
   const { elementIndexById, selectedElement, selectElement, unselectElement } =

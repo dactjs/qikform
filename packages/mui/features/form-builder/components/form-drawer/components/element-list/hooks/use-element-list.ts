@@ -6,7 +6,7 @@ import type { Form, FormElement } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../../context";
 
-export interface UseFormDrawerElementListReturn {
+export interface UseElementListReturn {
   search: string;
   filteredElements: FormElement[];
   searchElements: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -15,7 +15,7 @@ export interface UseFormDrawerElementListReturn {
   endDrag: (event: DragEndEvent) => void;
 }
 
-export function useFormDrawerElementList(): UseFormDrawerElementListReturn {
+export function useElementList(): UseElementListReturn {
   const { watch } = useFormContext<Form>();
 
   const { move } = useFieldArray<Form>({ name: "elements" });

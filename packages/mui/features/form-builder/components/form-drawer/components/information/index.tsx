@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 
 import { ControlledTextField } from "@/components";
 
-export function FormDrawerInformation(): React.ReactElement {
+export function Information(): React.ReactElement {
   return (
     <Stack spacing={2}>
       <ControlledTextField

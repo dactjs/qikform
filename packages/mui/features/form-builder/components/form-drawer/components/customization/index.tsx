@@ -12,7 +12,7 @@ import { Controller } from "react-hook-form";
 
 import { ControlledTextField, ControlledRichEditor } from "@/components";
 
-export function FormDrawerCustomization(): React.ReactElement {
+export function Customization(): React.ReactElement {
   return (
     <Stack spacing={2} divider={<Divider flexItem />}>
       <FormControl component="fieldset" variant="standard">

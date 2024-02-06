@@ -5,16 +5,14 @@ import type { Form, FormElement } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../../context";
 
-export interface UseFormDrawerElementItemReturn {
+export interface UseElementItemReturn {
   hasError: boolean;
   hovering: boolean;
   onHover: () => void;
   onBlur: () => void;
 }
 
-export function useFormDrawerElementItem(
-  element: FormElement,
-): UseFormDrawerElementItemReturn {
+export function useElementItem(element: FormElement): UseElementItemReturn {
   const {
     formState: { errors },
   } = useFormContext<Form>();
