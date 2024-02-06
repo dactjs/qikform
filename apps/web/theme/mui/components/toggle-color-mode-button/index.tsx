@@ -6,7 +6,7 @@ import {
   LightMode as LightModeIcon,
 } from "@mui/icons-material";
 
-import { useMuiColorMode } from "../color-mode-provider";
+import { useMuiColorMode } from "../../context";
 
 export function MuiToggleColorModeButton(): React.ReactElement {
   const { mode, toggleMode } = useMuiColorMode();
