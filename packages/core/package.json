@@ -12,7 +12,7 @@
     "build": "tsup index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "libphonenumber-js": "1.10.54"
+    "libphonenumber-js": "1.10.55"
   },
   "peerDependencies": {
     "zod": "^3.22.4 || ^4.0.0"
@@ -20,7 +20,7 @@
   "devDependencies": {
     "@qikform/eslint-config-custom": "workspace:*",
     "@qikform/tsconfig": "workspace:*",
-    "@types/node": "20.10.6",
+    "@types/node": "20.11.16",
     "tsup": "8.0.1",
     "typescript": "5.3.3"
   }
