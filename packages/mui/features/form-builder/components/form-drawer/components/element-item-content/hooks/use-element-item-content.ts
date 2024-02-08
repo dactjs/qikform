@@ -1,25 +1,28 @@
 import { useState } from "react";
 
+export type EditingProperty = "name" | "label";
+
 export interface UseElementItemContentReturn {
-  editing: "name" | "label" | null;
-  onDoubleClick: (field: "name" | "label") => () => void;
-  onBlur: () => void;
+  editingProperty: EditingProperty | null;
+  startEditing: (property: EditingProperty) => () => void;
+  endEditing: () => void;
 }
 
 export function useElementItemContent(): UseElementItemContentReturn {
-  const [editing, setEditing] = useState<"name" | "label" | null>(null);
+  const [editingProperty, setEditingProperty] =
+    useState<EditingProperty | null>(null);
 
-  const handleOnDoubleClick = (field: "name" | "label") => (): void => {
-    setEditing(field);
+  const handleStartEditing = (property: EditingProperty) => (): void => {
+    setEditingProperty(property);
   };
 
-  const handleOnBlur = (): void => {
-    setEditing(null);
+  const handleEndEditing = (): void => {
+    setEditingProperty(null);
   };
 
   return {
-    editing,
-    onDoubleClick: handleOnDoubleClick,
-    onBlur: handleOnBlur,
+    editingProperty,
+    startEditing: handleStartEditing,
+    endEditing: handleEndEditing,
   };
 }

@@ -7,9 +7,9 @@ import { useFormBuilder } from "../../../../../context";
 
 export interface UseElementItemReturn {
   hasError: boolean;
-  hovering: boolean;
-  onHover: () => void;
-  onBlur: () => void;
+  isHovering: boolean;
+  showActions: () => void;
+  hideActions: () => void;
 }
 
 export function useElementItem(element: FormElement): UseElementItemReturn {
@@ -23,20 +23,20 @@ export function useElementItem(element: FormElement): UseElementItemReturn {
 
   const hasError = Boolean(errors.elements?.[index]);
 
-  const [hovering, setHovering] = useState<boolean>(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
 
-  const handleOnHover = (): void => {
-    setHovering(true);
+  const handleShowActions = (): void => {
+    setIsHovering(true);
   };
 
-  const handleOnBlur = (): void => {
-    setHovering(false);
+  const handleHideActions = (): void => {
+    setIsHovering(false);
   };
 
   return {
     hasError,
-    hovering,
-    onHover: handleOnHover,
-    onBlur: handleOnBlur,
+    isHovering,
+    showActions: handleShowActions,
+    hideActions: handleHideActions,
   };
 }

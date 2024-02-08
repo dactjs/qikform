@@ -19,16 +19,18 @@ export function ElementItemContent({
 }: ElementItemContentProps): React.ReactElement {
   const { elementIndexById } = useFormBuilder();
 
-  const { editing, onDoubleClick, onBlur } = useElementItemContent();
+  const { editingProperty, startEditing, endEditing } = useElementItemContent();
 
   const index = elementIndexById[element.id];
 
   return (
-    <ClickAwayListener onClickAway={onBlur}>
-      <Stack sx={[{ width: "100%" }, !editing && { overflowX: "hidden" }]}>
-        {editing ? (
+    <ClickAwayListener onClickAway={endEditing}>
+      <Stack
+        sx={[{ width: "100%" }, !editingProperty && { overflowX: "hidden" }]}
+      >
+        {editingProperty ? (
           <>
-            {editing === "label" && (
+            {editingProperty === "label" && (
               <ControlledTextField
                 name={`elements.${index}.label`}
                 autoComplete="off"
@@ -38,7 +40,7 @@ export function ElementItemContent({
               />
             )}
 
-            {editing === "name" && (
+            {editingProperty === "name" && (
               <ControlledTextField
                 name={`elements.${index}.name`}
                 autoComplete="off"
@@ -53,7 +55,7 @@ export function ElementItemContent({
           <>
             <Typography
               variant="body2"
-              onDoubleClick={onDoubleClick("label")}
+              onDoubleClick={startEditing("label")}
               sx={{
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
@@ -70,7 +72,7 @@ export function ElementItemContent({
 
             <Typography
               variant="caption"
-              onDoubleClick={onDoubleClick("name")}
+              onDoubleClick={startEditing("name")}
               sx={{
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",

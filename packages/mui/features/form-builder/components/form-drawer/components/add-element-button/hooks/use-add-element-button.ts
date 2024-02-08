@@ -8,10 +8,10 @@ import { FormElementSchema, FormElementType } from "@qikform/core";
 import { useFormBuilder } from "../../../../../context";
 
 export interface UseAddElementButtonReturn {
+  addElement: (type: FormElementType) => () => void;
   isElementsDrawerOpen: boolean;
   openElementsDrawer: () => void;
   closeElementsDrawer: () => void;
-  addElement: (type: FormElementType) => () => void;
 }
 
 export function useAddElementButton(): UseAddElementButtonReturn {
@@ -166,9 +166,9 @@ export function useAddElementButton(): UseAddElementButtonReturn {
   };
 
   return {
+    addElement: handleAddElement,
     isElementsDrawerOpen,
     openElementsDrawer: handleOpenElementsDrawer,
     closeElementsDrawer: handleCloseElementsDrawer,
-    addElement: handleAddElement,
   };
 }

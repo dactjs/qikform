@@ -37,7 +37,8 @@ export function ElementItem({
     },
   });
 
-  const { hasError, hovering, onHover, onBlur } = useElementItem(element);
+  const { hasError, isHovering, showActions, hideActions } =
+    useElementItem(element);
 
   const style = {
     transition,
@@ -51,8 +52,8 @@ export function ElementItem({
       direction="row"
       alignItems="center"
       spacing={1}
-      onMouseEnter={onHover}
-      onMouseLeave={onBlur}
+      onMouseEnter={showActions}
+      onMouseLeave={hideActions}
       style={style}
       sx={{
         paddingX: 0.5,
@@ -77,7 +78,7 @@ export function ElementItem({
       )}
 
       <ElementItemContent element={element} />
-      <ElementItemActions show={hovering} element={element} />
+      <ElementItemActions show={isHovering} element={element} />
     </Stack>
   );
 }

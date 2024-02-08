@@ -13,46 +13,19 @@ import {
   ContentCopy as DuplicateIcon,
   Delete as DeleteIcon,
 } from "@mui/icons-material";
-import { useFieldArray } from "react-hook-form";
-
-import type { Form } from "@qikform/core";
 
 import { useFormBuilder } from "../../../../context";
 
+import { useHeader } from "./hooks";
+
 export function Header(): React.ReactElement {
-  const { insert, remove } = useFieldArray<Form>({ name: "elements" });
+  const { selectedElement } = useFormBuilder();
 
-  const { elementIndexById, selectedElement, selectElement, unselectElement } =
-    useFormBuilder();
-
-  const handleDuplicate = (): void => {
-    if (!selectedElement) return;
-
-    const index = elementIndexById[selectedElement.id];
-
-    const clone = globalThis.structuredClone(selectedElement);
-
-    clone.id = globalThis.crypto.randomUUID();
-    clone.name = `${clone.name}_copy`;
-
-    insert(index + 1, clone);
-
-    selectElement(clone);
-  };
-
-  const handleDelete = (): void => {
-    if (!selectedElement) return;
-
-    const index = elementIndexById[selectedElement.id];
-
-    remove(index);
-
-    unselectElement();
-  };
-
-  const handleClose = (): void => {
-    unselectElement();
-  };
+  const {
+    duplicateSelectedElement,
+    deleteSelectedElement,
+    closeElementDrawer,
+  } = useHeader();
 
   return (
     <Stack
@@ -70,7 +43,7 @@ export function Header(): React.ReactElement {
         <IconButton
           color="inherit"
           aria-label="Close Element Drawer"
-          onClick={handleClose}
+          onClick={closeElementDrawer}
         >
           <CloseIcon />
         </IconButton>
@@ -97,7 +70,7 @@ export function Header(): React.ReactElement {
           size="small"
           endIcon={<DuplicateIcon />}
           aria-label="Duplicate Element"
-          onClick={handleDuplicate}
+          onClick={duplicateSelectedElement}
         >
           Duplicate
         </Button>
@@ -107,7 +80,7 @@ export function Header(): React.ReactElement {
           size="small"
           endIcon={<DeleteIcon color="error" />}
           aria-label="Delete Element"
-          onClick={handleDelete}
+          onClick={deleteSelectedElement}
         >
           Delete
         </Button>

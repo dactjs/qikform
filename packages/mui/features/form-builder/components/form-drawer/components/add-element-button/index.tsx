@@ -40,10 +40,10 @@ import { useAddElementButton } from "./hooks";
 
 export function AddElementButton(): React.ReactElement {
   const {
+    addElement,
     isElementsDrawerOpen,
     openElementsDrawer,
     closeElementsDrawer,
-    addElement,
   } = useAddElementButton();
 
   return (
