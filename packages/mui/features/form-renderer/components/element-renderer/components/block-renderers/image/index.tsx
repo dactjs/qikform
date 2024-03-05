@@ -69,7 +69,13 @@ export function ImageBlockRenderer({
           onLoad={endLoading}
           alt={block.label || block.name}
           src={block.url}
-          sx={{ maxWidth: "100%", maxHeight: 300, objectFit: "cover" }}
+          sx={{
+            width: "100%",
+            height: "auto",
+            aspectRatio: "16 / 9",
+            objectFit: "contain",
+            objectPosition: "left",
+          }}
         />
 
         {Boolean(block.helperText) && (

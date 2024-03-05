@@ -23,9 +23,10 @@ export function GalleryDialog({
           alt={block.label || block.name}
           sx={{
             width: "100%",
-            maxWidth: "fit-content",
             height: "auto",
-            objectFit: "cover",
+            aspectRatio: "16 / 9",
+            objectFit: "contain",
+            objectPosition: "left",
           }}
         />
       </DialogContent>
