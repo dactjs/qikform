@@ -26,7 +26,7 @@ export function GalleryDialog({
             height: "auto",
             aspectRatio: "16 / 9",
             objectFit: "contain",
-            objectPosition: "left",
+            objectPosition: "center",
           }}
         />
       </DialogContent>

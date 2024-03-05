@@ -46,10 +46,11 @@ export function PhoneFieldRenderer({
 
           if (result.data.country === UNKNOWN_PHONE_COUNTRY_CODE) return true;
 
-          if (matchIsValidTel(result.data.number, result.data.country))
-            return true;
+          const isValid = matchIsValidTel(result.data.number, {
+            onlyCountries: [result.data.country],
+          });
 
-          return "Invalid phone number";
+          return isValid || "Invalid phone number";
         },
       },
     },
