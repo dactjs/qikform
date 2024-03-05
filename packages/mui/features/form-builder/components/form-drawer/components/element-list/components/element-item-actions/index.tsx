@@ -12,7 +12,7 @@ import { Controller } from "react-hook-form";
 import type { FormElement } from "@qikform/core";
 import { FormElementKind } from "@qikform/core";
 
-import { useFormBuilder } from "../../../../context";
+import { useFormBuilder } from "../../../../../../context";
 
 export interface ElementItemActionsProps {
   show: boolean;

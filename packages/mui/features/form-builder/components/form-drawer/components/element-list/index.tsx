@@ -19,9 +19,11 @@ import {
 
 import { NoData } from "@/components";
 
-import { ElementItem } from "../element-item";
-import { ElementItemOverlay } from "../element-item-overlay";
-import { AddElementButton } from "../add-element-button";
+import {
+  ElementItem,
+  ElementItemOverlay,
+  AddElementButton,
+} from "./components";
 
 import { useElementList } from "./hooks";
 

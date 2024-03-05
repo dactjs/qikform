@@ -5,7 +5,7 @@ import { useFieldArray } from "react-hook-form";
 import type { Form } from "@qikform/core";
 import { FormElementSchema, FormElementType } from "@qikform/core";
 
-import { useFormBuilder } from "../../../../../context";
+import { useFormBuilder } from "../../../../../../../context";
 
 export interface UseAddElementButtonReturn {
   addElement: (type: FormElementType) => () => void;
