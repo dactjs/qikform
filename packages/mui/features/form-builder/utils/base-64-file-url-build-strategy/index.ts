@@ -5,11 +5,13 @@ export const base64FileURLBuildStrategy: FileURLBuildStrategy = (file) => {
 
   return new Promise((resolve, reject) => {
     reader.onload = () => {
-      resolve(String(reader.result));
+      const result = String(reader.result);
+      resolve(result);
     };
 
     reader.onerror = () => {
-      reject(reader.error);
+      const error = new Error(reader.error?.message || "Error reading file");
+      reject(error);
     };
 
     reader.readAsDataURL(file);

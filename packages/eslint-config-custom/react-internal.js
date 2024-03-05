@@ -37,6 +37,7 @@ module.exports = {
     "import/order": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "react/jsx-sort-props": "off",
   },
 };
